@@ -18,8 +18,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 24 10% 10%;
 
-    --primary: 40 55% 55%; /* 鎏金黄 ≈ #D4A853 */
-    --primary-foreground: 24 10% 10%; /* 深墨色文字 */
+    /* 主交互色采用深鎏金，确保白底链接与按钮文字达到可读对比；亮金只作装饰。 */
+    --primary: 36 62% 35%;
+    --primary-foreground: 40 30% 98%;
 
     --secondary: 38 30% 93%; /* 暖米灰 */
     --secondary-foreground: 24 10% 10%;
@@ -35,12 +36,12 @@
 
     --border: 35 18% 87%; /* 暖灰细边框 */
     --input: 35 18% 84%;
-    --ring: 40 55% 55%; /* 焦点鎏金 */
+    --ring: 36 62% 35%;
 
     --radius: 0.625rem;
 
     /* 门户自定义色板（供页面工程师直接使用：text-gold / bg-ink / text-crimson / bg-paper 等） */
-    --gold: 40 55% 55%; /* 鎏金黄，同 primary */
+    --gold: 40 55% 55%;
     --gold-soft: 40 60% 68%; /* 浅鎏金，用于深色底上的点缀 */
     --crimson: 4 59% 44%; /* 宫墙红 ≈ #B03A2E */
     --ink: 24 10% 10%; /* 暖墨 ≈ #1C1917，Hero/页脚深底 */
@@ -49,15 +50,15 @@
 
     --sidebar-background: 40 30% 97%;
     --sidebar-foreground: 24 10% 10%;
-    --sidebar-primary: 40 55% 55%;
-    --sidebar-primary-foreground: 24 10% 10%;
+    --sidebar-primary: 36 62% 35%;
+    --sidebar-primary-foreground: 40 30% 98%;
     --sidebar-accent: 40 55% 92%;
     --sidebar-accent-foreground: 32 55% 28%;
     --sidebar-border: 35 18% 87%;
-    --sidebar-ring: 40 55% 55%;
+    --sidebar-ring: 36 62% 35%;
   }
 
-  /* 暗色变体（本期 MVP 以亮色为主，Hero/页脚请直接用 bg-ink；此处仅保持 shadcn 变量完整） */
+  /* 暗色变体（v0.2 以亮色为主，深色页头/页脚直接用 bg-ink；此处保持变量完整） */
   .dark {
     --background: 24 10% 10%;
     --foreground: 40 30% 94%;
@@ -95,8 +96,46 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC",
+      "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: hsl(var(--gold) / 0.28);
+    color: hsl(var(--foreground));
+  }
+  :focus-visible {
+    outline-color: hsl(var(--ring));
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer utilities {
+  .portal-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.42) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.42) 1px, transparent 1px);
+    background-size: 2.75rem 2.75rem;
+    mask-image: linear-gradient(to bottom, black, transparent 92%);
   }
 }

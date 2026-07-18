@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "0.2",
+  "method": "未进入核心编辑层的工具按名称与简介做保守关键词初筛；规则结果仅用于导航，不代表工具能力已完成本轮复核。",
+  "categoryRules": {
+    "文字创作AI工具": [
+      {
+        "scene": "scriptwriting",
+        "pattern": "剧本|小说|故事|情节|角色|台词|编剧|网文|叙事|续写|短剧|漫剧"
+      },
+      {
+        "scene": "promotion",
+        "pattern": "seo|营销|广告|电商|商品|商拍|文案|新媒体|公众号|小红书|社媒|标题|品牌|推广|带货"
+      },
+      {
+        "scene": "productivity",
+        "pattern": "办公|ppt|会议|翻译|校对|润色|改写|摘要|总结|知识|文档|公文|论文|学术|研究|写作|文本|文章|内容|笔记|材料|助手|工作"
+      }
+    ],
+    "图片AI工具": [
+      {
+        "scene": "concept-art",
+        "pattern": "图像生成|图片生成|商品图|插画|绘画|概念|设计|3d|模型|服装|服饰|素材生成|视觉创作|图像创作"
+      },
+      {
+        "scene": "post-production",
+        "pattern": "抠图|去背|背景移除|背景去除|高清|放大|修复|消除|去水印|上色|增强|无损|重绘|retouch|upscal|remov|eraser|restore|background"
+      },
+      {
+        "scene": "promotion",
+        "pattern": "电商|营销|广告|商品|商拍|海报|宣传|宣发|社媒|设计室"
+      }
+    ],
+    "视频AI工具": [
+      {
+        "scene": "scriptwriting",
+        "pattern": "剧本|脚本|故事|分镜|情节"
+      },
+      {
+        "scene": "video-generation",
+        "pattern": "生成|数字人|虚拟人|文生视频|图生视频|动画|漫剧|短剧|视频创作|创作工具|动态|特效|镜头|avatar"
+      },
+      {
+        "scene": "post-production",
+        "pattern": "剪辑|字幕|翻译|抠像|抠除|去背|背景移除|修复|增强|调色|颜色分级|切片|转录|后期|编辑|二创|配音|绿幕"
+      },
+      {
+        "scene": "promotion",
+        "pattern": "营销|广告|电商|商品|宣发|社媒|口播|带货|直播|切片|精彩片段"
+      },
+      {
+        "scene": "productivity",
+        "pattern": "会议|课程|制课|培训|演示|协作"
+      }
+    ]
+  },
+  "fallbackScenes": {
+    "文字创作AI工具": ["productivity"],
+    "图片AI工具": ["concept-art"],
+    "视频AI工具": ["video-generation"]
+  },
+  "regressionCases": [
+    {
+      "id": 24,
+      "include": ["promotion", "productivity"],
+      "exclude": ["scriptwriting", "post-production"]
+    },
+    {
+      "id": 25,
+      "include": ["promotion", "productivity"],
+      "exclude": ["scriptwriting", "post-production"]
+    },
+    {
+      "id": 31,
+      "include": ["promotion", "productivity"],
+      "exclude": ["scriptwriting", "post-production"]
+    },
+    {
+      "id": 54,
+      "include": ["productivity"],
+      "exclude": ["scriptwriting"]
+    },
+    {
+      "id": 57,
+      "include": ["productivity"],
+      "exclude": ["scriptwriting"]
+    },
+    {
+      "id": 71,
+      "include": ["productivity"],
+      "exclude": ["scriptwriting"]
+    },
+    {
+      "id": 99,
+      "include": ["productivity"],
+      "exclude": ["scriptwriting"]
+    },
+    {
+      "id": 174,
+      "include": ["post-production"],
+      "exclude": ["concept-art"]
+    },
+    {
+      "id": 231,
+      "include": ["post-production"],
+      "exclude": ["concept-art"]
+    },
+    {
+      "id": 254,
+      "include": ["post-production"],
+      "exclude": ["concept-art"]
+    },
+    {
+      "id": 306,
+      "include": ["video-generation", "promotion"],
+      "exclude": []
+    },
+    {
+      "id": 380,
+      "include": ["post-production"],
+      "exclude": ["video-generation"]
+    },
+    {
+      "id": 382,
+      "include": ["post-production", "promotion"],
+      "exclude": ["video-generation"]
+    },
+    {
+      "id": 443,
+      "include": ["post-production"],
+      "exclude": ["video-generation"]
+    },
+    {
+      "id": 470,
+      "include": ["post-production"],
+      "exclude": ["video-generation"]
+    },
+    {
+      "id": 473,
+      "include": ["post-production"],
+      "exclude": ["video-generation"]
+    }
+  ]
+}

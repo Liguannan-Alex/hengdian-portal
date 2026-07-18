@@ -1,0 +1,544 @@
+{
+  "schemaVersion": "0.2",
+  "verifiedAt": "2026-07-18",
+  "verificationMethod": "本轮编辑复核名称、官网域名、产品定位与影视工作流适配；不等同于实时可用性监测、采购背书或合规审查。",
+  "coreToolIds": [
+    1,
+    2,
+    6,
+    9,
+    12,
+    23,
+    38,
+    42,
+    43,
+    54,
+    57,
+    62,
+    69,
+    105,
+    132,
+    162,
+    163,
+    170,
+    173,
+    188,
+    205,
+    206,
+    208,
+    214,
+    217,
+    234,
+    238,
+    258,
+    274,
+    287,
+    325,
+    359,
+    366,
+    377,
+    380,
+    381,
+    382,
+    390,
+    399,
+    401,
+    409,
+    413,
+    416,
+    420,
+    427,
+    436,
+    437,
+    443,
+    460,
+    470
+  ],
+  "featuredToolIds": [6, 9, 69, 105, 132, 205, 217, 287, 382, 390, 401, 413, 460],
+  "entries": [
+    {
+      "id": 1,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.mypitaya.com/",
+      "recommendedScenes": ["scriptwriting"],
+      "recommendationReason": "中文长文写作与校对能力成熟，适合剧本初稿、梗概和台词润色。",
+      "sortWeight": 850
+    },
+    {
+      "id": 2,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://xiezuocat.com/",
+      "recommendedScenes": ["scriptwriting", "productivity"],
+      "recommendationReason": "兼顾中文写作、改写和校对，适合快速整理剧本文字与日常材料。",
+      "sortWeight": 875
+    },
+    {
+      "id": 6,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://ai.wps.cn/",
+      "recommendedScenes": ["productivity", "scriptwriting"],
+      "recommendationReason": "与常用办公文档链路衔接顺畅，适合剧组材料起草、摘要和协作。",
+      "sortWeight": 970
+    },
+    {
+      "id": 9,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://effidit.qq.com/",
+      "recommendedScenes": ["productivity", "scriptwriting"],
+      "recommendationReason": "腾讯中文智能写作助手，适合纠错、改写和表达优化。",
+      "sortWeight": 955
+    },
+    {
+      "id": 12,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.canva.com/magic-write/",
+      "recommendedScenes": ["scriptwriting", "promotion"],
+      "recommendationReason": "写作能力与 Canva 设计工作流衔接，适合宣发文案和物料草稿。",
+      "sortWeight": 860
+    },
+    {
+      "id": 23,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.grammarly.com/",
+      "recommendedScenes": ["productivity"],
+      "recommendationReason": "英文拼写、语法和语气检查成熟，适合涉外材料与字幕文案复核。",
+      "sortWeight": 825
+    },
+    {
+      "id": 38,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.deepl.com/write",
+      "recommendedScenes": ["productivity"],
+      "recommendationReason": "适合多语言改写和表达校正，可辅助涉外沟通与字幕文本处理。",
+      "sortWeight": 815
+    },
+    {
+      "id": 42,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://if.caiyunai.com/",
+      "recommendedScenes": ["scriptwriting"],
+      "recommendationReason": "面向故事续写和灵感扩展，适合人物、情节与桥段的早期发散。",
+      "sortWeight": 900
+    },
+    {
+      "id": 43,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.sudowrite.com/",
+      "recommendedScenes": ["scriptwriting"],
+      "recommendationReason": "专注叙事写作和故事发展，适合英文故事结构与情节推演。",
+      "sortWeight": 840
+    },
+    {
+      "id": 54,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://zj.xfyun.cn/exam/text",
+      "recommendedScenes": ["productivity"],
+      "recommendationReason": "面向中文文本质检，可用于正式材料和宣发文字的交付前检查。",
+      "sortWeight": 850
+    },
+    {
+      "id": 57,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://write.youdao.com/",
+      "recommendedScenes": ["productivity", "scriptwriting"],
+      "recommendationReason": "写作纠错与语言辅助门槛低，适合日常稿件和多语言表达整理。",
+      "sortWeight": 810
+    },
+    {
+      "id": 62,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://verse.app.yinxiang.com/product/",
+      "recommendedScenes": ["productivity"],
+      "recommendationReason": "知识整理与内容协作能力适合剧组资料汇总、会议记录和任务衔接。",
+      "sortWeight": 820
+    },
+    {
+      "id": 69,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://miaobi.xinhuaskl.com/",
+      "recommendedScenes": ["scriptwriting", "productivity"],
+      "recommendationReason": "中文正式写作与信息整理能力突出，适合策划案、汇报和剧本梗概。",
+      "sortWeight": 980
+    },
+    {
+      "id": 105,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.gaoding.com/",
+      "recommendedScenes": ["promotion", "scriptwriting"],
+      "recommendationReason": "文案生成可直接衔接稿定设计生态，适合宣发标题、短文案和海报文字。",
+      "sortWeight": 965
+    },
+    {
+      "id": 132,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.jucloud.com/",
+      "recommendedScenes": ["scriptwriting"],
+      "recommendationReason": "面向影视剧本生产与协作，更贴近编剧和剧组的专业工作流。",
+      "sortWeight": 995
+    },
+    {
+      "id": 162,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.tripo3d.ai/",
+      "recommendedScenes": ["concept-art"],
+      "recommendationReason": "可由图像或文字快速生成 3D 资产，适合场景与道具预演。",
+      "sortWeight": 895
+    },
+    {
+      "id": 163,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://3d.hunyuan.tencent.com/",
+      "recommendedScenes": ["concept-art"],
+      "recommendationReason": "中文入口友好，可辅助角色、道具和空间概念的三维验证。",
+      "sortWeight": 905
+    },
+    {
+      "id": 170,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.style3d.ai/",
+      "recommendedScenes": ["concept-art"],
+      "recommendationReason": "聚焦服装数字化设计，适合服化概念、材质和造型方向验证。",
+      "sortWeight": 900
+    },
+    {
+      "id": 173,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.meshy.ai/",
+      "recommendedScenes": ["concept-art"],
+      "recommendationReason": "文字或图片生成 3D 模型效率高，适合美术资产的快速原型。",
+      "sortWeight": 910
+    },
+    {
+      "id": 188,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.adobe.com/express/feature/image/remove-background",
+      "recommendedScenes": ["post-production", "promotion"],
+      "recommendationReason": "稳定的在线抠图入口，适合人物素材、海报和社交媒体物料处理。",
+      "sortWeight": 835
+    },
+    {
+      "id": 205,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.midjourney.com/",
+      "recommendedScenes": ["concept-art"],
+      "recommendationReason": "视觉风格探索能力强，适合概念图、气氛图和分镜参考。",
+      "sortWeight": 990
+    },
+    {
+      "id": 206,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://stability.ai/",
+      "recommendedScenes": ["concept-art"],
+      "recommendationReason": "开放模型生态便于定制与本地化探索，适合可控的视觉生产链路。",
+      "sortWeight": 920
+    },
+    {
+      "id": 208,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://tongyi.aliyun.com/wan/",
+      "recommendedScenes": ["concept-art"],
+      "recommendationReason": "中文提示词适配较好，适合概念图、海报草图和风格探索。",
+      "sortWeight": 940
+    },
+    {
+      "id": 214,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.canva.com/ai-image-generator/",
+      "recommendedScenes": ["concept-art", "promotion"],
+      "recommendationReason": "图像生成可直接进入模板化排版，适合轻量概念图和宣发物料。",
+      "sortWeight": 900
+    },
+    {
+      "id": 217,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://firefly.adobe.com/",
+      "recommendedScenes": ["concept-art", "promotion"],
+      "recommendationReason": "与 Adobe 创意工具链衔接紧密，适合概念设计和可编辑物料生产。",
+      "sortWeight": 975
+    },
+    {
+      "id": 234,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.upscayl.org/",
+      "recommendedScenes": ["post-production"],
+      "recommendationReason": "开源桌面放大工具，适合低成本修复概念图与历史图片素材。",
+      "sortWeight": 865
+    },
+    {
+      "id": 238,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://magnific.ai/",
+      "recommendedScenes": ["post-production", "concept-art"],
+      "recommendationReason": "高分辨率增强和细节重建能力适合概念图精修与展示输出。",
+      "sortWeight": 880
+    },
+    {
+      "id": 258,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.iopaint.com/",
+      "recommendedScenes": ["post-production", "concept-art"],
+      "recommendationReason": "开源修补与扩图工具，适合本地化图片清理和概念素材修整。",
+      "sortWeight": 855
+    },
+    {
+      "id": 274,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://remini.ai/",
+      "recommendedScenes": ["post-production"],
+      "recommendationReason": "人像与旧图增强门槛低，适合剧照、档案图和社媒素材修复。",
+      "sortWeight": 845
+    },
+    {
+      "id": 287,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.designkit.cn/",
+      "recommendedScenes": ["promotion", "concept-art"],
+      "recommendationReason": "中文模板和智能设计能力完整，适合海报、社媒图与快速物料生产。",
+      "sortWeight": 970
+    },
+    {
+      "id": 325,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.topview.ai/",
+      "recommendedScenes": ["promotion", "video-generation"],
+      "recommendationReason": "面向营销视频自动生成，适合宣发短片和商品化内容快速试制。",
+      "sortWeight": 850
+    },
+    {
+      "id": 359,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.heygen.com/",
+      "recommendedScenes": ["video-generation", "promotion"],
+      "recommendationReason": "数字人口播和多语言视频流程成熟，适合宣发解说与样片验证。",
+      "sortWeight": 925
+    },
+    {
+      "id": 366,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://video.hunyuan.tencent.com/",
+      "recommendedScenes": ["video-generation"],
+      "recommendationReason": "中文视频生成入口，适合镜头创意、动态概念和预演素材验证。",
+      "sortWeight": 940
+    },
+    {
+      "id": 377,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://jimeng.jianying.com/ai-tool/home/",
+      "recommendedScenes": ["video-generation", "concept-art"],
+      "recommendationReason": "图像与视频生成一体，中文创作入口友好，适合分镜和动态预演。",
+      "sortWeight": 950
+    },
+    {
+      "id": 380,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.descript.com/",
+      "recommendedScenes": ["post-production", "productivity"],
+      "recommendationReason": "以文本方式编辑音视频，适合采访、播客和口播素材的快速后期。",
+      "sortWeight": 900
+    },
+    {
+      "id": 381,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://filmora.wondershare.com/",
+      "recommendedScenes": ["post-production"],
+      "recommendationReason": "桌面剪辑功能完整且上手成本较低，适合中小团队快速成片。",
+      "sortWeight": 870
+    },
+    {
+      "id": 382,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.opus.pro/",
+      "recommendedScenes": ["promotion", "post-production", "productivity"],
+      "recommendationReason": "可将长视频自动拆成短视频切片，直接服务宣发分发与内容复用。",
+      "sortWeight": 985
+    },
+    {
+      "id": 390,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.vidu.cn/",
+      "recommendedScenes": ["video-generation"],
+      "recommendationReason": "国产视频生成工具，适合中文场景下的镜头预演和短片实验。",
+      "sortWeight": 985
+    },
+    {
+      "id": 399,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://lumalabs.ai/dream-machine",
+      "recommendedScenes": ["video-generation"],
+      "recommendationReason": "擅长快速生成动态镜头，适合气氛、运镜和视觉创意验证。",
+      "sortWeight": 925
+    },
+    {
+      "id": 401,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://kling.kuaishou.com/",
+      "recommendedScenes": ["video-generation", "concept-art"],
+      "recommendationReason": "国产视频生成代表工具，适合镜头预演、创意短片和动态概念验证。",
+      "sortWeight": 1000
+    },
+    {
+      "id": 409,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://invideo.io/",
+      "recommendedScenes": ["promotion", "post-production"],
+      "recommendationReason": "脚本到成片的模板化链路完整，适合营销短片和社媒内容快速生产。",
+      "sortWeight": 885
+    },
+    {
+      "id": 413,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://cn.jollytoday.com/",
+      "recommendedScenes": ["post-production"],
+      "recommendationReason": "面向视频翻译、字幕和批量剪辑，适合剧组素材的效率型后期。",
+      "sortWeight": 980
+    },
+    {
+      "id": 416,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://www.captions.ai/",
+      "recommendedScenes": ["post-production", "promotion", "productivity"],
+      "recommendationReason": "字幕、口播和移动端编辑能力集中，适合宣发视频快速包装。",
+      "sortWeight": 930
+    },
+    {
+      "id": 420,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://workspace.google.com/products/vids/",
+      "recommendedScenes": ["productivity", "video-generation"],
+      "recommendationReason": "与协作文档生态衔接，适合内部讲解视频、提案和培训内容制作。",
+      "sortWeight": 820
+    },
+    {
+      "id": 427,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://ltx.studio/",
+      "recommendedScenes": ["scriptwriting", "video-generation"],
+      "recommendationReason": "覆盖故事、分镜与视频生成，适合从文本创意到视觉预演的一体化探索。",
+      "sortWeight": 915
+    },
+    {
+      "id": 436,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://wink.meitu.com/",
+      "recommendedScenes": ["post-production"],
+      "recommendationReason": "画质修复与人像视频处理易用，适合竖屏短片和宣发素材精修。",
+      "sortWeight": 895
+    },
+    {
+      "id": 437,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://pika.art/",
+      "recommendedScenes": ["video-generation"],
+      "recommendationReason": "生成式视频操作门槛低，适合效果镜头、动态海报和创意试验。",
+      "sortWeight": 910
+    },
+    {
+      "id": 443,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://huiyingzimu.com/",
+      "recommendedScenes": ["post-production", "productivity"],
+      "recommendationReason": "聚焦中文语音转字幕，适合访谈、花絮和宣发视频的字幕生产。",
+      "sortWeight": 920
+    },
+    {
+      "id": 460,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://runwayml.com/",
+      "recommendedScenes": ["video-generation", "post-production"],
+      "recommendationReason": "生成与编辑能力覆盖广，适合镜头实验、抠除、扩展和综合后期。",
+      "sortWeight": 990
+    },
+    {
+      "id": 470,
+      "status": "verified",
+      "verifiedAt": "2026-07-18",
+      "url": "https://colourlab.ai/",
+      "recommendedScenes": ["post-production"],
+      "recommendationReason": "专注智能调色与色彩匹配，适合成片色彩流程的效率提升。",
+      "sortWeight": 875
+    },
+    {
+      "id": 32,
+      "status": "needs-review",
+      "verifiedAt": "2026-07-18",
+      "recommendedScenes": ["promotion", "productivity"],
+      "recommendationReason": "来源底表未提供可核验官网入口，暂不提供外链。",
+      "sortWeight": 0
+    },
+    {
+      "id": 471,
+      "status": "needs-review",
+      "verifiedAt": "2026-07-18",
+      "recommendedScenes": ["video-generation"],
+      "recommendationReason": "来源底表未提供可核验官网入口，暂不提供外链。",
+      "sortWeight": 0
+    },
+    {
+      "id": 290,
+      "status": "excluded",
+      "verifiedAt": "2026-07-18",
+      "recommendedScenes": [],
+      "recommendationReason": "与 ID 401 的可灵AI重复，保留官网入口更稳定、分类更准确的 ID 401。",
+      "sortWeight": -100,
+      "duplicateOf": 401
+    },
+    {
+      "id": 354,
+      "status": "excluded",
+      "verifiedAt": "2026-07-18",
+      "recommendedScenes": [],
+      "recommendationReason": "与 ID 288 的造点AI名称和官网完全重复，保留场景信息更完整的 ID 288。",
+      "sortWeight": -100,
+      "duplicateOf": 288
+    }
+  ]
+}
