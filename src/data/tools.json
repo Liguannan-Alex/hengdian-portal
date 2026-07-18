@@ -1,0 +1,5371 @@
+[
+ {
+  "id": 1,
+  "name": "火龙果写作",
+  "desc": "AI驱动的文字生产力工具",
+  "url": "https://www.mypitaya.com",
+  "detailUrl": "https://ai-bot.cn/sites/12.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 2,
+  "name": "秘塔写作猫",
+  "desc": "AI写作，文章自成",
+  "url": "https://xiezuocat.com/?s=aigj",
+  "detailUrl": "https://ai-bot.cn/sites/13.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 3,
+  "name": "Jasper",
+  "desc": "AI文字内容创作工具",
+  "url": "https://www.jasper.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/14.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 4,
+  "name": "Copy.ai",
+  "desc": "人工智能营销文案和内容创作工具",
+  "url": "https://www.copy.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/31.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 5,
+  "name": "Writesonic",
+  "desc": "AI写作，文案，释义工具",
+  "url": "https://writesonic.com/",
+  "detailUrl": "https://ai-bot.cn/sites/32.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 6,
+  "name": "WPS智能写作",
+  "desc": "WPS旗下在线智能写作工具",
+  "url": "https://ai.wps.cn/",
+  "detailUrl": "https://ai-bot.cn/sites/33.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 7,
+  "name": "智搜",
+  "desc": "Giiso写作机器人，内容创作AI辅助工具",
+  "url": "https://www.giiso.com",
+  "detailUrl": "https://ai-bot.cn/sites/35.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 8,
+  "name": "易撰",
+  "desc": "新媒体AI内容创作助手",
+  "url": "https://www.yizhuan5.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/36.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 9,
+  "name": "文涌Effidit",
+  "desc": "腾讯AI Lab开发的智能创作助手",
+  "url": "https://effidit.qq.com",
+  "detailUrl": "https://ai-bot.cn/sites/37.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 10,
+  "name": "悉语",
+  "desc": "阿里旗下智能文案工具，一键生成电商营销文案",
+  "url": "https://chuangyi.taobao.com/pages/aiCopy",
+  "detailUrl": "https://ai-bot.cn/sites/39.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 11,
+  "name": "Rytr",
+  "desc": "AI内容生成和写作助手",
+  "url": "https://rytr.me/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/46.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 12,
+  "name": "Magic Write",
+  "desc": "Canva旗下AI文案生成器",
+  "url": "https://www.canva.com/magic-write/",
+  "detailUrl": "https://ai-bot.cn/sites/59.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 13,
+  "name": "Peppertype.ai",
+  "desc": "高质量AI内容生成",
+  "url": "https://www.peppertype.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/65.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 14,
+  "name": "Copysmith",
+  "desc": "企业级和电商文案生成",
+  "url": "https://copysmith.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/66.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 15,
+  "name": "Reword",
+  "desc": "AI文章写作",
+  "url": "https://reword.com/",
+  "detailUrl": "https://ai-bot.cn/sites/127.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 16,
+  "name": "Jounce",
+  "desc": "无限制免费AI文案写作",
+  "url": "https://jounce.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/153.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 17,
+  "name": "TextCortex",
+  "desc": "AI写作能手",
+  "url": "https://textcortex.com/",
+  "detailUrl": "https://ai-bot.cn/sites/158.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 18,
+  "name": "Writer",
+  "desc": "企业级AI内容创作工具",
+  "url": "https://writer.com/",
+  "detailUrl": "https://ai-bot.cn/sites/170.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 19,
+  "name": "Content at Scale",
+  "desc": "AI SEO长内容创作",
+  "url": "https://brandwell.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/171.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 20,
+  "name": "Anyword",
+  "desc": "AI文案写作助手和文本生成器",
+  "url": "https://www.anyword.com/",
+  "detailUrl": "https://ai-bot.cn/sites/188.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 21,
+  "name": "Copymatic",
+  "desc": "AI文案和内容创作助手",
+  "url": "https://copymatic.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/197.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 22,
+  "name": "Yaara",
+  "desc": "释放你的写作潜力",
+  "url": "https://yaara.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/198.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 23,
+  "name": "Grammarly",
+  "desc": "AI英语语法和拼写检查写作助手",
+  "url": "https://www.grammarly.com",
+  "detailUrl": "https://ai-bot.cn/sites/199.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 24,
+  "name": "Frase",
+  "desc": "AI SEO内容优化和写作工具",
+  "url": "https://www.frase.io/",
+  "detailUrl": "https://ai-bot.cn/sites/200.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 25,
+  "name": "SurferSEO",
+  "desc": "AI SEO大纲和内容优化写作工具",
+  "url": "https://surferseo.com/",
+  "detailUrl": "https://ai-bot.cn/sites/201.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 26,
+  "name": "NeuralText",
+  "desc": "人工智能SEO文章写作助手",
+  "url": "https://neuraltext.com/",
+  "detailUrl": "https://ai-bot.cn/sites/202.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 27,
+  "name": "WordTune",
+  "desc": "你的个人写作助手和编辑",
+  "url": "https://www.wordtune.com/",
+  "detailUrl": "https://ai-bot.cn/sites/203.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 28,
+  "name": "ProWritingAid",
+  "desc": "英语写作优化和修改工具",
+  "url": "https://prowritingaid.com",
+  "detailUrl": "https://ai-bot.cn/sites/204.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 29,
+  "name": "INK",
+  "desc": "AI内容营销和SEO助手",
+  "url": "https://smythos.com/",
+  "detailUrl": "https://ai-bot.cn/sites/205.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 30,
+  "name": "Texta",
+  "desc": "AI博客和文章一键生成",
+  "url": "https://texta.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/258.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 31,
+  "name": "AISEO",
+  "desc": "AI创作SEO优化友好的文案和文章",
+  "url": "https://aiseo.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/409.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 32,
+  "name": "Spell.tools",
+  "desc": "高颜值AI内容营销创作工具",
+  "url": "",
+  "detailUrl": "https://ai-bot.cn/sites/575.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 33,
+  "name": "HyperWrite",
+  "desc": "AI写作助手帮助你创作内容更自信",
+  "url": "https://www.hyperwriteai.com/",
+  "detailUrl": "https://ai-bot.cn/sites/577.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 34,
+  "name": "Typeface AI",
+  "desc": "AI创意内容创作助手",
+  "url": "https://www.typeface.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/580.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 35,
+  "name": "Hypotenuse AI",
+  "desc": "人工智能写作助手和文本生成器",
+  "url": "https://www.hypotenuse.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/589.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 36,
+  "name": "爱改写",
+  "desc": "AI改写、纠错、润色辅助工具",
+  "url": "https://www.aigaixie.com",
+  "detailUrl": "https://ai-bot.cn/sites/592.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 37,
+  "name": "QuillBot",
+  "desc": "AI英/德语写作润色和改进工具",
+  "url": "https://try.quillbot.com/6eqrqpoysmlh",
+  "detailUrl": "https://ai-bot.cn/sites/597.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 38,
+  "name": "DeepL Write",
+  "desc": "DeepL推出的AI驱动的写作助手",
+  "url": "https://www.deepl.com/write?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/608.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 39,
+  "name": "HeyFriday",
+  "desc": "国内团队推出的智能AI写作工具",
+  "url": "https://www.heyfriday.cn/home",
+  "detailUrl": "https://ai-bot.cn/sites/711.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 40,
+  "name": "LongShot",
+  "desc": "AI长文章写作工具",
+  "url": "https://longshot.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/776.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 41,
+  "name": "ContentBot",
+  "desc": "AI快速写作工具",
+  "url": "https://contentbot.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/782.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 42,
+  "name": "彩云小梦",
+  "desc": "彩云科技推出的智能AI故事写作工具",
+  "url": "https://if.caiyunai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/913.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 43,
+  "name": "Sudowrite",
+  "desc": "AI故事写作工具，多种风格选择",
+  "url": "https://www.sudowrite.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/961.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 44,
+  "name": "ClosersCopy",
+  "desc": "AI文案写作机器人",
+  "url": "https://www.closerscopy.com/",
+  "detailUrl": "https://ai-bot.cn/sites/966.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 45,
+  "name": "Compose AI",
+  "desc": "免费的Chrome浏览器自动化写作扩展",
+  "url": "https://www.compose.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/973.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 46,
+  "name": "Bearly",
+  "desc": "AI阅读总结、写作和内容生成助手",
+  "url": "https://bearly.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/1061.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 47,
+  "name": "NovelAI",
+  "desc": "AI小说故事创作工具",
+  "url": "https://novelai.net/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1062.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 48,
+  "name": "ParagraphAI",
+  "desc": "基于ChatGPT的AI写作应用",
+  "url": "https://paragraphai.com/",
+  "detailUrl": "https://ai-bot.cn/sites/1065.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 49,
+  "name": "Elephas",
+  "desc": "与Mac、iPhone、iPad集成的个人写作助手",
+  "url": "https://elephas.app/",
+  "detailUrl": "https://ai-bot.cn/sites/1067.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 50,
+  "name": "Mark Copy",
+  "desc": "AI快速创建营销文案",
+  "url": "https://www.markcopy.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/1265.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 51,
+  "name": "快文CopyDone",
+  "desc": "AIGC原创内容创作和营销文案生成",
+  "url": "https://copyai.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1295.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 52,
+  "name": "Moonbeam",
+  "desc": "长文章AI内容创作助手",
+  "url": "https://gomoonbeam.com/",
+  "detailUrl": "https://ai-bot.cn/sites/1325.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 53,
+  "name": "创作王",
+  "desc": "AI一键帮助你创作营销内容",
+  "url": "https://aiapp.cc/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1333.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 54,
+  "name": "讯飞智检",
+  "desc": "讯飞推出的智能写作SaaS工具，支持智能写作后的校对与合规审核",
+  "url": "https://zj.xfyun.cn/exam/text",
+  "detailUrl": "https://ai-bot.cn/sites/1515.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 55,
+  "name": "奇妙文",
+  "desc": "出门问问推出的AI写作助理",
+  "url": "https://wen.mobvoi.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1930.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 56,
+  "name": "魔撰写作",
+  "desc": "出门问问旗下推出的AI智能写作工具",
+  "url": "https://www.moyin.com/?channelCode=AIGJJ01_20240905",
+  "detailUrl": "https://ai-bot.cn/sites/2009.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 57,
+  "name": "有道写作",
+  "desc": "网易有道出品的智能英文写作修改和润色工具",
+  "url": "https://write.youdao.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2097.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 58,
+  "name": "Cohesive",
+  "desc": "人工智能文案内容创作和编辑工具",
+  "url": "https://cohesive.so/",
+  "detailUrl": "https://ai-bot.cn/sites/2195.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 59,
+  "name": "Jenni",
+  "desc": "AI研究文章和博客写作辅助工具",
+  "url": "https://jenni.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/2304.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 60,
+  "name": "万彩AI",
+  "desc": "全能型AI内容和文案创作助手",
+  "url": "https://ai.kezhan365.com/inviteCode/FwJFxy",
+  "detailUrl": "https://ai-bot.cn/sites/2388.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 61,
+  "name": "爱创作",
+  "desc": "ZAKER新闻推出的AI写作工具",
+  "url": "https://ai.zaker.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2404.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 62,
+  "name": "Verse",
+  "desc": "印象笔记旗下团队推出的AI写作和文档工具",
+  "url": "https://verse.app.yinxiang.com/product/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2940.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 63,
+  "name": "百度作家平台",
+  "desc": "百度免费AI小说写作工具",
+  "url": "https://zuojia.baidu.com",
+  "detailUrl": "https://ai-bot.cn/sites/4430.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 64,
+  "name": "灵构AI笔记",
+  "desc": "在线安全的灵感收集、思路整理AI笔记工具",
+  "url": "https://88lingo.com/ai?utm_id=577",
+  "detailUrl": "https://ai-bot.cn/sites/5572.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 65,
+  "name": "WriteWise",
+  "desc": "喜马拉雅推出的免费网文和小说AI写作工具",
+  "url": "https://www.ximalaya.com/gatekeeper/write-wise-web?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/5577.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 66,
+  "name": "深言达意",
+  "desc": "免费的词句查询智能写作辅助工具，输入模糊描述即可查找词句",
+  "url": "https://www.shenyandayi.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6044.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 67,
+  "name": "讯飞绘文",
+  "desc": "AI批量原创，多平台矩阵号管理",
+  "url": "https://turbodesk.xfyun.cn/?channelid=aitool1",
+  "detailUrl": "https://ai-bot.cn/sites/6242.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 68,
+  "name": "晓语台",
+  "desc": "智能AI写作工具，内置500+创作模板",
+  "url": "https://www.xiaoyutai.com/?share_code=XYT90931478",
+  "detailUrl": "https://ai-bot.cn/sites/6316.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 69,
+  "name": "新华妙笔",
+  "desc": "新华社推出的AI公文写作平台",
+  "url": "https://miaobi.xinhuaskl.com/?channel=shuzhi",
+  "detailUrl": "https://ai-bot.cn/sites/6498.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 70,
+  "name": "光速写作",
+  "desc": "AI写作、PPT生成工具，单篇最长15000字",
+  "url": "https://www.guangsuxie.com/static/college-write-web/home?from=AItools",
+  "detailUrl": "https://ai-bot.cn/sites/7244.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 71,
+  "name": "FlowUs AI",
+  "desc": "在线文档平台息流推出的AI创作助手，类似于Notion AI",
+  "url": "https://flowus.cn/ai?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7313.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 72,
+  "name": "千笔AI论文",
+  "desc": "全网首家论文无限改稿平台",
+  "url": "https://www.qianbixiezuo.com/?pic=g5DP",
+  "detailUrl": "https://ai-bot.cn/sites/7358.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 73,
+  "name": "范文喵",
+  "desc": "面向大学生的AI论文写作工具",
+  "url": "https://ai.wolian.chat/openmao/#/?inviteCode=1745323733465174017",
+  "detailUrl": "https://ai-bot.cn/sites/7364.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 74,
+  "name": "笔杆论文",
+  "desc": "简单高效的AI论文写作平台",
+  "url": "https://write.bigan.net/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7371.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 75,
+  "name": "茅茅虫",
+  "desc": "一站式AI论文写作助手",
+  "url": "https://mymmc.cn/?fromId=954f8p78",
+  "detailUrl": "https://ai-bot.cn/sites/7381.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 76,
+  "name": "PaperBetter AI",
+  "desc": "AI论文写作工具，一键生成万字初稿",
+  "url": "http://www.ai.paperbetter.com/?f=9",
+  "detailUrl": "https://ai-bot.cn/sites/7418.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 77,
+  "name": "XPaper AI",
+  "desc": "晓语台旗下的论文写作辅助指导平台",
+  "url": "https://www.130ai.com/?source=ugJBi0zP",
+  "detailUrl": "https://ai-bot.cn/sites/7424.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 78,
+  "name": "AI论文君",
+  "desc": "AI大模型驱动的论文写作好帮手",
+  "url": "https://www.ailunwenjun.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7507.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 79,
+  "name": "Smodin AI Research Paper",
+  "desc": "Smodin推出的AI研究论文写作工具",
+  "url": "https://smodin.io/zh-cn/%E4%BD%9C%E5%AE%B6/%E7%A0%94%E7%A9%B6%E8%AE%BA%E6%96%87",
+  "detailUrl": "https://ai-bot.cn/sites/7510.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 80,
+  "name": "小微智能论文",
+  "desc": "人工智能论文创作辅助工具",
+  "url": "http://t2unr1.checkmore.net/tb/NY6p0S?dCode=uJda4GWdSpLzU9Mi&amp;couponCode=xiaoweilunwen",
+  "detailUrl": "https://ai-bot.cn/sites/7512.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 81,
+  "name": "悟智写作",
+  "desc": "人工智能驱动的自动化写作平台",
+  "url": "https://www.wuz.com.cn/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7575.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 82,
+  "name": "Paperpal",
+  "desc": "英文论文写作助手",
+  "url": "https://paperpal.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7794.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 83,
+  "name": "蛙蛙写作",
+  "desc": "AI小说和内容创作工具",
+  "url": "https://wawawriter.cgref.cn/s/rpexm33k90",
+  "detailUrl": "https://ai-bot.cn/sites/8204.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 84,
+  "name": "WritingPal",
+  "desc": "面向留学生的AI英文写作工具",
+  "url": "https://writingpal.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/9744.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 85,
+  "name": "星火网文助手",
+  "desc": "免费AI小说网文写作工具",
+  "url": "https://writersdesk.net",
+  "detailUrl": "https://ai-bot.cn/sites/10977.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 86,
+  "name": "橙篇",
+  "desc": "百度推出的AI长文理解和内容创作工具",
+  "url": "https://cp.baidu.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12962.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 87,
+  "name": "MidReal",
+  "desc": "AI互动式小说文本生成工具",
+  "url": "https://midreal.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/14278.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 88,
+  "name": "万能小in",
+  "desc": "3分钟4万字150+应用，只需标题，快速生成毕业论文",
+  "url": "https://xiaoin.com.cn/home/index?sharerUserId=1815301629231030274",
+  "detailUrl": "https://ai-bot.cn/sites/14504.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 89,
+  "name": "AI新媒体文章",
+  "desc": "夸克推出的AI写作工具",
+  "url": "https://vt.quark.cn/blm/creator-773/index?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/14511.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 90,
+  "name": "库宝AI工作助手",
+  "desc": "千库网推出的多功能AI创作工具",
+  "url": "https://588tool.com/?hd=1240",
+  "detailUrl": "https://ai-bot.cn/sites/14618.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 91,
+  "name": "66AI论文",
+  "desc": "高质量、低查重、低AIGC率的AI论文写作工具",
+  "url": "https://www.66paper.cn/AI_A2E1C09",
+  "detailUrl": "https://ai-bot.cn/sites/14679.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 92,
+  "name": "讯飞写作",
+  "desc": "科大讯飞推出的AI智能写作助手",
+  "url": "https://huixie.iflyrec.com/list?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/15170.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 93,
+  "name": "墨狐AI",
+  "desc": "短篇小说AI写作助手，专为网文小说作者设计",
+  "url": "https://inkfox-ai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/15321.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "概念美术"
+  ]
+ },
+ {
+  "id": 94,
+  "name": "文思助手",
+  "desc": "强大的AI写作智能体，支持生成专业报告和科研论文",
+  "url": "https://wensi.sodabot.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16171.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 95,
+  "name": "迅捷AI写作",
+  "desc": "迅捷办公团队推出的AI写作工具",
+  "url": "https://www.aichat1234.com/app/?mode=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/16451.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 96,
+  "name": "创一AI",
+  "desc": "AI评剧本，轻松创作爆款剧本",
+  "url": "https://www.creatifyone.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16669.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 97,
+  "name": "小鱼AI写作",
+  "desc": "一站式AI写作平台，一键生成高质量原创内容",
+  "url": "https://www.xiaoyuxiezuo.com/AI_A2E1C09",
+  "detailUrl": "https://ai-bot.cn/sites/18646.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 98,
+  "name": "笔灵AI小说",
+  "desc": "AI一键写全篇+爆文拆解，搞定大纲、素材，新手写作过稿神器！",
+  "url": "https://ibiling.cn/novel-workbench/?from=aibotnovel",
+  "detailUrl": "https://ai-bot.cn/sites/22626.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 99,
+  "name": "有道翻译·AI写作",
+  "desc": "网易有道推出的智能写作辅助工具，支持100多种语言",
+  "url": "https://fanyi.youdao.com/aiwrite?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/23116.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 100,
+  "name": "Wordvice AI",
+  "desc": "Wordvice推出的免费AI写作助手",
+  "url": "https://wordvice.ai/cn?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/23677.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 101,
+  "name": "树熊写作",
+  "desc": "树熊AI推出的AI智能写作工具",
+  "url": "https://ai.koalaoffice.com/ai/homePage?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/24575.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 102,
+  "name": "宙语Cosmos",
+  "desc": "专为中文写作设计的AI智能写作助手",
+  "url": "https://ailjyk.com/pc/creation/model?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/26065.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "概念美术"
+  ]
+ },
+ {
+  "id": 103,
+  "name": "文状元",
+  "desc": "AI公文写作助手，提供大量范文库",
+  "url": "https://www.wenzhuangyuan.cn/workspace/writing-store?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/26114.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 104,
+  "name": "稿易AI论文",
+  "desc": "AI论文写作助手，免费生成2000字大纲",
+  "url": "https://gaoyiai.com",
+  "detailUrl": "https://ai-bot.cn/sites/36409.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 105,
+  "name": "稿定AI文案",
+  "desc": "小红书、公众号、短视频AI文案生成工具",
+  "url": "https://www.gaoding.com/utms/cd3cc3a1cb0149d3bfc4a71b5e157098",
+  "detailUrl": "https://ai-bot.cn/sites/49483.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 106,
+  "name": "笔目鱼",
+  "desc": "专业英文论文写作器",
+  "url": "https://www.bmysci.com/?channelCode=aibotad",
+  "detailUrl": "https://ai-bot.cn/sites/53972.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 107,
+  "name": "沁言学术",
+  "desc": "AI科研写作平台，一站式文献管理",
+  "url": "https://qinyanai.cgref.cn/aibot",
+  "detailUrl": "https://ai-bot.cn/sites/56573.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 108,
+  "name": "灵犀速写",
+  "desc": "AI小说创作工具，支持AI写作工作流",
+  "url": "https://www.lingxisuxie.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/59700.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 109,
+  "name": "掌桥科研AI论文",
+  "desc": "依托3亿+真实文献库的AI论文写作工具",
+  "url": "https://www.zhangqiaokeyan.com/ai/journalthesis.html?from=19-003-aiqkxz",
+  "detailUrl": "https://ai-bot.cn/sites/59730.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 110,
+  "name": "维普科创助手",
+  "desc": "维普的一站式AI科研服务平台",
+  "url": "https://super.cqvip.com/?invite=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/60799.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 111,
+  "name": "PaperXie智能写作",
+  "desc": "AI学术写作辅助工具，覆盖全流程服务",
+  "url": "https://www.paperxie.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/61164.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 112,
+  "name": "YouMind",
+  "desc": "专注提升创作效率和信息整合的AI原生工具",
+  "url": "https://youmind.com/invite/84LX6W",
+  "detailUrl": "https://ai-bot.cn/sites/61208.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 113,
+  "name": "公文宝",
+  "desc": "体制工作者的AI公文写作专家",
+  "url": "https://www.gongwenbao666.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/62117.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 114,
+  "name": "Muset",
+  "desc": "为深度创作者提供的AI原生写作工具",
+  "url": "https://muset.ai/?s=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/62139.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 115,
+  "name": "墨问",
+  "desc": "专为创作者设计的AI笔记工具",
+  "url": "https://mowen.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/62793.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "概念美术"
+  ]
+ },
+ {
+  "id": 116,
+  "name": "华文笔杆",
+  "desc": "一站式AI公文写作工具",
+  "url": "https://docwrite.cn/doc/#/?t=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/63152.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 117,
+  "name": "千页小说AI",
+  "desc": "一站式AI小说写作平台，从灵感到完稿",
+  "url": "https://www.qianyeai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/64875.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 118,
+  "name": "Rubriq",
+  "desc": "免费试用，AI学术论文润色与翻译工具",
+  "url": "https://rubriq.cn/?utm_source=ai&amp;utm_medium=ai-bot&amp;utm_campaign=2025rubriq_cn",
+  "detailUrl": "https://ai-bot.cn/sites/65034.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 119,
+  "name": "量子探险",
+  "desc": "AI小说写作工具，长文本一键生成",
+  "url": "https://www.yfbudong.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/65468.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 120,
+  "name": "Loomi",
+  "desc": "创作版Claude Code，AI原生写作工具",
+  "url": "https://loomi.live/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/66375.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 121,
+  "name": "落笔AI写作",
+  "desc": "专注于小说网文创作的AI写作工具",
+  "url": "https://luobi.net/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/66726.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 122,
+  "name": "FeelFish",
+  "desc": "专为小说创作者打造的 AI 写作 PC 客户端软件",
+  "url": "https://www.feelfish.com/?fr=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/66997.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 123,
+  "name": "GetDraft",
+  "desc": "得到推出的多AI专家协作AI写作工具",
+  "url": "https://getdraft.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/67418.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 124,
+  "name": "讯飞文书",
+  "desc": "科大讯飞推出的AI公文写作助手",
+  "url": "https://gw.iflydocs.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/67827.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 125,
+  "name": "社研通",
+  "desc": "专注于服务文科研究生的多模态AI学术写作工具",
+  "url": "https://www.sheyantong.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/68892.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 126,
+  "name": "01Agent",
+  "desc": "AI图文创作工具，支持生成、排版、编辑、发布",
+  "url": "https://01agent.cgref.cn/aibot",
+  "detailUrl": "https://ai-bot.cn/sites/69212.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 127,
+  "name": "材料星AI",
+  "desc": "专为秘书工作设计的AI写作工具",
+  "url": "https://cailiaoxing.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/70397.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "概念美术"
+  ]
+ },
+ {
+  "id": 128,
+  "name": "切问学术",
+  "desc": "AI 科研学术写作智能体",
+  "url": "https://qiewenpaper.cgref.cn/s/rpex7zvk90",
+  "detailUrl": "https://ai-bot.cn/sites/72406.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 129,
+  "name": "超级小说家",
+  "desc": "专为网文作家和短剧编剧打造的AI创作助手",
+  "url": "https://www.36ma.com/?fr=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/72610.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 130,
+  "name": "创飞写作",
+  "desc": "新一代智能AIGC写作调度平台",
+  "url": "https://www.chuangfeiai.com/login?invitationCode=MV6433",
+  "detailUrl": "https://ai-bot.cn/sites/74592.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 131,
+  "name": "丹青妙笔",
+  "desc": "专为体制内打造的AI公文写作工具",
+  "url": "https://www.danqingmiaobi.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/75420.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 132,
+  "name": "剧云",
+  "desc": "免费 AI 智能中文剧本创作平台",
+  "url": "https://www.jucloud.com/?_f=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/79219.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 133,
+  "name": "Laper",
+  "desc": "AI 原生剧本创作工具",
+  "url": "https://laper.cgref.cn/s/zdkjqq8n1r",
+  "detailUrl": "https://ai-bot.cn/sites/81321.html",
+  "category": "文字创作AI工具",
+  "scenes": [
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 134,
+  "name": "绘蛙AI",
+  "desc": "AI 电商营销工具，免费生成商品图",
+  "url": "https://ihuiwa.paluai.com/aibot",
+  "detailUrl": "https://ai-bot.cn/sites/9195.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 135,
+  "name": "堆友AI商品图",
+  "desc": "堆友AI推出AI商品图生成工具",
+  "url": "https://d.design/toolbox/ai-product-background?from=ab13",
+  "detailUrl": "https://ai-bot.cn/sites/61384.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 136,
+  "name": "LiblibAI电商营销",
+  "desc": "LiblibAI电商营销场景模型工具，丰富的LoRA模型",
+  "url": "https://liblib.cgref.cn/s/dqndpmwn2z",
+  "detailUrl": "https://ai-bot.cn/sites/68318.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 137,
+  "name": "美图商拍",
+  "desc": "美图设计室推出的AI商拍工具",
+  "url": "https://www.designkit.cn/product-shoot/?channel=100103",
+  "detailUrl": "https://ai-bot.cn/sites/33694.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 138,
+  "name": "潮际好麦",
+  "desc": "AI赋能电商视觉革命，一站式智能商拍平台",
+  "url": "https://chaojihaomai.cgref.cn/s/ogeww9vep2",
+  "detailUrl": "https://ai-bot.cn/sites/69883.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 139,
+  "name": "稿定AI商品图",
+  "desc": "稿定设计推出的AI商品图生成工具",
+  "url": "https://www.gaoding.com/utms/d0bf3af869c245eabb7f52bbcc85aa88",
+  "detailUrl": "https://ai-bot.cn/sites/49519.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 140,
+  "name": "光子AI",
+  "desc": "专为电商商家推出的AI商拍工具",
+  "url": "https://www.photonaiclub.com/sh/ZgN25IHnBJY",
+  "detailUrl": "https://ai-bot.cn/sites/57727.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 141,
+  "name": "PicCopilot",
+  "desc": "阿里国际推出的AI电商营销工具",
+  "url": "https://www.piccopilot.com",
+  "detailUrl": "https://ai-bot.cn/sites/6245.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 142,
+  "name": "蜂鸟AI",
+  "desc": "赶海科技推出的跨境电商AI营销工具",
+  "url": "https://fengniaoai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/41196.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 143,
+  "name": "PixPix",
+  "desc": "聚合全球顶级 AI 模型的跨境电商图视频创作平台",
+  "url": "https://www.pixpix.com/?source=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/82119.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 144,
+  "name": "泡泡AI",
+  "desc": "专为服装与电商行业打造的AI图片创作与编辑平台",
+  "url": "https://paopaoai.art/?utm_source=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/81968.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 145,
+  "name": "莓图AI",
+  "desc": "电商详情图生成与爆款视觉风格复刻",
+  "url": "https://ai.iiit.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/81218.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 146,
+  "name": "SkildArt",
+  "desc": "一站式 AI 视觉创作平台，为商业营销而生",
+  "url": "https://skildart.cn/?channel=PyX15kOq8LYj",
+  "detailUrl": "https://ai-bot.cn/sites/81048.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 147,
+  "name": "几何AI",
+  "desc": "面向全品类电商的AI视觉生成平台",
+  "url": "https://jihegeo.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/80177.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 148,
+  "name": "GemHues",
+  "desc": "AI 商品视觉内容生成平台，覆盖图 + 视频全链路",
+  "url": "https://www.gemhues.com/?ref=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/79056.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 149,
+  "name": "PhotoStudioAI",
+  "desc": "虹软旗下推出的AI商拍工具",
+  "url": "https://psai.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12165.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 150,
+  "name": "蕉点AI",
+  "desc": "多品类AI电商商品图生成平台",
+  "url": "https://www.jiaodianai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/70979.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 151,
+  "name": "千鹿AI",
+  "desc": "AI商品图设计工具，专为跨境营销设计",
+  "url": "https://qianlu.cc/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/24841.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 152,
+  "name": "妙思",
+  "desc": "腾讯广告推出的一站式AI广告创意平台",
+  "url": "https://admuse.qq.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/50029.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 153,
+  "name": "美间AI商拍",
+  "desc": "AI电商设计工具，一键生成高质量商品图",
+  "url": "https://www.meijian.com/ai?utm_source=mjaidhaibot",
+  "detailUrl": "https://ai-bot.cn/sites/25529.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 154,
+  "name": "CliclicAI",
+  "desc": "创客贴推出的AI商品图生成和编辑工具",
+  "url": "https://www.cliclic.ai/?utm_source=ai-bot",
+  "detailUrl": "https://ai-bot.cn/sites/13023.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 155,
+  "name": "创自由",
+  "desc": "快速设计商品图、广告图的AI作图工具",
+  "url": "https://chuangziyou.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/17398.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 156,
+  "name": "Pebblely",
+  "desc": "AI产品图精美背景添加",
+  "url": "https://pebblely.com",
+  "detailUrl": "https://ai-bot.cn/sites/175.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 157,
+  "name": "MokkerAI",
+  "desc": "AI产品图添加背景",
+  "url": "https://mokker.ai",
+  "detailUrl": "https://ai-bot.cn/sites/173.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 158,
+  "name": "花生图像",
+  "desc": "AI电商产品图生成和背景抠图工具",
+  "url": "https://www.hsphoto.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/11541.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 159,
+  "name": "图生生",
+  "desc": "专为电商设计的AI商拍工具",
+  "url": "https://tushengsheng.com/home/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/26931.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 160,
+  "name": "WeShop唯象",
+  "desc": "蘑菇街推出的AI商拍工具",
+  "url": "https://www.weshop.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13722.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 161,
+  "name": "绘蛙AI转3D",
+  "desc": "服装平铺图快速转换为3D立体展示图",
+  "url": "https://www.ihuiwa.com/workspace/ai-image/func/to-3d?huiwaInviteCode=EMRCAL",
+  "detailUrl": "https://ai-bot.cn/sites/61408.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 162,
+  "name": "TripoAI",
+  "desc": "AI 3D模型生成平台，文本、图像一键转3D模型",
+  "url": "https://www.tripo3d.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/60471.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 163,
+  "name": "腾讯混元3D",
+  "desc": "腾讯推出的一站式3D内容生产AI创作平台",
+  "url": "https://3d.hunyuan.tencent.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/38482.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 164,
+  "name": "Neural4D",
+  "desc": "AI一站式3D模型生成平台",
+  "url": "https://www.neural4d.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/70251.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 165,
+  "name": "Marble",
+  "desc": "李飞飞World Labs推出的3D世界生成平台",
+  "url": "https://marble.worldlabs.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/66545.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 166,
+  "name": "Fast3D",
+  "desc": "AI 3D模型生成工具，文字或图片生成3D模型",
+  "url": "https://fast3d.io/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/57279.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 167,
+  "name": "Omma",
+  "desc": "Spline 推出的 AI 3D 内容智能创作平台",
+  "url": "https://omma.build/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/74348.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 168,
+  "name": "造好物",
+  "desc": "全球首个一站式AI造物平台",
+  "url": "https://zaohaowu.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/59706.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 169,
+  "name": "Hitems",
+  "desc": "数美万物推出的AI创意物品生成社区",
+  "url": "https://hitems.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/38477.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 170,
+  "name": "Style3D",
+  "desc": "AI服装设计工具，将草图转为3D服装模型",
+  "url": "https://www.style3d.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/67092.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 171,
+  "name": "LuxReal",
+  "desc": "群核科技推出的AI 3D视频创作平台",
+  "url": "https://www.luxreal.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/69990.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 172,
+  "name": "VoxCraft",
+  "desc": "AI生成3D模型的工具",
+  "url": "https://voxcraft.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/11164.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 173,
+  "name": "Meshy",
+  "desc": "AI快速从文本或图像生成3D模型",
+  "url": "https://www.meshy.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6080.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 174,
+  "name": "绘蛙AI抠图",
+  "desc": "绘蛙推出的AI智能抠图工具",
+  "url": "https://www.ihuiwa.com/workspace/partial-redraw?editType=smart-matting&amp;huiwaInviteCode=EMRCAL",
+  "detailUrl": "https://ai-bot.cn/sites/61375.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 175,
+  "name": "LiblibAI抠图",
+  "desc": "LiblibAI推出的AI抠图工作流",
+  "url": "https://liblib.cgref.cn/s/dqndpmwn2z",
+  "detailUrl": "https://ai-bot.cn/sites/68297.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 176,
+  "name": "美图抠图",
+  "desc": "美图秀秀推出的AI智能抠图工具，一键移除背景",
+  "url": "https://cutout.designkit.com/?channel=100104",
+  "detailUrl": "https://ai-bot.cn/sites/1991.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 177,
+  "name": "顽兔抠图",
+  "desc": "阿里推出的一键去除商品图背景工具",
+  "url": "https://d.design/toolbox/cutout?from=ab13",
+  "detailUrl": "https://ai-bot.cn/sites/4483.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 178,
+  "name": "鲜艺AI抠图",
+  "desc": "免费AI抠图工具，支持离线安装使用",
+  "url": "https://kt.94xy.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/18104.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 179,
+  "name": "抠抠图",
+  "desc": "免费在线AI抠图工具，一键批量抠图",
+  "url": "https://www.koukoutu.com/?f=aigjj",
+  "detailUrl": "https://ai-bot.cn/sites/70008.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 180,
+  "name": "PicCopilotAI抠图",
+  "desc": "Pic Copilot推出的AI抠图工具，支持批量抠图",
+  "url": "https://www.piccopilot.com/create",
+  "detailUrl": "https://ai-bot.cn/sites/32253.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 181,
+  "name": "光子AI抠图",
+  "desc": "光子AI推出的AI图片背景抠除工具",
+  "url": "https://www.photonaiclub.com/workspace/cutout?invitationType=register&amp;inviterId=7328241868114231444",
+  "detailUrl": "https://ai-bot.cn/sites/61292.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 182,
+  "name": "Pixian.AI",
+  "desc": "免费的AI图片背景抠除工具",
+  "url": "https://pixian.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7983.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 183,
+  "name": "Icons8BackgroundRemover",
+  "desc": "Icons8出品的免费图片背景移除工具",
+  "url": "https://icons8.com/bgremover",
+  "detailUrl": "https://ai-bot.cn/sites/88.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 184,
+  "name": "BgSub",
+  "desc": "免费的保护隐私的AI图片背景去除工具",
+  "url": "https://bgsub.cn",
+  "detailUrl": "https://ai-bot.cn/sites/242.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 185,
+  "name": "ClipDropRemoveBackground",
+  "desc": "ClipDrop出品的AI图片背景移除工具",
+  "url": "https://clipdrop.co/remove-background",
+  "detailUrl": "https://ai-bot.cn/sites/221.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 186,
+  "name": "Erase.bg",
+  "desc": "在线抠图和去除图片背景",
+  "url": "https://www.erase.bg/zh",
+  "detailUrl": "https://ai-bot.cn/sites/285.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 187,
+  "name": "千图设计室AI助手",
+  "desc": "AI绘画抠图工具集",
+  "url": "https://hisheai.com/?from=ai-bot",
+  "detailUrl": "https://ai-bot.cn/sites/9946.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 188,
+  "name": "AdobeImageBackgroundRemover",
+  "desc": "Adobe Express的图片背景移除工具",
+  "url": "https://www.adobe.com/express/feature/image/remove-background",
+  "detailUrl": "https://ai-bot.cn/sites/313.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 189,
+  "name": "Removal.AI",
+  "desc": "AI图片背景移除工具",
+  "url": "https://removal.ai",
+  "detailUrl": "https://ai-bot.cn/sites/87.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 190,
+  "name": "BackgroundEraser",
+  "desc": "AI自动删除图片背景",
+  "url": "https://magicstudio.com/zh/backgrounderaser",
+  "detailUrl": "https://ai-bot.cn/sites/274.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 191,
+  "name": "Slazzer",
+  "desc": "免费在线抠除图片背景",
+  "url": "https://www.slazzer.com",
+  "detailUrl": "https://ai-bot.cn/sites/311.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 192,
+  "name": "Cutout.Pro抠图",
+  "desc": "AI批量抠图去背景",
+  "url": "https://www.cutout.pro/zh-cn/remove-background",
+  "detailUrl": "https://ai-bot.cn/sites/306.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 193,
+  "name": "吐司AI抠图",
+  "desc": "吐司AI推出的智能抠图工具",
+  "url": "https://tusiart.com/template/807760005523577813",
+  "detailUrl": "https://ai-bot.cn/sites/42689.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 194,
+  "name": "BGremover",
+  "desc": "Vance AI推出的图片背景移除工具",
+  "url": "https://bgremover.vanceai.com",
+  "detailUrl": "https://ai-bot.cn/sites/304.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 195,
+  "name": "QuicktoolsBackgroundRemover",
+  "desc": "Picsart旗下的Quicktools推出的图片背景移除工具",
+  "url": "https://tools.picsart.com/image/background-remover",
+  "detailUrl": "https://ai-bot.cn/sites/312.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 196,
+  "name": "ZyroAIBackgroundRemover",
+  "desc": "Zyro推出的AI图片背景移除工具",
+  "url": "https://zyro.com/tools/image-background-remover",
+  "detailUrl": "https://ai-bot.cn/sites/302.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 197,
+  "name": "PhotoScissors",
+  "desc": "免费自动图片背景去除",
+  "url": "https://photoscissors.com",
+  "detailUrl": "https://ai-bot.cn/sites/284.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 198,
+  "name": "ClippingMagic",
+  "desc": "魔术般地去除图片背景",
+  "url": "https://clippingmagic.com",
+  "detailUrl": "https://ai-bot.cn/sites/310.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 199,
+  "name": "图可丽",
+  "desc": "AI图片和视频抠图，一键抠图神器",
+  "url": "https://www.tukeli.net",
+  "detailUrl": "https://ai-bot.cn/sites/1780.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 200,
+  "name": "HotpotAIBackgroundRemover",
+  "desc": "Hotpot.ai推出的图片背景移除工具",
+  "url": "https://hotpot.ai/remove-background",
+  "detailUrl": "https://ai-bot.cn/sites/303.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 201,
+  "name": "Stylized",
+  "desc": "AI产品图背景替换",
+  "url": "https://www.stylized.ai",
+  "detailUrl": "https://ai-bot.cn/sites/174.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 202,
+  "name": "Booth.ai",
+  "desc": "高质量AI产品展示效果图生成",
+  "url": "https://www.booth.ai",
+  "detailUrl": "https://ai-bot.cn/sites/178.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 203,
+  "name": "堆友AI反应堆",
+  "desc": "全能AI绘画生成器",
+  "url": "https://d.design/ai/generate?from=ab1",
+  "detailUrl": "https://ai-bot.cn/sites/3382.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 204,
+  "name": "LiblibAI·哩布哩布AI",
+  "desc": "国内领先的AI图像创作平台和模型分享社区",
+  "url": "https://liblib.cgref.cn/s/dqndpmwn2z",
+  "detailUrl": "https://ai-bot.cn/sites/6474.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 205,
+  "name": "Midjourney",
+  "desc": "AI图像和插画生成工具",
+  "url": "https://www.midjourney.com/home",
+  "detailUrl": "https://ai-bot.cn/sites/56.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 206,
+  "name": "StableDiffusion",
+  "desc": "StabilityAI推出的文本到图像生成AI",
+  "url": "https://stability.ai",
+  "detailUrl": "https://ai-bot.cn/sites/123.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 207,
+  "name": "Civitai",
+  "desc": "免费的AI图像绘画作品和模型分享平台和社区",
+  "url": "https://civitai.com",
+  "detailUrl": "https://ai-bot.cn/sites/6297.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 208,
+  "name": "通义万相",
+  "desc": "阿里推出的AI创意内容生成平台",
+  "url": "https://tongyi.aliyun.com/wan/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/3400.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 209,
+  "name": "秒画",
+  "desc": "商汤科技推出的免费AI作画和图片生成平台",
+  "url": "https://miaohua.sensetime.com/inspiration?invite_code=9yvxNm7BR",
+  "detailUrl": "https://ai-bot.cn/sites/4749.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 210,
+  "name": "WHEE",
+  "desc": "美图推出的AI图片和绘画创作生成平台",
+  "url": "https://www.whee.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2976.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 211,
+  "name": "奇域AI",
+  "desc": "中式审美国风AI绘画创作平台",
+  "url": "https://www.qiyuai.net/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12769.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 212,
+  "name": "触手AI绘画",
+  "desc": "免费专业的AI绘画/模型/分享平台",
+  "url": "https://acgnai.art/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/5198.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 213,
+  "name": "造梦日记",
+  "desc": "AI一下，妙笔生画",
+  "url": "https://zmrj.art/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2382.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 214,
+  "name": "CanvaAI图像生成",
+  "desc": "在线设计工具Canva推出的AI图像生成工具",
+  "url": "https://www.canva.com/ai-image-generator/",
+  "detailUrl": "https://ai-bot.cn/sites/58.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 215,
+  "name": "超能画布",
+  "desc": "百度网盘推出的AI创意图像写真创作平台",
+  "url": "https://photo.baidu.com/photasy/home?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/10982.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 216,
+  "name": "BingImageCreator",
+  "desc": "微软必应推出的基于DALL·E的AI图像生成工具",
+  "url": "https://www.bing.com/images/create",
+  "detailUrl": "https://ai-bot.cn/sites/912.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 217,
+  "name": "AdobeFirefly",
+  "desc": "Adobe最新推出的AI图片生成工具",
+  "url": "https://firefly.adobe.com",
+  "detailUrl": "https://ai-bot.cn/sites/726.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 218,
+  "name": "简单AI",
+  "desc": "搜狐推出的AI图片生成平台",
+  "url": "https://ai.sohu.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/4009.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 219,
+  "name": "摩笔马良",
+  "desc": "摩尔线程推出的AI图像绘画创作平台",
+  "url": "https://maliang.mthreads.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/11123.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 220,
+  "name": "Exactly.ai",
+  "desc": "专业的AI绘画和艺术创作平台",
+  "url": "https://exactly.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12987.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 221,
+  "name": "画宇宙",
+  "desc": "人工智能AI作画网站",
+  "url": "https://creator.nolibox.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2505.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 222,
+  "name": "6penArt",
+  "desc": "面包多团队推出的从文本描述生成绘画艺术作品",
+  "url": "https://6pen.art/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2342.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 223,
+  "name": "创客贴AI画匠",
+  "desc": "创客贴推出的AI艺术画生成工具",
+  "url": "https://aiart.chuangkit.com/landingpage?utm_source=aibotQD",
+  "detailUrl": "https://ai-bot.cn/sites/1818.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 224,
+  "name": "VisualElectric",
+  "desc": "专业的高质量AI图像创作工具",
+  "url": "https://visualelectric.com",
+  "detailUrl": "https://ai-bot.cn/sites/6463.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 225,
+  "name": "360智绘",
+  "desc": "360推出的AI图片和绘画生成工具",
+  "url": "https://aigc.360.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6840.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 226,
+  "name": "网易AI创意工坊",
+  "desc": "网易云课堂推出的AI作画平台，在线使用Stable Diffusion出图",
+  "url": "https://ke.study.163.com/artWorks/painting?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/4212.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 227,
+  "name": "ImaginewithMeta",
+  "desc": "Meta最新推出的在线AI图像生成器",
+  "url": "https://www.meta.ai/",
+  "detailUrl": "https://ai-bot.cn/sites/6492.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 228,
+  "name": "FreepikAIImageGenerator",
+  "desc": "Freepik最新推出的AI图片生成工具",
+  "url": "https://www.freepik.com/ai/image-generator?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2762.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 229,
+  "name": "StockimgAI",
+  "desc": "AI生成各种类型的图像和插画",
+  "url": "https://stockimg.ai",
+  "detailUrl": "https://ai-bot.cn/sites/151.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 230,
+  "name": "StableDoodle",
+  "desc": "StabilityAI最新推出的将手绘草图转换成精美图像的工具",
+  "url": "https://clipdrop.co/stable-doodle",
+  "detailUrl": "https://ai-bot.cn/sites/3529.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 231,
+  "name": "绘蛙AI高清",
+  "desc": "绘蛙推出的AI图像高清修复工具",
+  "url": "https://www.ihuiwa.com/workspace/partial-redraw?editType=enhance-image&amp;huiwaInviteCode=EMRCAL",
+  "detailUrl": "https://ai-bot.cn/sites/56509.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 232,
+  "name": "LiblibAI高清放大",
+  "desc": "LiblibAI推出的AI高清放大工作流",
+  "url": "https://liblib.cgref.cn/s/dqndpmwn2z",
+  "detailUrl": "https://ai-bot.cn/sites/68439.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 233,
+  "name": "美图无损放大",
+  "desc": "美图设计室推出的AI图片变清晰工具",
+  "url": "https://www.designkit.cn/upscale/?channel=100101",
+  "detailUrl": "https://ai-bot.cn/sites/33867.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 234,
+  "name": "Upscayl",
+  "desc": "免费开源的AI图片无损放大工具",
+  "url": "https://www.upscayl.org",
+  "detailUrl": "https://ai-bot.cn/sites/1531.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 235,
+  "name": "GoProd",
+  "desc": "Icons8推出的智能图片背景移除和无损放大二合一Mac应用",
+  "url": "https://icons8.com/goprod?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2576.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 236,
+  "name": "BigJPG",
+  "desc": "免费的在线AI图片无损放大工具",
+  "url": "https://bigjpg.com",
+  "detailUrl": "https://ai-bot.cn/sites/210.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 237,
+  "name": "MejorarImagen",
+  "desc": "AI图像放大增强工具，快速放大至10倍或12K分辨率",
+  "url": "https://mejorarimagen.org/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/14941.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 238,
+  "name": "MagnificAI",
+  "desc": "强大的AI图像放大工具，最高支持到10K分辨率",
+  "url": "https://magnific.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7402.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 239,
+  "name": "Let’sEnhance",
+  "desc": "AI在线免费放大图片并保持图像质量",
+  "url": "https://letsenhance.io/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2333.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 240,
+  "name": "Icons8SmartUpscaler",
+  "desc": "Icons8出品的AI图片无损放大工具",
+  "url": "https://icons8.com/upscaler",
+  "detailUrl": "https://ai-bot.cn/sites/217.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 241,
+  "name": "ClipDropImageUpscaler",
+  "desc": "ClipDrop出品的AI图片放大工具",
+  "url": "https://clipdrop.co/image-upscaler",
+  "detailUrl": "https://ai-bot.cn/sites/220.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 242,
+  "name": "Img.Upscaler",
+  "desc": "免费的AI图片放大工具",
+  "url": "https://imgupscaler.com",
+  "detailUrl": "https://ai-bot.cn/sites/219.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 243,
+  "name": "FotorAIImageUpscaler",
+  "desc": "Fotor推出的AI图片放大工具",
+  "url": "https://www.fotor.com/image-upscaler",
+  "detailUrl": "https://ai-bot.cn/sites/218.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 244,
+  "name": "ZyroAIImageUpscaler",
+  "desc": "Zyro出品的人工智能图片放大工具",
+  "url": "https://zyro.com/tools/image-upscaler",
+  "detailUrl": "https://ai-bot.cn/sites/216.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 245,
+  "name": "Media.ioAIImageUpscaler",
+  "desc": "Media.io推出的AI图片放大工具",
+  "url": "https://www.media.io/image-upscaler.html",
+  "detailUrl": "https://ai-bot.cn/sites/222.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 246,
+  "name": "Upscale.media",
+  "desc": "AI图片放大和分辨率修改",
+  "url": "https://www.upscale.media/zh",
+  "detailUrl": "https://ai-bot.cn/sites/215.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 247,
+  "name": "NeroImageUpscaler",
+  "desc": "AI免费图片无损放大",
+  "url": "https://ai.nero.com/image-upscaler",
+  "detailUrl": "https://ai-bot.cn/sites/213.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 248,
+  "name": "VanceAIImageResizer",
+  "desc": "VanceAI推出的在线图片尺寸调整工具",
+  "url": "https://vanceai.com/image-resizer",
+  "detailUrl": "https://ai-bot.cn/sites/212.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 249,
+  "name": "PhotoAidImageUpscaler",
+  "desc": "PhotoAid出品的免费在线人工智能图片放大工具",
+  "url": "https://photoaid.com/en/tools/ai-image-enlarger",
+  "detailUrl": "https://ai-bot.cn/sites/211.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 250,
+  "name": "Upscalepics",
+  "desc": "在线图片放大工具",
+  "url": "https://upscalepics.com",
+  "detailUrl": "https://ai-bot.cn/sites/223.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 251,
+  "name": "ImageEnlarger",
+  "desc": "AI无损放大图片",
+  "url": "https://magicstudio.com/zh/enlarger",
+  "detailUrl": "https://ai-bot.cn/sites/275.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 252,
+  "name": "Pixelhunter",
+  "desc": "AI智能调整图片尺寸用于社交媒体平台发帖",
+  "url": "https://pixelhunter.io",
+  "detailUrl": "https://ai-bot.cn/sites/214.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 253,
+  "name": "绘蛙AI消除",
+  "desc": "免费AI修图工具，一键去除图片中多余元素",
+  "url": "https://www.ihuiwa.com/workspace/ai-image/partial-redraw?editType=eraser-pen&amp;huiwaInviteCode=EMRCAL",
+  "detailUrl": "https://ai-bot.cn/sites/28404.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 254,
+  "name": "LiblibAI去水印",
+  "desc": "LiblibAI推出的AI去水印工作流",
+  "url": "https://liblib.cgref.cn/s/dqndpmwn2z",
+  "detailUrl": "https://ai-bot.cn/sites/68305.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 255,
+  "name": "美图AI消除",
+  "desc": "美图设计室推出的AI消除工具",
+  "url": "https://www.designkit.cn/aieraser/?channel=100102",
+  "detailUrl": "https://ai-bot.cn/sites/33683.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 256,
+  "name": "稿定AI消除",
+  "desc": "AI图像杂物消除工具",
+  "url": "https://www.gaoding.com/utms/a98ffea27c9145089671bb8a06037423",
+  "detailUrl": "https://ai-bot.cn/sites/49506.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 257,
+  "name": "Hama",
+  "desc": "在线抹除图片中不想要的物体",
+  "url": "https://www.hama.app/zh",
+  "detailUrl": "https://ai-bot.cn/sites/268.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 258,
+  "name": "IOPaint",
+  "desc": "免费开源的AI图像擦除、修复和处理工具",
+  "url": "https://www.iopaint.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/9056.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 259,
+  "name": "BgEraser",
+  "desc": "图片物体抹除和清理",
+  "url": "https://bgeraser.com",
+  "detailUrl": "https://ai-bot.cn/sites/691.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 260,
+  "name": "SnapEdit",
+  "desc": "AI移除图片中的任何物体",
+  "url": "https://snapedit.app",
+  "detailUrl": "https://ai-bot.cn/sites/688.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 261,
+  "name": "Cleanup.pictures",
+  "desc": "智能移除图片中的物体、文本、污迹、人物或任何不想要的东西",
+  "url": "https://cleanup.pictures",
+  "detailUrl": "https://ai-bot.cn/sites/687.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 262,
+  "name": "Cutout.ProRetouch",
+  "desc": "Cutout.Pro推出的AI图片物体涂抹去除工具",
+  "url": "https://www.cutout.pro/zh-CN/image-retouch-remove-unwanted-objects",
+  "detailUrl": "https://ai-bot.cn/sites/307.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 263,
+  "name": "蜜蜂剪辑",
+  "desc": "AI去水印工具，支持图片和30+流行短视频平台",
+  "url": "https://beecut.cn/online-watermark-remover?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/21260.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 264,
+  "name": "吐司AI消除",
+  "desc": "吐司AI推出的AI智能消除、去杂物工具",
+  "url": "https://tusiart.com/template/820385276638620489?utm_source=ai_bot&amp;source_id=ai_bot",
+  "detailUrl": "https://ai-bot.cn/sites/43780.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 265,
+  "name": "HitPawWatermarkRemover",
+  "desc": "AI图片和视频去水印工具",
+  "url": "https://www.hitpaw.com/remove-watermark.html?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/21255.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 266,
+  "name": "MagicEraser",
+  "desc": "AI移除图片中不想要的物体",
+  "url": "https://magicstudio.com/zh/magiceraser/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/273.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 267,
+  "name": "WatermarkRemover",
+  "desc": "AI智能删除照片中的水印",
+  "url": "https://www.watermarkremover.io/zh?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1683.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 268,
+  "name": "稿定AI变清晰",
+  "desc": "稿定设计推出的AI变清晰图像处理工具",
+  "url": "https://www.gaoding.com/utms/2a5760f7f0d74446b2c8ef68a34d5bfc",
+  "detailUrl": "https://ai-bot.cn/sites/49491.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 269,
+  "name": "Facet",
+  "desc": "AI图片修图和优化工具",
+  "url": "https://facet.ai",
+  "detailUrl": "https://ai-bot.cn/sites/976.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 270,
+  "name": "Relight",
+  "desc": "ClipDrop推出的AI图像打光工具",
+  "url": "https://clipdrop.co/relight",
+  "detailUrl": "https://ai-bot.cn/sites/299.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 271,
+  "name": "imgAK",
+  "desc": "一站式在线 AI 图像处理平台",
+  "url": "https://www.imgak.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/69515.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 272,
+  "name": "美图云修",
+  "desc": "美图推出的专业级AI人像精修软件",
+  "url": "https://yunxiu.meitu.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2042.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 273,
+  "name": "西米AI",
+  "desc": "AI图案提取工具，一站式服装印花解决方案",
+  "url": "https://ximixiang.com/home?invite_code=9961",
+  "detailUrl": "https://ai-bot.cn/sites/81083.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 274,
+  "name": "Remini",
+  "desc": "AI智能将模糊照片变高清的图像修复工具",
+  "url": "https://remini.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6590.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 275,
+  "name": "jpgHD",
+  "desc": "人工智能老照片上色和修复",
+  "url": "https://jpghd.com/zh",
+  "detailUrl": "https://ai-bot.cn/sites/1680.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 276,
+  "name": "像素蛋糕PixCake",
+  "desc": "简单易用的AI图像精修工具",
+  "url": "https://www.pixcakeai.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6075.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 277,
+  "name": "咻图AI",
+  "desc": "面向影楼的摄影后期AI修图软件",
+  "url": "https://www.aixtsy.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6575.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 278,
+  "name": "AirBrush",
+  "desc": "专业级AI图像视频编辑工具",
+  "url": "https://airbrush.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/69820.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 279,
+  "name": "restorePhotos.io",
+  "desc": "AI老照片修复",
+  "url": "https://www.restorephotos.io",
+  "detailUrl": "https://ai-bot.cn/sites/154.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 280,
+  "name": "PicMaStudio",
+  "desc": "AI一键批量增强、修复、彩色化你的照片",
+  "url": "https://picma.magictiger.ai/zh?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/17485.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 281,
+  "name": "transpic",
+  "desc": "AI图像转绘插画创作平台",
+  "url": "https://transpic.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/4246.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 282,
+  "name": "Cutout.Pro老照片上色",
+  "desc": "Cutout.Pro推出的黑白图片上色",
+  "url": "https://www.cutout.pro/zh-CN/photo-colorizer-black-and-white",
+  "detailUrl": "https://ai-bot.cn/sites/308.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 283,
+  "name": "Palette",
+  "desc": "AI图片调色上色",
+  "url": "https://palette.fm",
+  "detailUrl": "https://ai-bot.cn/sites/104.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 284,
+  "name": "PlaygroundAI",
+  "desc": "AI图片生成和修图",
+  "url": "https://playgroundai.com",
+  "detailUrl": "https://ai-bot.cn/sites/126.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 285,
+  "name": "吐司AI高清",
+  "desc": "吐司AI推出的图片变高清/修复工具",
+  "url": "https://tusiart.com/template/820721890405622530",
+  "detailUrl": "https://ai-bot.cn/sites/42692.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 286,
+  "name": "阿贝智能",
+  "desc": "一站式AI绘本创作平台，副业变现必备",
+  "url": "https://abeiai.com/?r=133",
+  "detailUrl": "https://ai-bot.cn/sites/17330.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 287,
+  "name": "美图设计室",
+  "desc": "AI图像创作和设计平台",
+  "url": "https://www.designkit.cn/?channel=10026",
+  "detailUrl": "https://ai-bot.cn/sites/2400.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 288,
+  "name": "造点AI",
+  "desc": "夸克团队推出的AI图像与视频创作平台",
+  "url": "https://www.zaodian.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/63437.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 289,
+  "name": "RunningHub",
+  "desc": "基于云端ComfyUI的AI图像与视频创作平台",
+  "url": "https://www.runninghub.cn/?inviteCode=bemsxzdr",
+  "detailUrl": "https://ai-bot.cn/sites/56061.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 290,
+  "name": "可灵AI",
+  "desc": "快手推出的AI图像和视频创作平台",
+  "url": "https://app.klingai.com/cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13002.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 291,
+  "name": "呜哩",
+  "desc": "阿里推出的AIGC创意生产力平台",
+  "url": "https://wuli.art/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/70059.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 292,
+  "name": "insMind",
+  "desc": "稿定面向全球市场推出的AI图片编辑工具",
+  "url": "https://www.insmind.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/60138.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 293,
+  "name": "Krene",
+  "desc": "深耕游戏/影视美术创作领域的 AIGC 创作平台",
+  "url": "https://www.krene.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/78196.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 294,
+  "name": "AI改图神器",
+  "desc": "AI在线图像编辑工具",
+  "url": "https://img.logosc.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1412.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 295,
+  "name": "米粿AI",
+  "desc": "懂画师的渐进式分层绘画助手，主攻日系二次元绘画",
+  "url": "https://miguo.ai?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/74842.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 296,
+  "name": "咖图AI",
+  "desc": "AI图像设计平台，搭载NanoBanana Pro模型",
+  "url": "https://www.katuai.cn/?from=ai-bot",
+  "detailUrl": "https://ai-bot.cn/sites/71738.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 297,
+  "name": "视觉工厂",
+  "desc": "AI创作工具，支持AI生图和视频生成服务",
+  "url": "https://d.aijuh.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/70659.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "剧本创作",
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 298,
+  "name": "秒绘AI",
+  "desc": "一键生成爆款图文，免费发布小红书",
+  "url": "https://miaohuiai.cc/?from=ai-bot",
+  "detailUrl": "https://ai-bot.cn/sites/70073.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 299,
+  "name": "妙话AI",
+  "desc": "专为内容创作者设计的创意图片生成工具",
+  "url": "https://imiaohua.com/?utm=r2254801",
+  "detailUrl": "https://ai-bot.cn/sites/68984.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术"
+  ]
+ },
+ {
+  "id": 300,
+  "name": "KreaAI",
+  "desc": "实时AI图像、视频生成和编辑平台",
+  "url": "https://www.krea.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7050.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 301,
+  "name": "Kira",
+  "desc": "AI 图像生成与编辑工具",
+  "url": "https://kira.art/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/56504.html",
+  "category": "图片AI工具",
+  "scenes": [
+   "概念美术",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 302,
+  "name": "MVLAND",
+  "desc": "美图旗下面向创作者的 AI 音乐视频创作平台",
+  "url": "https://mvland.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/81461.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 303,
+  "name": "TDream",
+  "desc": "腾讯推出的AI互动内容创作平台",
+  "url": "https://tdream.qq.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/81153.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 304,
+  "name": "DigenAI",
+  "desc": "一站式 AI 视频创作平台",
+  "url": "https://digen.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/80804.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 305,
+  "name": "Pavo",
+  "desc": "Agnes AI 推出的AI短剧视频创作平台",
+  "url": "https://app.pavo-ai.work/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/80706.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 306,
+  "name": "HighReach",
+  "desc": "AI 广告创意生成平台，全链路创意覆盖",
+  "url": "https://highreach.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/80397.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 307,
+  "name": "updream",
+  "desc": "专业级一站式 AI 视频创作平台",
+  "url": "https://updream.cgref.cn/s/1oe71vme23",
+  "detailUrl": "https://ai-bot.cn/sites/80357.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 308,
+  "name": "ArtarchStudio",
+  "desc": "一站式 AI 内容创作画布平台",
+  "url": "https://artarchstudio.cgaff.link/s/3mnz8v5no1",
+  "detailUrl": "https://ai-bot.cn/sites/80060.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 309,
+  "name": "蛙蛙漫剧",
+  "desc": "AI小说-剧本-漫剧视频全链路生产",
+  "url": "https://wawawriter.cgref.cn/aibot",
+  "detailUrl": "https://ai-bot.cn/sites/79821.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 310,
+  "name": "YOCO智能制课",
+  "desc": "AI PPT讲解视频生成创作工具",
+  "url": "https://www.yoco.me/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/78997.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 311,
+  "name": "OhYesAI",
+  "desc": "AI 音乐 MV 一体化创作智能体平台",
+  "url": "https://ohyesai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/78902.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 312,
+  "name": "Oiiyao",
+  "desc": "AI视频本地化平台",
+  "url": "https://www.oiiyao.com/?utm_source=aibot&amp;utm_medium=referral",
+  "detailUrl": "https://ai-bot.cn/sites/78886.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 313,
+  "name": "立刻MV",
+  "desc": "一站式 AI 音乐视频（MV）创作工具",
+  "url": "https://lickmv.cgref.cn/s/qmnoyy3e29",
+  "detailUrl": "https://ai-bot.cn/sites/78606.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 314,
+  "name": "交织Weave",
+  "desc": "AI全能创作平台，一站式实现你的创意",
+  "url": "https://weave.32zi.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/78597.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 315,
+  "name": "Haimeta",
+  "desc": "AI 内容创意平台，全链路 AI 生产体验",
+  "url": "https://haimeta.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/78487.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 316,
+  "name": "Makefun",
+  "desc": "无限制一站式 AI 视频生成平台",
+  "url": "https://makefun.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/78142.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 317,
+  "name": "LumenFlow",
+  "desc": "端到端 AI 漫剧自动生产线，AI 剧本一键成片",
+  "url": "https://lumenflow.net/register?invite=CODE-P8R7JZ4Y",
+  "detailUrl": "https://ai-bot.cn/sites/77673.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 318,
+  "name": "灵芽社区",
+  "desc": "腾讯推出的 AI 多模态创作者社区",
+  "url": "https://lingya.qq.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/77343.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 319,
+  "name": "VibePaper",
+  "desc": "短剧制作团队的AI协作工作台，节点式无限画布",
+  "url": "https://vibepaper-ai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/76823.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 320,
+  "name": "RHTV",
+  "desc": "RunningHub 推出的原生 AI 无限画布创作工具",
+  "url": "https://rhtv.runninghub.cn/?inviteCode=bemsxzdr",
+  "detailUrl": "https://ai-bot.cn/sites/76657.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 321,
+  "name": "Yoroll",
+  "desc": "LinearGame 推出的 AI 原生互动视频游戏平台",
+  "url": "https://app.yoroll.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/76648.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 322,
+  "name": "剧火AI",
+  "desc": "AI短剧创作者的一站式创作Agent",
+  "url": "https://juhuo.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/76595.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 323,
+  "name": "Seedance",
+  "desc": "字节跳动 Seed 团队推出的多模态 AI 视频生成模型",
+  "url": "https://volcengine.cgref.cn/aibot",
+  "detailUrl": "https://ai-bot.cn/sites/76349.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 324,
+  "name": "Brainrot.mov",
+  "desc": "专为创作者打造的AI视频创作平台",
+  "url": "https://brainrot.mov/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/76249.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 325,
+  "name": "Topview",
+  "desc": "为电商与营销场景推出的 AI 视频生成Agent",
+  "url": "https://www.topview.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/76205.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 326,
+  "name": "Flova",
+  "desc": "全球首个一体化 AI 视频创作平台",
+  "url": "https://www.flova.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/76121.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 327,
+  "name": "ZorqAI",
+  "desc": "多模型聚合 AI 创意生成平台",
+  "url": "https://zorqai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/76054.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 328,
+  "name": "灵绘AI",
+  "desc": "专业级 AI 短剧漫剧视频创作平台",
+  "url": "https://linghuiai.net/go/bXd92z",
+  "detailUrl": "https://ai-bot.cn/sites/75762.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 329,
+  "name": "Pixmax",
+  "desc": "AI真人短剧、漫剧一站式创作引擎",
+  "url": "https://www.pixmax.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/75615.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 330,
+  "name": "TagoMovie",
+  "desc": "一站式 AI 漫剧与短剧创作平台",
+  "url": "https://tagomovie.bitaihub.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/75606.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 331,
+  "name": "万镜一刻",
+  "desc": "阿里云推出的AI视频创作平台",
+  "url": "https://www.yikeai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/75094.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 332,
+  "name": "VibeKnow",
+  "desc": "全球首个 AI 知识视频创作平台",
+  "url": "https://vibeknow.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/74718.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 333,
+  "name": "Pexo",
+  "desc": "AI 视频创作Agent，个人 AI 视频伙伴",
+  "url": "https://pexo.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/74007.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 334,
+  "name": "LibTV",
+  "desc": "专业AI视频创作平台，支持Seedance 2.0（真人参考）",
+  "url": "https://libtv.cgref.cn/aibot",
+  "detailUrl": "https://ai-bot.cn/sites/73776.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 335,
+  "name": "MuseArtAI",
+  "desc": "一站式 AI 图像和视频创作平台",
+  "url": "https://www.museartai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/73537.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 336,
+  "name": "AniShort",
+  "desc": "AI短剧协同创作平台，重构短剧生产流程",
+  "url": "https://anishort.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/73422.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 337,
+  "name": "AdsTurboAI",
+  "desc": "AI视频广告生成平台，自动生成可直接投放的视频",
+  "url": "https://adsturbo.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/72345.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 338,
+  "name": "PolloAI",
+  "desc": "一站式AI图像和视频创作平台",
+  "url": "https://fas.st/t/nFLHVC4T",
+  "detailUrl": "https://ai-bot.cn/sites/70438.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 339,
+  "name": "献丑AI",
+  "desc": "首个 AI 视频开源社区，支持一键Fork与共创",
+  "url": "https://xianchou.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/70208.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 340,
+  "name": "NextCutAI",
+  "desc": "AI视频创作工具，集成无限画布 + workflow + 剪辑轨道 + 多Agent团队",
+  "url": "https://nextcut-ai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/69946.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 341,
+  "name": "A2E",
+  "desc": "一站式AI视频生成平台",
+  "url": "https://a2e.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/69913.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 342,
+  "name": "MochiAni",
+  "desc": "AI动画视频创作工具",
+  "url": "https://www.mochiani.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/69647.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 343,
+  "name": "云幕同声",
+  "desc": "专业AI视频翻译，短剧出海、跨境电商，效果超棒！",
+  "url": "https://www.yunmuts.com/?from=ai-bot",
+  "detailUrl": "https://ai-bot.cn/sites/69629.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 344,
+  "name": "魔珐星云",
+  "desc": "具身智能3D数字人开放平台",
+  "url": "https://www.xingyun3d.com/?utm_source=zhanwaidaoliu&amp;utm_campaign=zwj&amp;utm_content=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/68669.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 345,
+  "name": "KomikoAI",
+  "desc": "一站式AI动漫内容创作平台",
+  "url": "https://komiko.app/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/68087.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 346,
+  "name": "雾象",
+  "desc": "免费开源的AI动画生成工具",
+  "url": "https://fogsight.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/68040.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 347,
+  "name": "花生AI",
+  "desc": "B站推出的AI视频创作工具",
+  "url": "https://www.huasheng.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/67673.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 348,
+  "name": "LiblibAI",
+  "desc": "一站式 AI 内容创作生成平台",
+  "url": "https://liblib.cgref.cn/s/dqndpmwn2z",
+  "detailUrl": "https://ai-bot.cn/sites/66771.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 349,
+  "name": "造次",
+  "desc": "AI原创IP视频社区",
+  "url": "https://www.zaoci.tv/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/66554.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 350,
+  "name": "TapNow",
+  "desc": "AI视觉内容创作平台，提供多种预设工作流",
+  "url": "https://www.tapnow.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/66332.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 351,
+  "name": "内容特工队",
+  "desc": "全球首款移动端AI营销视频生成智能体",
+  "url": "https://www.reelsagent.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/65041.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 352,
+  "name": "HitPaw",
+  "desc": "专注于AI视频、图像和音频处理工具",
+  "url": "https://www.hitpaw.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/64276.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 353,
+  "name": "萌动AI",
+  "desc": "全球首个二次元/动漫专用 AI 创作工具",
+  "url": "https://www.animon.com?vd=qFokWH",
+  "detailUrl": "https://ai-bot.cn/sites/63694.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 354,
+  "name": "造点AI",
+  "desc": "夸克团队推出的AI图像与视频创作平台",
+  "url": "https://www.zaodian.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/63437.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 355,
+  "name": "通义灵眸",
+  "desc": "阿里通义推出的AI数字人生产平台",
+  "url": "https://avatar.console.aliyun.com/lingmou?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/63255.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 356,
+  "name": "SekoTalk",
+  "desc": "商汤科技推出的AI对口型工具",
+  "url": "https://sekotalk.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/63158.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 357,
+  "name": "磁力开创",
+  "desc": "快手推出的AI创意生产平台",
+  "url": "https://kc.kuaishou.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/62311.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 358,
+  "name": "堆友AI视频",
+  "desc": "堆友推出的AI视频生成工具",
+  "url": "https://d.design/agent?from=ab13",
+  "detailUrl": "https://ai-bot.cn/sites/61400.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 359,
+  "name": "HeyGen",
+  "desc": "专业的AI数字人视频创作平台",
+  "url": "https://heygen.com/?sid=rewardful&amp;via=ai-bot",
+  "detailUrl": "https://ai-bot.cn/sites/60917.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 360,
+  "name": "Keevx",
+  "desc": "开箱即用的AI数字人视频创作工具",
+  "url": "https://www.keevx.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/60378.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 361,
+  "name": "Boba",
+  "desc": "AI动漫视频创作工具",
+  "url": "https://www.boba.video/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/59515.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 362,
+  "name": "智谱清影",
+  "desc": "智谱推出的免费AI视频生成工具",
+  "url": "https://chatglm.cn/video?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/59040.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 363,
+  "name": "Higgsfield",
+  "desc": "AI视频生成工具，支持专业运镜效果",
+  "url": "https://higgsfield.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/59035.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 364,
+  "name": "Seko",
+  "desc": "首个创编一体的AI视频创作Agent",
+  "url": "https://seko.cgref.cn/s/1oe7lzgn23",
+  "detailUrl": "https://ai-bot.cn/sites/58360.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 365,
+  "name": "妙播",
+  "desc": "腾讯广告推出的AI直播电商解决方案",
+  "url": "https://admuse.qq.com/intelligent/live/page/index.html#/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/50033.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 366,
+  "name": "腾讯混元AI视频",
+  "desc": "腾讯推出的AI视频生成工具",
+  "url": "https://video.hunyuan.tencent.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/46196.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 367,
+  "name": "JoyPix",
+  "desc": "AI数字人创作工具，支持声音克隆",
+  "url": "https://www.joypix.ai/app/login/?utm=cg&amp;cgv=aibotcn",
+  "detailUrl": "https://ai-bot.cn/sites/45413.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 368,
+  "name": "SoundView",
+  "desc": "讯飞推出的AI短视频智能创作平台",
+  "url": "https://soundviewai.com/invitation?inviteCode=H6tVloZUV&amp;from=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/35756.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 369,
+  "name": "绘蛙AI视频",
+  "desc": "绘蛙推出的AI图生视频工具",
+  "url": "https://www.ihuiwa.com/workspace/ai-video/custom-action?huiwaInviteCode=EMRCAL",
+  "detailUrl": "https://ai-bot.cn/sites/33687.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 370,
+  "name": "飞影数字人",
+  "desc": "AI数字人创作平台，支持免费定制数字人",
+  "url": "https://www.flyworks.live/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/24851.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 371,
+  "name": "VMagic",
+  "desc": "AI视频处理平台，提供视频风格转换、换脸、照片舞蹈等功能",
+  "url": "https://www.vmagic.app/zh?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/23943.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 372,
+  "name": "LensGo",
+  "desc": "AI视频创作工具，支持视频转动漫，替换3D人物",
+  "url": "https://lensgo.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/23891.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 373,
+  "name": "VideoStudio",
+  "desc": "在线AI视频制作工具，零编辑技能制作专业视频内容",
+  "url": "https://www.vidustudio.net/zh?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/22195.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 374,
+  "name": "FlowStudio",
+  "desc": "FlowGPT推出的AI长视频生成工具",
+  "url": "https://flowgpt.com/flow-studio?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/20030.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 375,
+  "name": "讯飞虚拟人",
+  "desc": "科大讯飞推出的全栈式AI虚拟人应用服务平台",
+  "url": "https://virtual-man.xfyun.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/19680.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 376,
+  "name": "Humva",
+  "desc": "AI数字人生成工具，自定义创建专属数字人",
+  "url": "https://humva.ai/?utm_source=aibot&amp;utm_medium=website&amp;utm_campaign=seo",
+  "detailUrl": "https://ai-bot.cn/sites/18010.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 377,
+  "name": "即梦AI",
+  "desc": "一站式AI视频、图片、数字人创作工具",
+  "url": "https://jimeng.jianying.com/ai-tool/home/?utm_medium=aitools&amp;utm_source=aibot&amp;utm_campaign=null&amp;utm_content=hw_jm_aibot",
+  "detailUrl": "https://ai-bot.cn/sites/17772.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 378,
+  "name": "Hotshot",
+  "desc": "AI视频生成工具，将文本转为3秒逼真视频",
+  "url": "https://hotshot.co/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16965.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 379,
+  "name": "SkyReels",
+  "desc": "昆仑万维推出的AI短剧创作平台",
+  "url": "https://skyreels.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16753.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 380,
+  "name": "Descript",
+  "desc": "AI视频编辑工具，支持通过编辑文字来剪辑音视频内容",
+  "url": "https://www.descript.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16749.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 381,
+  "name": "Filmora",
+  "desc": "万兴科技推出的AI视频编辑工具",
+  "url": "https://filmora.wondershare.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16735.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 382,
+  "name": "OpusClip",
+  "desc": "AI视频切片工具，自动从长视频中提取精彩片段",
+  "url": "https://www.opus.pro/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16730.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 383,
+  "name": "Tavus",
+  "desc": "AI数字人克隆和AI视频实时对话工具",
+  "url": "https://www.tavus.io/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16651.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 384,
+  "name": "Pixfun",
+  "desc": "一站式动画故事AI视频生成平台",
+  "url": "https://app.pixfun.ai/home?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16633.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 385,
+  "name": "YoYo",
+  "desc": "鹿影科技推出的二次元动漫视频AI创作平台",
+  "url": "https://avolutionai.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16242.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 386,
+  "name": "巨日禄",
+  "desc": "一站式AI动漫视频创作平台",
+  "url": "https://jurilu.paluai.com",
+  "detailUrl": "https://ai-bot.cn/sites/16162.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 387,
+  "name": "一起剪",
+  "desc": "AI短视频创作平台，图文一键成片",
+  "url": "https://www.yiqijian.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/16086.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 388,
+  "name": "Vizard",
+  "desc": "将长视频转为社交短视频的AI工具",
+  "url": "https://vizard.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/15664.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 389,
+  "name": "OneStory",
+  "desc": "专业的AI故事生成助手",
+  "url": "https://onestory.art/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/15182.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 390,
+  "name": "Vidu",
+  "desc": "生数科技推出的AI视频生成大模型",
+  "url": "https://www.vidu.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/14695.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 391,
+  "name": "Vozo",
+  "desc": "多功能AI视频编辑工具",
+  "url": "https://www.vozo.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/14640.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 392,
+  "name": "场辞",
+  "desc": "新片场推出的AI视频字幕制作工具",
+  "url": "https://trans.xinpianchang.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/14469.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 393,
+  "name": "寻光",
+  "desc": "阿里达摩院推出的全流程AI视频创作平台",
+  "url": "https://xunguang.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/14162.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 394,
+  "name": "Vimi",
+  "desc": "商汤科技推出的可控人物视频生成AI模型",
+  "url": "https://www.sensetime.com/cn/product-detail?categoryId=51134571&amp;gioNav=1",
+  "detailUrl": "https://ai-bot.cn/sites/14067.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 395,
+  "name": "Duix",
+  "desc": "硅基智能推出的AI数字人生成平台",
+  "url": "https://www.duix.ai/duix-app-landing-page/#/home?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13802.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 396,
+  "name": "Hedra",
+  "desc": "AI对口型视频生成工具",
+  "url": "https://www.hedra.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13679.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 397,
+  "name": "NoiseeAI",
+  "desc": "月之暗面旗下推出的AI音乐视频MV生成工具",
+  "url": "https://noisee.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13667.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 398,
+  "name": "即构数智人",
+  "desc": "即构科技推出的AI数字人创作平台",
+  "url": "https://aigc.zego.im/#/MyHome?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13554.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 399,
+  "name": "DreamMachine",
+  "desc": "Luma AI推出的AI视频生成工具",
+  "url": "https://lumalabs.ai/dream-machine?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13455.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 400,
+  "name": "MOKI",
+  "desc": "美图推出的AI视频短片创作平台",
+  "url": "https://www.moki.cn/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13399.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 401,
+  "name": "可灵AI",
+  "desc": "快手推出的AI视频生成工具",
+  "url": "https://kling.kuaishou.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13186.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 402,
+  "name": "Showrunner",
+  "desc": "AI动画视频剧集生成工具",
+  "url": "https://www.showrunner.xyz/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13114.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 403,
+  "name": "白日梦",
+  "desc": "领先AI创作平台，可生成最长50分钟的视频",
+  "url": "https://aibrm.cgref.cn/aibot",
+  "detailUrl": "https://ai-bot.cn/sites/13065.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 404,
+  "name": "Magicam",
+  "desc": "实时的AI直播/视频换脸工具",
+  "url": "https://magicam.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/13049.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 405,
+  "name": "vivago.ai",
+  "desc": "免费的AI视频生成和图像创作平台",
+  "url": "https://vivago.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12586.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 406,
+  "name": "KreadoAI",
+  "desc": "AI数字人视频营销创作平台",
+  "url": "https://www.kreadoai.com/zh?via=aibot",
+  "detailUrl": "https://ai-bot.cn/sites/12385.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 407,
+  "name": "讯飞绘镜",
+  "desc": "科大讯飞推出的AI短视频创作平台",
+  "url": "https://typemovie.art",
+  "detailUrl": "https://ai-bot.cn/sites/12254.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 408,
+  "name": "Decohere",
+  "desc": "AI视频生成平台，支持音频同步功能",
+  "url": "https://www.decohere.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12250.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 409,
+  "name": "InVideoAI",
+  "desc": "人工智能视频创作和剪辑工具",
+  "url": "https://invideo.io/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12249.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 410,
+  "name": "GoEnhance",
+  "desc": "AI视频风格转换和画质增强工具",
+  "url": "https://www.goenhance.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12248.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 411,
+  "name": "团队快剪",
+  "desc": "闪剪智能专为团队带货打造的AI视频工具",
+  "url": "https://teamcut.shanjian.tv/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12247.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 412,
+  "name": "模力视频",
+  "desc": "AI驱动的视频编辑平台",
+  "url": "https://www.mooliv.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12246.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 413,
+  "name": "鬼手剪辑GhostCut",
+  "desc": "多功能AI视频二创剪辑和翻译工具",
+  "url": "https://cn.jollytoday.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/12245.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 414,
+  "name": "曦灵数字人",
+  "desc": "百度推出的AI数字人和视频创作平台",
+  "url": "https://xiling.cloud.baidu.com/main/home?hmsr=ai%E5%B7%A5%E5%85%B7%E9%9B%86&amp;hmpl=&amp;hmcu=&amp;hmkw=&amp;hmci=",
+  "detailUrl": "https://ai-bot.cn/sites/11975.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 415,
+  "name": "必剪Studio",
+  "desc": "B站推出的免费AI数字分身定制和视频创作工具",
+  "url": "https://member.bilibili.com/york/bilibili-studio/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/11721.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 416,
+  "name": "Captions",
+  "desc": "AI驱动的视频剪辑和制作平台",
+  "url": "https://www.captions.ai/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/11382.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 417,
+  "name": "蝉镜",
+  "desc": "AI数字人视频生成平台",
+  "url": "https://www.chanjing.cc/refc/?type=hzBuy&amp;id=BEB41KJUj-n9rTc5kxR5WGKv6bdmvm_rv5Qpxs0XNFc",
+  "detailUrl": "https://ai-bot.cn/sites/11290.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 418,
+  "name": "SpikesStudio",
+  "desc": "AI自动将长视频切片剪辑为短视频",
+  "url": "https://spikes.studio/?ref=uS3c5lzVrr",
+  "detailUrl": "https://ai-bot.cn/sites/11245.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 419,
+  "name": "Viggle",
+  "desc": "AI生成可控的角色动态视频的工具",
+  "url": "https://viggle.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/11148.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 420,
+  "name": "GoogleVids",
+  "desc": "谷歌推出的AI视频创作工具",
+  "url": "https://workspace.google.com/products/vids/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/10935.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 421,
+  "name": "有言",
+  "desc": "一站式AI视频创作和3D数字人生成平台",
+  "url": "https://www.youyan3d.com/login/?utm_source=zhanwaidaoliu&amp;utm_campaign=zwj&amp;utm_content=aigongjuji&amp;from=aigongjuji",
+  "detailUrl": "https://ai-bot.cn/sites/10847.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 422,
+  "name": "闪剪",
+  "desc": "AI数字人短视频创作工具",
+  "url": "https://shanjian.tv/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/10635.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "剧本创作",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 423,
+  "name": "Gatekeep",
+  "desc": "AI教学视频生成工具，可生成数学物理问题解释视频",
+  "url": "https://gatekeep.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/10195.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 424,
+  "name": "Clipfly",
+  "desc": "一站式AI长视频制作和编辑平台",
+  "url": "https://www.clipfly.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/9622.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 425,
+  "name": "录咖",
+  "desc": "一站式AI音视频总结和转录处理工具",
+  "url": "https://reccloud.cn/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/9394.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 426,
+  "name": "Haiper",
+  "desc": "AI视频生成和重绘工具，支持文本/图像转视频",
+  "url": "https://haiper.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/9285.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 427,
+  "name": "LTXStudio",
+  "desc": "AI电影制作和视频短片生成平台",
+  "url": "https://ltx.studio/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/9071.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 428,
+  "name": "怪兽AI数字人",
+  "desc": "人工智能数字人短视频创作和直播平台",
+  "url": "https://www.guaishouai.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/8805.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 429,
+  "name": "StableVideo",
+  "desc": "Stability AI推出的AI视频生成工具",
+  "url": "https://www.stablevideo.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/8662.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 430,
+  "name": "Typeframes",
+  "desc": "AI快速生成高质量的产品介绍视频",
+  "url": "https://www.typeframes.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/8530.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 431,
+  "name": "Mootion",
+  "desc": "AI视频内容创作平台，覆盖全流程",
+  "url": "https://mootion.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/8525.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 432,
+  "name": "开拍",
+  "desc": "美图推出的AI口播视频制作工具",
+  "url": "https://kaipai.meitu.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7280.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 433,
+  "name": "MorphStudio",
+  "desc": "高质量的AI文本到视频生成工具",
+  "url": "https://www.morphstudio.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7225.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 434,
+  "name": "Anylang.ai",
+  "desc": "AI视频翻译并保持音色和口型的同步",
+  "url": "https://anylang.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/7162.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 435,
+  "name": "DomoAI",
+  "desc": "一站式AI视频与动画创作平台",
+  "url": "https://domoai.app/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6983.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 436,
+  "name": "WinkStudio",
+  "desc": "美图推出的桌面端AI视频剪辑工具",
+  "url": "https://wink.meitu.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/6718.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 437,
+  "name": "Pika",
+  "desc": "Pika Labs推出的AI视频生成和编辑工具",
+  "url": "https://pika.art",
+  "detailUrl": "https://ai-bot.cn/sites/6263.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 438,
+  "name": "即创",
+  "desc": "抖音推出的一站式AI智能创作平台",
+  "url": "https://aic.oceanengine.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/5560.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 439,
+  "name": "Capsule",
+  "desc": "AI驱动的在线视频剪辑工具，个人和小团队免费",
+  "url": "https://capsule.video/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/4808.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 440,
+  "name": "快剪辑",
+  "desc": "360旗下的AI视频剪辑工具，AI成片、AI数字人、智能添加字幕、去水印等",
+  "url": "https://www.kuaijianji.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/3043.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 441,
+  "name": "度加创作工具",
+  "desc": "百度官方出品的AIGC创作平台",
+  "url": "https://aigc.baidu.com/?utm_source=ai-bot-c",
+  "detailUrl": "https://ai-bot.cn/sites/2670.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "剧本创作"
+  ]
+ },
+ {
+  "id": 442,
+  "name": "万彩微影",
+  "desc": "AI智能自动生成动画短视频",
+  "url": "https://www.animiz.cn/microvideo/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2599.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 443,
+  "name": "绘影字幕",
+  "desc": "一键智能在线自动为视频加字幕",
+  "url": "https://huiyingzimu.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/2116.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 444,
+  "name": "奇妙元",
+  "desc": "AI数字人视频生成平台，由出门问问推出",
+  "url": "https://weta365.com/conduct",
+  "detailUrl": "https://ai-bot.cn/sites/1926.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 445,
+  "name": "秒创",
+  "desc": "AIGC内容创作平台",
+  "url": "https://aigc.yizhentv.com",
+  "detailUrl": "https://ai-bot.cn/sites/1880.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 446,
+  "name": "EbSynth",
+  "desc": "AI将真人视频转化为油画风动画",
+  "url": "https://ebsynth.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1821.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 447,
+  "name": "Kaiber",
+  "desc": "图片文字转视频的AI引擎",
+  "url": "https://kaiber.ai",
+  "detailUrl": "https://ai-bot.cn/sites/1633.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 448,
+  "name": "Gencraft",
+  "desc": "AI艺术画视频生成工具",
+  "url": "https://gencraft.com",
+  "detailUrl": "https://ai-bot.cn/sites/1500.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "概念美术",
+   "视频生成"
+  ]
+ },
+ {
+  "id": 449,
+  "name": "来画",
+  "desc": "AI漫剧全网内测 创作不再受限",
+  "url": "https://www.laihua.com/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1497.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 450,
+  "name": "WonderStudio",
+  "desc": "AI自动为CG角色制作动画、打光并将其合成到真人场景中",
+  "url": "https://wonderdynamics.com",
+  "detailUrl": "https://ai-bot.cn/sites/1424.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 451,
+  "name": "Rask",
+  "desc": "AI视频本地化解决方案，支持超过130种语言",
+  "url": "https://www.rask.ai/?ref=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1243.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 452,
+  "name": "万兴播爆",
+  "desc": "AI数字人口播视频营销工具，海量素材一键套用",
+  "url": "https://virbo.wondershare.cn",
+  "detailUrl": "https://ai-bot.cn/sites/1237.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "宣发物料"
+  ]
+ },
+ {
+  "id": 453,
+  "name": "D-ID",
+  "desc": "AI真人口播视频生成工具",
+  "url": "https://www.d-id.com",
+  "detailUrl": "https://ai-bot.cn/sites/987.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 454,
+  "name": "Artflow",
+  "desc": "AI创建生成视频动画",
+  "url": "https://artflow.ai",
+  "detailUrl": "https://ai-bot.cn/sites/985.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 455,
+  "name": "Lumen5",
+  "desc": "AI将博客文章转换成视频",
+  "url": "https://lumen5.com",
+  "detailUrl": "https://ai-bot.cn/sites/786.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 456,
+  "name": "DeepBrain",
+  "desc": "AI口播视频生成工具",
+  "url": "https://www.aistudios.com",
+  "detailUrl": "https://ai-bot.cn/sites/774.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 457,
+  "name": "Synthesys",
+  "desc": "AI虚拟人出镜讲解",
+  "url": "https://synthesys.io",
+  "detailUrl": "https://ai-bot.cn/sites/399.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 458,
+  "name": "DreamFace",
+  "desc": "AI内容生成平台，一键创作AI视频、AI图像",
+  "url": "https://dreamfaceapp.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/361.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 459,
+  "name": "Fliki",
+  "desc": "AI文字转视频并配音",
+  "url": "https://fliki.ai",
+  "detailUrl": "https://ai-bot.cn/sites/256.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 460,
+  "name": "Runway",
+  "desc": "AI视频工具，绿幕抠除、视频生成、动态捕捉等功能",
+  "url": "https://runwayml.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/240.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 461,
+  "name": "BgRem",
+  "desc": "无水印AI视频背景移除",
+  "url": "https://bgrem.deelvin.com/zh/remove_video_bg/?params=start",
+  "detailUrl": "https://ai-bot.cn/sites/239.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 462,
+  "name": "AVCLabs",
+  "desc": "AI自动移除视频背景",
+  "url": "https://app.avclabs.com/#",
+  "detailUrl": "https://ai-bot.cn/sites/238.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 463,
+  "name": "Cutout.Pro",
+  "desc": "AI一键视频背景移除",
+  "url": "https://www.cutout.pro/zh-CN/remove-video-background",
+  "detailUrl": "https://ai-bot.cn/sites/237.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 464,
+  "name": "VeedVideoBackgroundRemover",
+  "desc": "Veed推出的AI视频背景移除工具",
+  "url": "https://www.veed.io/zh-CN/tools/video-background-remover",
+  "detailUrl": "https://ai-bot.cn/sites/236.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ },
+ {
+  "id": 465,
+  "name": "HourOne",
+  "desc": "人工智能文字到视频生成",
+  "url": "https://hourone.ai",
+  "detailUrl": "https://ai-bot.cn/sites/231.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 466,
+  "name": "Colossyan",
+  "desc": "AI数字人视频生成平台",
+  "url": "https://www.colossyan.com/?utm_source=ai-bot.cn",
+  "detailUrl": "https://ai-bot.cn/sites/229.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 467,
+  "name": "Elai.io",
+  "desc": "AI文本到视频生成工具",
+  "url": "https://elai.io",
+  "detailUrl": "https://ai-bot.cn/sites/226.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 468,
+  "name": "Pictory",
+  "desc": "AI视频制作工具",
+  "url": "https://pictory.ai",
+  "detailUrl": "https://ai-bot.cn/sites/225.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 469,
+  "name": "SteveAI",
+  "desc": "Animaker旗下AI在线视频制作工具",
+  "url": "https://www.steve.ai",
+  "detailUrl": "https://ai-bot.cn/sites/224.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 470,
+  "name": "Colourlab.ai",
+  "desc": "好莱坞也在用的AI视频颜色分级工具",
+  "url": "https://colourlab.ai",
+  "detailUrl": "https://ai-bot.cn/sites/166.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 471,
+  "name": "Rephrase.ai",
+  "desc": "AI文字到视频生成",
+  "url": "",
+  "detailUrl": "https://ai-bot.cn/sites/142.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 472,
+  "name": "Synthesia",
+  "desc": "AI视频生成平台",
+  "url": "https://www.synthesia.io",
+  "detailUrl": "https://ai-bot.cn/sites/125.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成"
+  ]
+ },
+ {
+  "id": 473,
+  "name": "Unscreen",
+  "desc": "AI智能视频背景移除工具",
+  "url": "https://www.unscreen.com",
+  "detailUrl": "https://ai-bot.cn/sites/40.html",
+  "category": "视频AI工具",
+  "scenes": [
+   "视频生成",
+   "后期制作"
+  ]
+ }
+]

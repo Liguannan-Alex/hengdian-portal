@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /*
+     * 横店影视 AIGC 门户 · 片场暖色主题
+     * 风格：片场感、低饱和、暖色调；禁止蓝紫渐变与高饱和背景
+     * 页面背景暖米白 / 前景暖墨近黑 / 主强调鎏金黄 / 宫墙红仅小面积点缀
+     */
+    --background: 40 30% 97%; /* 暖米白 ≈ #FAF7F2 */
+    --foreground: 24 10% 10%; /* 暖墨近黑 ≈ #1C1917 */
+
+    --card: 0 0% 100%; /* 卡片白底 */
+    --card-foreground: 24 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+
+    --primary: 40 55% 55%; /* 鎏金黄 ≈ #D4A853 */
+    --primary-foreground: 24 10% 10%; /* 深墨色文字 */
+
+    --secondary: 38 30% 93%; /* 暖米灰 */
+    --secondary-foreground: 24 10% 10%;
+
+    --muted: 38 25% 94%;
+    --muted-foreground: 26 8% 42%; /* 暖灰辅助文字 */
+
+    --accent: 40 55% 92%; /* 浅金 hover 底 */
+    --accent-foreground: 32 55% 28%; /* 深金文字 */
+
+    --destructive: 4 59% 44%; /* 宫墙红 ≈ #B03A2E，小面积点缀 */
+    --destructive-foreground: 40 30% 97%;
+
+    --border: 35 18% 87%; /* 暖灰细边框 */
+    --input: 35 18% 84%;
+    --ring: 40 55% 55%; /* 焦点鎏金 */
+
+    --radius: 0.625rem;
+
+    /* 门户自定义色板（供页面工程师直接使用：text-gold / bg-ink / text-crimson / bg-paper 等） */
+    --gold: 40 55% 55%; /* 鎏金黄，同 primary */
+    --gold-soft: 40 60% 68%; /* 浅鎏金，用于深色底上的点缀 */
+    --crimson: 4 59% 44%; /* 宫墙红 ≈ #B03A2E */
+    --ink: 24 10% 10%; /* 暖墨 ≈ #1C1917，Hero/页脚深底 */
+    --ink-soft: 25 8% 18%; /* 次深墨 */
+    --paper: 40 30% 97%; /* 暖米白，同 background */
+
+    --sidebar-background: 40 30% 97%;
+    --sidebar-foreground: 24 10% 10%;
+    --sidebar-primary: 40 55% 55%;
+    --sidebar-primary-foreground: 24 10% 10%;
+    --sidebar-accent: 40 55% 92%;
+    --sidebar-accent-foreground: 32 55% 28%;
+    --sidebar-border: 35 18% 87%;
+    --sidebar-ring: 40 55% 55%;
+  }
+
+  /* 暗色变体（本期 MVP 以亮色为主，Hero/页脚请直接用 bg-ink；此处仅保持 shadcn 变量完整） */
+  .dark {
+    --background: 24 10% 10%;
+    --foreground: 40 30% 94%;
+    --card: 25 8% 14%;
+    --card-foreground: 40 30% 94%;
+    --popover: 25 8% 14%;
+    --popover-foreground: 40 30% 94%;
+    --primary: 40 55% 55%;
+    --primary-foreground: 24 10% 10%;
+    --secondary: 25 8% 18%;
+    --secondary-foreground: 40 30% 94%;
+    --muted: 25 8% 18%;
+    --muted-foreground: 30 10% 65%;
+    --accent: 40 30% 22%;
+    --accent-foreground: 40 60% 68%;
+    --destructive: 4 59% 44%;
+    --destructive-foreground: 40 30% 97%;
+    --border: 25 8% 22%;
+    --input: 25 8% 25%;
+    --ring: 40 55% 55%;
+    --sidebar-background: 24 10% 10%;
+    --sidebar-foreground: 40 30% 94%;
+    --sidebar-primary: 40 55% 55%;
+    --sidebar-primary-foreground: 24 10% 10%;
+    --sidebar-accent: 40 30% 22%;
+    --sidebar-accent-foreground: 40 60% 68%;
+    --sidebar-border: 25 8% 22%;
+    --sidebar-ring: 40 55% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
