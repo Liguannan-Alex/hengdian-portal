@@ -96,11 +96,41 @@ module.exports = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(18px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "glow-pulse": {
+          "0%,100%": { opacity: "0.55" },
+          "50%": { opacity: "1" },
+        },
+        "beam-sway": {
+          "0%,100%": { transform: "rotate(16deg) translateX(0)" },
+          "50%": { transform: "rotate(21deg) translateX(2rem)" },
+        },
+        "gilded-shift": {
+          "0%,100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        "rec-blink": {
+          "0%,58%,100%": { opacity: "1" },
+          "62%,96%": { opacity: "0.15" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
+        marquee: "marquee 44s linear infinite",
+        "fade-up": "fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "glow-pulse": "glow-pulse 4.5s ease-in-out infinite",
+        "beam-sway": "beam-sway 14s ease-in-out infinite",
+        "gilded-shift": "gilded-shift 8s ease-in-out infinite",
+        "rec-blink": "rec-blink 2.2s steps(1) infinite",
       },
     },
   },

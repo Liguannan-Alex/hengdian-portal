@@ -231,8 +231,17 @@ export default function Tools() {
 
   return (
     <div className="min-h-[70vh]">
-      <header className="border-b border-border bg-paper">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:py-10 lg:px-6">
+      <header className="relative overflow-hidden border-b border-border bg-ink">
+        <div className="pointer-events-none absolute inset-0 stage-light" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 portal-grid opacity-40" aria-hidden="true" />
+        <div className="film-grain pointer-events-none absolute inset-0" aria-hidden="true" />
+        <span
+          className="pointer-events-none absolute -right-4 -top-10 select-none font-mono text-[7rem] font-bold leading-none text-paper/[0.04] sm:text-[9rem]"
+          aria-hidden="true"
+        >
+          TOOLS
+        </span>
+        <div className="relative mx-auto max-w-7xl px-4 py-8 sm:py-10 lg:px-6">
           <nav className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground" aria-label="面包屑">
             <Link to="/" className="hover:text-primary">首页</Link>
             <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -249,8 +258,14 @@ export default function Tools() {
 
           <div className="mt-4 flex flex-wrap items-end justify-between gap-5">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.12em] text-primary">AI TOOLS</p>
-              <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+              <p className="flex flex-wrap items-center gap-3 font-mono text-xs font-semibold tracking-[0.3em] text-gold">
+                AI TOOLS
+                <span className="hairline-gold h-px w-12" aria-hidden="true" />
+                <span className="font-normal tracking-[0.2em] text-paper/45" aria-hidden="true">
+                  INDEX&nbsp;{String(effectiveTools.length).padStart(2, '0')}
+                </span>
+              </p>
+              <h1 className="mt-2 text-3xl font-bold tracking-tight text-paper sm:text-4xl">
                 {sceneDefinition ? `${sceneDefinition.name}工具` : 'AI 工具库'}
               </h1>
               <p className="mt-3 leading-7 text-muted-foreground">
@@ -259,7 +274,11 @@ export default function Tools() {
                   : '按剧组场景、工具分类与编辑核验状态筛选。列表只提供工具官网入口，不跳转第三方聚合详情页。'}
               </p>
             </div>
-            <Button asChild variant="outline" className="bg-card">
+            <Button
+              asChild
+              variant="outline"
+              className="border-paper/20 bg-paper/[0.04] text-paper backdrop-blur hover:border-gold/40 hover:bg-gold/10 hover:text-gold-soft"
+            >
               <Link to={{ pathname: '/', hash: '#scenes' }}>
                 <ArrowLeft className="mr-1.5 h-4 w-4" aria-hidden="true" />
                 返回场景总览
@@ -272,13 +291,13 @@ export default function Tools() {
       <div className="mx-auto max-w-7xl px-4 py-8 lg:px-6">
         <div className="grid gap-8 lg:grid-cols-[15.5rem_minmax(0,1fr)]">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 rounded-xl border border-border bg-card p-4 shadow-sm">
+            <div className="glass-panel sticky top-24 rounded-2xl p-4 shadow-lg shadow-black/40">
               <ToolFilters {...filterProps} />
             </div>
           </aside>
 
           <div className="min-w-0">
-            <div className="flex gap-2">
+            <div className="glass-panel flex gap-2 rounded-2xl p-2 shadow-lg shadow-black/30">
               <div className="relative flex-1">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
                 <Input
@@ -288,7 +307,7 @@ export default function Tools() {
                     setUrlState({ q: event.target.value }, { replace: true, resetPage: true })
                   }
                   placeholder="搜索名称、简介或推荐理由…"
-                  className="h-11 bg-card pl-9 pr-10"
+                  className="h-11 border-paper/10 bg-ink-soft/70 pl-9 pr-10 focus-visible:border-gold/50"
                   aria-label="搜索 AI 工具"
                 />
                 {keyword && (
@@ -306,7 +325,7 @@ export default function Tools() {
                 ref={filterButtonRef}
                 type="button"
                 variant="outline"
-                className="h-11 gap-2 bg-card lg:hidden"
+                className="h-11 gap-2 border-paper/10 bg-ink-soft/70 hover:border-gold/40 hover:bg-gold/10 hover:text-gold-soft lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
                 aria-expanded={mobileFiltersOpen}
                 aria-controls="mobile-tool-filters"
@@ -323,7 +342,7 @@ export default function Tools() {
 
             <div ref={resultTopRef} tabIndex={-1} className="mt-5 flex scroll-mt-24 flex-wrap items-center justify-between gap-3 outline-none">
               <p className="text-sm text-muted-foreground" aria-live="polite">
-                找到 <span className="font-semibold text-foreground">{filteredTools.length}</span> 个工具
+                找到 <span className="font-mono font-semibold text-gold-soft">{filteredTools.length}</span> 个工具
                 {totalPages > 1 && ` · 第 ${currentPage}/${totalPages} 页`}
               </p>
               {hasAnyQuery && (
@@ -338,9 +357,9 @@ export default function Tools() {
                 {pageItems.map((tool) => <ToolCard key={tool.id} tool={tool} />)}
               </div>
             ) : (
-              <div className="mt-4 flex flex-col items-center rounded-xl border border-dashed border-border bg-card px-6 py-16 text-center">
-                <SearchX className="h-10 w-10 text-muted-foreground/60" aria-hidden="true" />
-                <h2 className="mt-4 text-lg font-semibold">没有找到匹配的工具</h2>
+              <div className="mt-4 flex flex-col items-center rounded-2xl border border-dashed border-paper/15 bg-ink-soft/40 px-6 py-16 text-center">
+                <SearchX className="h-10 w-10 text-gold/40" aria-hidden="true" />
+                <h2 className="mt-4 text-lg font-semibold text-paper">没有找到匹配的工具</h2>
                 <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">
                   可以减少筛选条件或换一个更短的关键词。核验中的条目也可能暂未进入当前结果。
                 </p>
@@ -373,8 +392,8 @@ export default function Tools() {
                       className={cn(
                         'h-9 min-w-9 rounded-md border px-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                         item === currentPage
-                          ? 'border-primary bg-primary text-primary-foreground'
-                          : 'border-border bg-card hover:bg-accent',
+                          ? 'border-primary bg-primary font-medium text-primary-foreground shadow-[0_0_14px_-2px_hsl(var(--gold)/0.5)]'
+                          : 'border-paper/10 bg-ink-soft/60 text-foreground/80 hover:border-gold/30 hover:bg-gold/10 hover:text-gold-soft',
                       )}
                     >
                       {item}
@@ -411,14 +430,14 @@ export default function Tools() {
           <aside
             ref={filterDrawerRef}
             id="mobile-tool-filters"
-            className="absolute inset-y-0 right-0 flex w-[min(90vw,23rem)] flex-col bg-background shadow-2xl"
+            className="absolute inset-y-0 right-0 flex w-[min(90vw,23rem)] flex-col border-l border-paper/10 bg-background shadow-2xl shadow-black/60"
             role="dialog"
             aria-modal="true"
             aria-label="筛选 AI 工具"
           >
             <div className="flex h-[4.5rem] items-center justify-between border-b border-border px-5">
-              <span className="flex items-center gap-2 font-semibold">
-                <SlidersHorizontal className="h-4 w-4 text-primary" aria-hidden="true" />
+              <span className="flex items-center gap-2 font-semibold text-paper">
+                <SlidersHorizontal className="h-4 w-4 text-gold" aria-hidden="true" />
                 筛选 AI 工具
               </span>
               <button

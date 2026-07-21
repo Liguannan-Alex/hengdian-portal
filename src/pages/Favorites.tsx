@@ -43,7 +43,7 @@ export default function Favorites() {
   } = useAuth()
 
   useEffect(() => {
-    document.title = '本机工具箱 · 横店影视 AIGC 门户'
+    document.title = '本机工具箱 · 横店影视数智服务门户'
   }, [])
 
   if (!currentUser) {
@@ -51,17 +51,18 @@ export default function Favorites() {
       <div className="mx-auto max-w-6xl px-4 py-16">
         <div className="mx-auto max-w-md space-y-4">
           <StorageNotice available={storageAvailable} notice={storageNotice} />
-          <div className="flex flex-col items-center rounded-xl border border-border bg-card px-6 py-14 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent">
+          <div className="glass-panel relative flex flex-col items-center overflow-hidden rounded-2xl px-6 py-14 text-center shadow-xl shadow-black/40">
+            <div className="film-grain pointer-events-none absolute inset-0" aria-hidden="true" />
+            <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold/25 bg-gold/10 shadow-[0_0_18px_-4px_hsl(var(--gold)/0.4)]">
               <Star className="h-7 w-7 text-gold" />
             </div>
-            <h1 className="mt-5 text-2xl font-bold">建立本机档案，开始收藏工具</h1>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <h1 className="relative mt-5 text-2xl font-bold text-paper">建立本机档案，开始收藏工具</h1>
+            <p className="relative mt-3 text-sm leading-relaxed text-muted-foreground">
               只需填写一个显示名称，无需密码或网络账号。
               <br />
               收藏默认保存在当前浏览器的本机工具箱中。
             </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <div className="relative mt-6 flex flex-wrap items-center justify-center gap-3">
               <Button onClick={requireProfile}>
                 <UserRound className="mr-1.5 h-4 w-4" />
                 建立本机档案
@@ -91,7 +92,7 @@ export default function Favorites() {
         <StorageNotice available={storageAvailable} notice={storageNotice} />
         {actionNotice && (
           <div
-            className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-primary/20 bg-accent px-4 py-3 text-sm text-accent-foreground"
+            className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-gold/25 bg-gold/10 px-4 py-3 text-sm text-gold-soft"
             role="status"
             aria-live="polite"
           >
@@ -103,9 +104,16 @@ export default function Favorites() {
         )}
       </div>
 
-      <header className="mt-5 flex flex-wrap items-end justify-between gap-3">
+      <header className="mt-6 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="flex items-center gap-2 text-3xl font-bold">
+          <p
+            className="flex items-center gap-3 font-mono text-xs font-semibold tracking-[0.3em] text-gold"
+            aria-hidden="true"
+          >
+            MY&nbsp;TOOLKIT
+            <span className="hairline-gold h-px w-12" />
+          </p>
+          <h1 className="mt-2 flex items-center gap-2 text-3xl font-bold text-paper">
             <Star className="h-7 w-7 fill-gold text-gold" />
             本机工具箱
           </h1>
@@ -123,11 +131,11 @@ export default function Favorites() {
       </header>
 
       {favoriteTools.length === 0 ? (
-        <div className="mt-10 flex flex-col items-center rounded-xl border border-dashed border-border bg-card px-6 py-16 text-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent">
+        <div className="glass-panel mt-10 flex flex-col items-center rounded-2xl border-dashed px-6 py-16 text-center">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/25 bg-gold/10 shadow-[0_0_18px_-4px_hsl(var(--gold)/0.4)]">
             <Star className="h-7 w-7 text-gold" />
           </div>
-          <h2 className="mt-5 text-xl font-semibold">本机工具箱还是空的</h2>
+          <h2 className="mt-5 text-xl font-semibold text-paper">本机工具箱还是空的</h2>
           <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
             去工具库看看，点击卡片上的星标，把适合本剧组的工具收进来。
           </p>

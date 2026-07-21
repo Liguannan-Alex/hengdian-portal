@@ -31,10 +31,10 @@ const CATEGORY_SHORT: Record<string, string> = {
 }
 
 const STATUS_STYLES: Record<VerificationStatus, string> = {
-  verified: 'border-emerald-700/25 bg-emerald-50 text-emerald-800',
-  'needs-review': 'border-amber-700/25 bg-amber-50 text-amber-800',
+  verified: 'border-emerald-400/25 bg-emerald-400/10 text-emerald-300',
+  'needs-review': 'border-amber-400/25 bg-amber-400/10 text-amber-300',
   unreviewed: 'border-border bg-muted text-muted-foreground',
-  excluded: 'border-destructive/25 bg-destructive/5 text-destructive',
+  excluded: 'border-destructive/30 bg-destructive/10 text-red-300',
 }
 
 const STATUS_ICONS = {
@@ -75,7 +75,7 @@ export function ToolCard({ tool }: ToolCardProps) {
   }
 
   return (
-    <Card className="group h-full gap-0 overflow-hidden border-border bg-card shadow-sm transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
+    <Card className="glass-panel group h-full gap-0 overflow-hidden !border-paper/[0.09] bg-transparent shadow-lg shadow-black/30 transition-all duration-300 hover:-translate-y-1 hover:glow-gold">
       <CardHeader className="gap-3 border-b border-border/75 pb-4">
         <div className="flex flex-wrap items-center gap-2 pr-8">
           <Badge
@@ -87,7 +87,10 @@ export function ToolCard({ tool }: ToolCardProps) {
             {VERIFICATION_STATUS_LABELS[tool.verificationStatus]}
           </Badge>
           {tool.featured && (
-            <Badge variant="outline" className="border-primary/20 bg-accent font-normal text-accent-foreground">
+            <Badge
+              variant="outline"
+              className="border-gold/30 bg-gold/10 font-normal text-gold-soft shadow-[0_0_10px_-2px_hsl(var(--gold)/0.35)]"
+            >
               编辑精选
             </Badge>
           )}
@@ -111,8 +114,8 @@ export function ToolCard({ tool }: ToolCardProps) {
         <p className="line-clamp-3 text-sm leading-6 text-muted-foreground">{tool.desc}</p>
 
         {tool.recommendationReason && (
-          <div className="mt-4 rounded-lg border border-primary/15 bg-accent/55 px-3 py-2.5">
-            <p className="flex items-center gap-1.5 text-xs font-semibold text-accent-foreground">
+          <div className="mt-4 rounded-lg border border-gold/[0.18] bg-gold/[0.06] px-3 py-2.5">
+            <p className="flex items-center gap-1.5 text-xs font-semibold text-gold-soft">
               <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
               推荐理由
             </p>
@@ -139,7 +142,7 @@ export function ToolCard({ tool }: ToolCardProps) {
         )}
       </CardContent>
 
-      <CardFooter className="mt-4 border-t border-border/75 bg-muted/28 pt-4">
+      <CardFooter className="mt-4 border-t border-paper/[0.07] bg-paper/[0.02] pt-4">
         {hasOfficialUrl ? (
           <Button asChild size="sm" className="w-full">
             <a href={tool.url} target="_blank" rel="noopener noreferrer">

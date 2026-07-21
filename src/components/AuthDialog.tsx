@@ -86,7 +86,12 @@ function ProfileDialogBody({ onDone }: ProfileDialogBodyProps) {
             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
             <span>{success}</span>
           </p>
-          <Button type="button" className="w-full" onClick={onDone} autoFocus>
+          <Button
+            type="button"
+            className="w-full shadow-[0_0_20px_-6px_hsl(var(--gold)/0.5)]"
+            onClick={onDone}
+            autoFocus
+          >
             完成
           </Button>
         </div>
@@ -117,7 +122,7 @@ function ProfileDialogBody({ onDone }: ProfileDialogBodyProps) {
           {error && (
             <p
               id="local-profile-name-error"
-              className="flex items-start gap-1.5 text-sm text-crimson"
+              className="flex items-start gap-1.5 text-sm text-red-300"
               role="alert"
               aria-live="assertive"
             >
@@ -126,7 +131,7 @@ function ProfileDialogBody({ onDone }: ProfileDialogBodyProps) {
             </p>
           )}
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full shadow-[0_0_20px_-6px_hsl(var(--gold)/0.5)]">
             保存本机档案
           </Button>
         </form>
@@ -138,7 +143,7 @@ function ProfileDialogBody({ onDone }: ProfileDialogBodyProps) {
 export default function AuthDialog({ open, onOpenChange }: AuthDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className="border-paper/10 shadow-2xl shadow-black/60 sm:max-w-sm">
         {open ? <ProfileDialogBody onDone={() => onOpenChange(false)} /> : null}
       </DialogContent>
     </Dialog>

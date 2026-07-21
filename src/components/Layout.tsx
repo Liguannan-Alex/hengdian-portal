@@ -237,7 +237,9 @@ export default function Layout() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
       'relative rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-soft',
-      isActive ? 'text-gold-soft' : 'text-paper/72 hover:text-paper',
+      isActive
+        ? 'text-gold-soft after:absolute after:inset-x-3 after:-bottom-px after:h-px after:bg-gold after:shadow-[0_0_8px_hsl(var(--gold)/0.8)]'
+        : 'text-paper/70 hover:text-paper',
     )
 
   return (
@@ -253,7 +255,10 @@ export default function Layout() {
         跳到主要内容
       </a>
 
-      <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 border-b border-paper/10 bg-ink text-paper shadow-[0_1px_0_rgba(255,255,255,0.04)]">
+      <header
+        ref={headerRef}
+        className="fixed inset-x-0 top-0 z-50 border-b border-paper/[0.08] bg-ink/80 text-paper shadow-[0_1px_0_hsl(var(--gold)/0.1),0_8px_32px_-12px_rgba(0,0,0,0.8)] backdrop-blur-xl"
+      >
         <div className="mx-auto grid h-[4.5rem] max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-4 lg:grid-cols-[1fr_auto_1fr] lg:px-6">
           <Link
             to="/"
@@ -278,7 +283,7 @@ export default function Layout() {
             ))}
             <Link
               to={{ pathname: '/', hash: '#scenes' }}
-              className="rounded-md px-3 py-2 text-sm font-medium text-paper/72 transition-colors hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-soft"
+              className="rounded-md px-3 py-2 text-sm font-medium text-paper/70 transition-colors hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-soft"
             >
               场景
             </Link>
@@ -289,7 +294,7 @@ export default function Layout() {
               asChild
               variant="ghost"
               size="sm"
-              className="text-paper/76 hover:bg-paper/10 hover:text-paper"
+              className="text-paper/75 hover:bg-paper/10 hover:text-paper"
             >
               <Link to="/favorites" aria-label={`我的收藏，当前 ${favorites.length} 个工具`}>
                 <Heart className="mr-1.5 h-4 w-4" aria-hidden="true" />
@@ -307,7 +312,7 @@ export default function Layout() {
               variant="ghost"
               size="sm"
               onClick={requireProfile}
-              className="max-w-40 text-paper/76 hover:bg-paper/10 hover:text-paper"
+              className="max-w-40 text-paper/75 hover:bg-paper/10 hover:text-paper"
             >
               <UserRound className="mr-1.5 h-4 w-4 shrink-0 text-gold-soft" aria-hidden="true" />
               <span className="truncate">{currentUser?.username ?? '建立本机档案'}</span>
@@ -346,7 +351,7 @@ export default function Layout() {
         <div className="fixed inset-0 z-[60] lg:hidden">
           <button
             type="button"
-            className="absolute inset-0 bg-ink/72 backdrop-blur-[2px]"
+            className="absolute inset-0 bg-ink/70 backdrop-blur-[2px]"
             onClick={() => closeMobile(true)}
             aria-label="关闭菜单"
           />
@@ -440,7 +445,7 @@ export default function Layout() {
       >
         {storageNotice && location.pathname !== '/favorites' && (
           <div
-            className="border-b border-amber-800/20 bg-amber-50 px-4 py-2.5 text-sm text-amber-950"
+            className="border-b border-amber-400/20 bg-amber-400/10 px-4 py-2.5 text-sm text-amber-200"
             role={storageAvailable ? 'status' : 'alert'}
             aria-live="polite"
           >
@@ -466,7 +471,9 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer ref={footerRef} className="border-t border-paper/10 bg-ink text-paper/68">
+      <footer ref={footerRef} className="relative border-t border-paper/10 bg-ink text-paper/70">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gold" aria-hidden="true" />
+        <div className="film-sprockets opacity-40" aria-hidden="true" />
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-[1fr_auto] lg:px-6">
           <div>
             <div className="flex items-center text-paper">

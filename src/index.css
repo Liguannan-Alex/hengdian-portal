@@ -5,88 +5,80 @@
 @layer base {
   :root {
     /*
-     * 横店影视 AIGC 门户 · 片场暖色主题
-     * 风格：片场感、低饱和、暖色调；禁止蓝紫渐变与高饱和背景
-     * 页面背景暖米白 / 前景暖墨近黑 / 主强调鎏金黄 / 宫墙红仅小面积点缀
+     * 横店影视 AIGC 门户 · 暗场影棚主题（v0.3）
+     * 风格：熄灯影棚的深暖黑作底，鎏金聚光灯作光；宫墙红仅小面积点缀。
+     * 仍然禁止蓝紫渐变与高饱和冷色背景——金色光影是横店的品牌母题。
      */
-    --background: 40 30% 97%; /* 暖米白 ≈ #FAF7F2 */
-    --foreground: 24 10% 10%; /* 暖墨近黑 ≈ #1C1917 */
+    --background: 24 18% 5%; /* 深暖黑 ≈ #100C09，影棚熄灯 */
+    --foreground: 40 25% 93%; /* 暖米白文字 */
 
-    --card: 0 0% 100%; /* 卡片白底 */
-    --card-foreground: 24 10% 10%;
+    --card: 27 15% 8%; /* 玻璃卡片深底 */
+    --card-foreground: 40 25% 93%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 24 10% 10%;
+    --popover: 27 15% 9%;
+    --popover-foreground: 40 25% 93%;
 
-    /* 主交互色采用深鎏金，确保白底链接与按钮文字达到可读对比；亮金只作装饰。 */
-    --primary: 36 62% 35%;
-    --primary-foreground: 40 30% 98%;
+    /* 主交互色 = 鎏金聚光灯；深色文字压在金底上保证按钮可读性。 */
+    --primary: 41 85% 58%;
+    --primary-foreground: 26 25% 8%;
 
-    --secondary: 38 30% 93%; /* 暖米灰 */
-    --secondary-foreground: 24 10% 10%;
+    --secondary: 26 12% 12%; /* 次级深灰底 */
+    --secondary-foreground: 40 25% 93%;
 
-    --muted: 38 25% 94%;
-    --muted-foreground: 26 8% 42%; /* 暖灰辅助文字 */
+    --muted: 26 12% 13%;
+    --muted-foreground: 35 12% 64%; /* 暖灰辅助文字 */
 
-    --accent: 40 55% 92%; /* 浅金 hover 底 */
-    --accent-foreground: 32 55% 28%; /* 深金文字 */
+    --accent: 40 45% 15%; /* 深金 hover 底 */
+    --accent-foreground: 43 80% 72%; /* 亮金文字 */
 
-    --destructive: 4 59% 44%; /* 宫墙红 ≈ #B03A2E，小面积点缀 */
+    --destructive: 4 72% 52%; /* 宫墙红，小面积点缀 */
     --destructive-foreground: 40 30% 97%;
 
-    --border: 35 18% 87%; /* 暖灰细边框 */
-    --input: 35 18% 84%;
-    --ring: 36 62% 35%;
+    --border: 32 14% 16%; /* 暖灰细边框 */
+    --input: 32 14% 20%;
+    --ring: 41 85% 58%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
-    /* 门户自定义色板（供页面工程师直接使用：text-gold / bg-ink / text-crimson / bg-paper 等） */
-    --gold: 40 55% 55%;
-    --gold-soft: 40 60% 68%; /* 浅鎏金，用于深色底上的点缀 */
-    --crimson: 4 59% 44%; /* 宫墙红 ≈ #B03A2E */
-    --ink: 24 10% 10%; /* 暖墨 ≈ #1C1917，Hero/页脚深底 */
-    --ink-soft: 25 8% 18%; /* 次深墨 */
-    --paper: 40 30% 97%; /* 暖米白，同 background */
+    /* 门户自定义色板（text-gold / bg-ink / text-crimson / text-paper 等） */
+    --gold: 41 90% 60%; /* 鎏金 ≈ #F0B429 */
+    --gold-soft: 43 80% 72%; /* 亮金，深底点缀 */
+    --crimson: 4 72% 55%; /* 宫墙红 */
+    --ink: 24 20% 4%; /* 最深黑，页头/页脚 */
+    --ink-soft: 26 14% 9%; /* 次深黑 */
+    --paper: 40 25% 93%; /* 暖米白 = 深底上的正文/反白 */
 
-    --sidebar-background: 40 30% 97%;
-    --sidebar-foreground: 24 10% 10%;
-    --sidebar-primary: 36 62% 35%;
-    --sidebar-primary-foreground: 40 30% 98%;
-    --sidebar-accent: 40 55% 92%;
-    --sidebar-accent-foreground: 32 55% 28%;
-    --sidebar-border: 35 18% 87%;
-    --sidebar-ring: 36 62% 35%;
+    --sidebar-background: 24 18% 5%;
+    --sidebar-foreground: 40 25% 93%;
+    --sidebar-primary: 41 85% 58%;
+    --sidebar-primary-foreground: 26 25% 8%;
+    --sidebar-accent: 40 45% 15%;
+    --sidebar-accent-foreground: 43 80% 72%;
+    --sidebar-border: 32 14% 16%;
+    --sidebar-ring: 41 85% 58%;
   }
 
-  /* 暗色变体（v0.2 以亮色为主，深色页头/页脚直接用 bg-ink；此处保持变量完整） */
-  .dark {
-    --background: 24 10% 10%;
-    --foreground: 40 30% 94%;
-    --card: 25 8% 14%;
-    --card-foreground: 40 30% 94%;
-    --popover: 25 8% 14%;
-    --popover-foreground: 40 30% 94%;
-    --primary: 40 55% 55%;
-    --primary-foreground: 24 10% 10%;
-    --secondary: 25 8% 18%;
-    --secondary-foreground: 40 30% 94%;
-    --muted: 25 8% 18%;
-    --muted-foreground: 30 10% 65%;
-    --accent: 40 30% 22%;
-    --accent-foreground: 40 60% 68%;
+  /* 亮色变体保留完整变量（v0.3 全站以暗场为主，此处仅作兜底） */
+  .light {
+    --background: 40 30% 97%;
+    --foreground: 24 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+    --primary: 36 62% 35%;
+    --primary-foreground: 40 30% 98%;
+    --secondary: 38 30% 93%;
+    --secondary-foreground: 24 10% 10%;
+    --muted: 38 25% 94%;
+    --muted-foreground: 26 8% 42%;
+    --accent: 40 55% 92%;
+    --accent-foreground: 32 55% 28%;
     --destructive: 4 59% 44%;
     --destructive-foreground: 40 30% 97%;
-    --border: 25 8% 22%;
-    --input: 25 8% 25%;
-    --ring: 40 55% 55%;
-    --sidebar-background: 24 10% 10%;
-    --sidebar-foreground: 40 30% 94%;
-    --sidebar-primary: 40 55% 55%;
-    --sidebar-primary-foreground: 24 10% 10%;
-    --sidebar-accent: 40 30% 22%;
-    --sidebar-accent-foreground: 40 60% 68%;
-    --sidebar-border: 25 8% 22%;
-    --sidebar-ring: 40 55% 55%;
+    --border: 35 18% 87%;
+    --input: 35 18% 84%;
+    --ring: 36 62% 35%;
   }
 }
 
@@ -97,6 +89,7 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
+    color-scheme: dark;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
@@ -106,12 +99,27 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: hsl(var(--gold) / 0.28);
-    color: hsl(var(--foreground));
+    background: hsl(var(--gold) / 0.32);
+    color: hsl(var(--paper));
   }
   :focus-visible {
     outline-color: hsl(var(--ring));
     outline-offset: 3px;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--ink));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--ink-soft));
+    border-radius: 6px;
+    border: 2px solid hsl(var(--ink));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold) / 0.35);
   }
 }
 
@@ -131,11 +139,100 @@
 }
 
 @layer utilities {
+  /* 暗场金色网格：远处的影棚地面 */
   .portal-grid {
     background-image:
-      linear-gradient(hsl(var(--border) / 0.42) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.42) 1px, transparent 1px);
+      linear-gradient(hsl(var(--gold) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--gold) / 0.06) 1px, transparent 1px);
     background-size: 2.75rem 2.75rem;
     mask-image: linear-gradient(to bottom, black, transparent 92%);
+  }
+
+  /* 顶部聚光灯：主金光 + 侧位宫墙红补光 */
+  .stage-light {
+    background:
+      radial-gradient(ellipse 75% 58% at 50% -14%, hsl(var(--gold) / 0.17), transparent 64%),
+      radial-gradient(ellipse 42% 34% at 82% -8%, hsl(var(--crimson) / 0.09), transparent 60%),
+      radial-gradient(ellipse 48% 38% at 10% -2%, hsl(var(--gold) / 0.08), transparent 55%);
+  }
+
+  /* 胶片颗粒噪点覆盖层 */
+  .film-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    opacity: 0.05;
+    mix-blend-mode: screen;
+  }
+
+  /* 斜切光束（配合 rotate/blur 使用） */
+  .light-beam {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--gold) / 0.32),
+      hsl(var(--gold) / 0.06) 55%,
+      transparent
+    );
+  }
+
+  /* 鎏金渐变文字 */
+  .text-gilded {
+    background: linear-gradient(
+      102deg,
+      #f7e8bc 0%,
+      #f0c85e 30%,
+      #dc9d2c 55%,
+      #f4da8b 80%,
+      #c07f14 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* 玻璃面板：深底 + 细亮边 + 模糊。
+     只设宽度与颜色，不用 border 简写——border-style 交给 preflight/工具类，
+     以便 border-dashed 等样式类可正常叠加。 */
+  .glass-panel {
+    background: linear-gradient(160deg, hsl(40 25% 93% / 0.05), hsl(40 25% 93% / 0.015));
+    border-width: 1px;
+    border-color: hsl(40 25% 93% / 0.09);
+    backdrop-filter: blur(14px);
+  }
+
+  /* 卡片金色辉光（hover 时叠加） */
+  .glow-gold {
+    box-shadow:
+      0 0 0 1px hsl(var(--gold) / 0.35),
+      0 8px 40px -8px hsl(var(--gold) / 0.25),
+      0 2px 12px -2px hsl(var(--gold) / 0.18);
+  }
+
+  /* 胶片齿孔行（film-strip 上下边） */
+  .film-sprockets {
+    height: 14px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0 9px,
+      hsl(var(--paper) / 0.13) 9px 21px,
+      transparent 21px 30px
+    );
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  /* 跑马灯边缘渐隐 */
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  /* 细金分割线 */
+  .hairline-gold {
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--gold) / 0.45) 30%,
+      hsl(var(--gold) / 0.45) 70%,
+      transparent
+    );
   }
 }

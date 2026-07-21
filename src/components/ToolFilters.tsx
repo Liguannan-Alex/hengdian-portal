@@ -26,14 +26,19 @@ function FilterButton({
       aria-pressed={active}
       onClick={onClick}
       className={cn(
-        'flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+        'flex w-full items-center justify-between rounded-lg border px-3 py-2 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
         active
-          ? 'bg-accent font-medium text-accent-foreground'
-          : 'text-foreground/72 hover:bg-muted hover:text-foreground',
+          ? 'border-gold/30 bg-gold/10 font-medium text-gold-soft'
+          : 'border-transparent text-foreground/70 hover:bg-paper/[0.05] hover:text-foreground',
       )}
     >
       <span>{children}</span>
-      {active && <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />}
+      {active && (
+        <span
+          className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_8px_hsl(var(--gold)/0.7)]"
+          aria-hidden="true"
+        />
+      )}
     </button>
   )
 }
@@ -70,7 +75,7 @@ export function ToolFilters({
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="font-semibold">筛选工具</h2>
+        <h2 className="font-semibold text-paper">筛选工具</h2>
         {hasActiveFilters && (
           <button
             type="button"
@@ -84,7 +89,7 @@ export function ToolFilters({
       </div>
 
       <fieldset>
-        <legend className="mb-2 px-1 text-xs font-semibold tracking-wide text-muted-foreground">工作场景</legend>
+        <legend className="mb-2 px-1 font-mono text-xs font-semibold tracking-[0.2em] text-gold/85">工作场景</legend>
         <div className="space-y-1">
           <FilterButton active={scene === ''} onClick={() => onSceneChange('')}>
             全部场景
@@ -102,7 +107,7 @@ export function ToolFilters({
       </fieldset>
 
       <fieldset>
-        <legend className="mb-2 px-1 text-xs font-semibold tracking-wide text-muted-foreground">工具分类</legend>
+        <legend className="mb-2 px-1 font-mono text-xs font-semibold tracking-[0.2em] text-gold/85">工具分类</legend>
         <div className="space-y-1">
           <FilterButton active={category === ''} onClick={() => onCategoryChange('')}>
             全部分类
@@ -116,7 +121,7 @@ export function ToolFilters({
       </fieldset>
 
       <fieldset>
-        <legend className="mb-2 px-1 text-xs font-semibold tracking-wide text-muted-foreground">核验状态</legend>
+        <legend className="mb-2 px-1 font-mono text-xs font-semibold tracking-[0.2em] text-gold/85">核验状态</legend>
         <div className="space-y-1">
           <FilterButton active={status === ''} onClick={() => onStatusChange('')}>
             全部状态
@@ -130,14 +135,14 @@ export function ToolFilters({
       </fieldset>
 
       <div>
-        <label htmlFor="tool-sort" className="mb-2 block px-1 text-xs font-semibold tracking-wide text-muted-foreground">
+        <label htmlFor="tool-sort" className="mb-2 block px-1 font-mono text-xs font-semibold tracking-[0.2em] text-gold/85">
           排序方式
         </label>
         <select
           id="tool-sort"
           value={sort}
           onChange={(event) => onSortChange(event.target.value as ToolSort)}
-          className="h-10 w-full rounded-lg border border-input bg-card px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="h-10 w-full rounded-lg border border-paper/10 bg-ink-soft/70 px-3 text-sm text-foreground transition-colors hover:border-gold/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           {SORT_OPTIONS.map((item) => (
             <option key={item.value} value={item.value}>
