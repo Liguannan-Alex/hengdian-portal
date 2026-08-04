@@ -47,6 +47,32 @@ bash scripts/smoke.sh
 
 当前 26 项全部通过。本机若开启系统代理，`curl` 需要 `--noproxy '*'`，脚本已带。
 
+## 本地常驻部署（macOS）
+
+用 launchd 注册为后台服务，开机自启，进程异常退出会自动拉起。
+
+```bash
+bash scripts/local-service.sh install    # 安装并启动
+bash scripts/local-service.sh status     # 状态与健康检查
+bash scripts/local-service.sh restart    # 改完代码用这个
+bash scripts/local-service.sh logs       # 跟踪日志
+bash scripts/local-service.sh stop       # 停止
+bash scripts/local-service.sh uninstall  # 移除服务定义，不删数据库
+```
+
+服务定义写入 `~/Library/LaunchAgents/com.hengdian.portal-server.plist`，
+日志在 `server/logs/`，数据库在 `server/data/portal.db`。
+
+注意：`scripts/smoke.sh` 会向当前运行的服务写入测试账号与测试事件。
+需要恢复干净状态时：
+
+```bash
+bash scripts/local-service.sh stop
+rm -f data/portal.db*
+DB_PATH="$PWD/data/portal.db" node --experimental-strip-types scripts/sync-tools.ts
+bash scripts/local-service.sh start
+```
+
 ## 环境变量
 
 | 变量 | 默认 | 说明 |
