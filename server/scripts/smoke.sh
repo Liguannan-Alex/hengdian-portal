@@ -76,6 +76,47 @@ check "搜索上报成功" '"ok":true' "$(post /api/events "$body")"
 check "尾斜杠可用" '"ok":true' "$(post /api/events/ "$body")"
 check "完整率接口可用" '"threshold":95' "$(c "$BASE/api/events/completeness")"
 
+echo "== 工作流 =="
+check "工作流列表可读" '"slug":"concept-still"' "$(c "$BASE/api/workflows")"
+check "工作流详情可读" '"outputKind":"image"' "$(c "$BASE/api/workflows/concept-still")"
+check "不存在的工作流返回 404" '工作流不存在' "$(c "$BASE/api/workflows/not-a-workflow")"
+check "配额可读" '"limitCredits"' "$(c "$BASE/api/workflows/quota")"
+
+body='{"params":{"style":"cinematic","aspectRatio":"16:9","count":2}}'
+check "缺必填参数被拒" '"sceneDescription"' "$(post /api/workflows/concept-still/runs "$body")"
+
+body='{"params":{"sceneDescription":"黄昏的明清宫苑外景，长廊尽头逆光。","style":"cinematic","aspectRatio":"16:9","count":99}}'
+check "越界参数被拒" '不能大于 4' "$(post /api/workflows/concept-still/runs "$body")"
+
+body='{"params":{"sceneDescription":"黄昏的明清宫苑外景，长廊尽头逆光。","style":"cinematic","aspectRatio":"16:9","count":2,"evilFlag":"x"}}'
+check "未定义参数被拒" '未定义的参数' "$(post /api/workflows/concept-still/runs "$body")"
+
+body='{"params":{"sceneDescription":"黄昏的明清宫苑外景，长廊尽头逆光。","style":"cinematic","aspectRatio":"16:9","count":2,"referenceUrl":"javascript:alert(1)"}}'
+check "非 http 参考图被拒" '只支持 http' "$(post /api/workflows/concept-still/runs "$body")"
+
+body='{"params":{"sceneDescription":"黄昏的明清宫苑外景，长廊尽头逆光，地面积水倒映屋檐。","style":"cinematic","aspectRatio":"16:9","count":2}}'
+RUN_JSON="$(post /api/workflows/concept-still/runs "$body")"
+check "提交成功" '"workflowSlug":"concept-still"' "$RUN_JSON"
+RUN_ID="$(printf '%s' "$RUN_JSON" | sed -n 's/.*"run":{"id":\([0-9]*\).*/\1/p')"
+
+# 队列是异步的，给它几秒跑完；演示算力默认 1.5 秒。
+for _ in 1 2 3 4 5 6 7 8 9 10; do
+  RUN_DETAIL="$(c "$BASE/api/workflows/runs/$RUN_ID")"
+  [[ "$RUN_DETAIL" == *'"status":"succeeded"'* ]] && break
+  [[ "$RUN_DETAIL" == *'"status":"failed"'* ]] && break
+  sleep 1
+done
+check "任务跑到成功态" '"status":"succeeded"' "$RUN_DETAIL"
+check "任务带回产出" '"kind":"image"' "$RUN_DETAIL"
+check "任务列表可读" "\"id\":$RUN_ID" "$(c "$BASE/api/workflows/runs")"
+check "已完成任务不可取消" '无法取消' "$(c -X POST "$BASE/api/workflows/runs/$RUN_ID/cancel")"
+
+body="{\"action\":\"workflow_view\",\"workflowSlug\":\"concept-still\",\"sourcePage\":\"/workflows\"}"
+check "工作流埋点上报成功" '"ok":true' "$(post /api/events "$body")"
+
+body="{\"action\":\"workflow_view\",\"sourcePage\":\"/workflows\"}"
+check "缺 workflowSlug 的埋点被拒" 'workflowSlug' "$(post /api/events "$body")"
+
 echo "== 统计权限 =="
 check "非管理员被拒" '需要管理员权限' "$(c "$BASE/api/stats/weekly")"
 
@@ -83,6 +124,7 @@ echo "== 登出 =="
 check "登出成功" '"ok":true' "$(c -X POST "$BASE/api/auth/logout")"
 check "登出后 me 为空" '"user":null' "$(c "$BASE/api/auth/me")"
 check "登出后收藏需鉴权" '未登录' "$(c "$BASE/api/favorites")"
+check "登出后任务列表需鉴权" '未登录' "$(c "$BASE/api/workflows/runs")"
 
 echo "== 管理员统计 =="
 ADMIN="${ADMIN_USERNAME:-hdadmin}"
@@ -93,6 +135,8 @@ post /api/auth/login "$body" > /dev/null
 check "周报可出数" '"registeredUsers"' "$(c "$BASE/api/stats/weekly")"
 check "周报含工具榜" '"topTools"' "$(c "$BASE/api/stats/weekly")"
 check "CSV 可导出" '工具ID' "$(c "$BASE/api/stats/weekly.csv")"
+check "周报含工作流口径" '"successRatePercent"' "$(c "$BASE/api/stats/weekly")"
+check "工作流 CSV 可导出" '消耗额度' "$(c "$BASE/api/stats/weekly-workflows.csv")"
 c -X POST "$BASE/api/auth/logout" > /dev/null
 
 rm -f "$JAR"

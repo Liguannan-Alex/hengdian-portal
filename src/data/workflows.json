@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-05",
+  "note": "工作流定义的唯一来源。前端渲染表单、后端校验参数与派单都读这一份，通过 server/scripts/sync-workflows.ts 同步进库。新增或修改必须先跑 npm run validate:workflows。",
+  "workflows": [
+    {
+      "slug": "script-outline",
+      "name": "剧本大纲扩写",
+      "sceneSlug": "scriptwriting",
+      "summary": "把一句话故事扩成分场大纲，给编剧一个可改的第一稿。",
+      "description": "输入题材、一句话故事和集数，产出带场次编号、地点、人物与冲突点的分场大纲。产出是初稿素材，不替代编剧判断，落地前需人工改写。",
+      "provider": "liblib",
+      "providerRef": "text/outline-v1",
+      "outputKind": "text",
+      "estimatedSeconds": 25,
+      "costCredits": 1,
+      "relatedToolIds": [1],
+      "inputs": [
+        {
+          "key": "logline",
+          "label": "一句话故事",
+          "type": "textarea",
+          "required": true,
+          "minLength": 10,
+          "maxLength": 500,
+          "placeholder": "例：一个横店群演在剧组失踪的第七天，替身演员发现自己开始记得他的台词。",
+          "help": "写清主角、处境和那个「不对劲」的点，产出质量主要由这一栏决定。"
+        },
+        {
+          "key": "genre",
+          "label": "题材",
+          "type": "select",
+          "required": true,
+          "default": "suspense",
+          "options": [
+            { "value": "suspense", "label": "悬疑" },
+            { "value": "costume", "label": "古装" },
+            { "value": "realism", "label": "现实题材" },
+            { "value": "comedy", "label": "喜剧" },
+            { "value": "romance", "label": "情感" }
+          ]
+        },
+        {
+          "key": "episodes",
+          "label": "集数",
+          "type": "number",
+          "required": true,
+          "default": 6,
+          "min": 1,
+          "max": 24,
+          "step": 1,
+          "help": "短剧常见 6 至 24 集；集数越多，单集篇幅越薄。"
+        },
+        {
+          "key": "withConflictNotes",
+          "label": "附冲突点批注",
+          "type": "toggle",
+          "required": false,
+          "default": true,
+          "help": "在每场后标出该场承担的冲突功能，便于后续拆稿。"
+        }
+      ]
+    },
+    {
+      "slug": "concept-still",
+      "name": "概念气氛图",
+      "sceneSlug": "concept-art",
+      "summary": "用一段场景描述出一组气氛图，快速跟导演对齐视觉方向。",
+      "description": "输入场景描述、画风与画幅，产出一组概念气氛图，用于开会对齐视觉方向。不用于最终成片素材，商用前需确认所用模型的授权条款。",
+      "provider": "liblib",
+      "providerRef": "image/concept-v1",
+      "outputKind": "image",
+      "estimatedSeconds": 45,
+      "costCredits": 2,
+      "relatedToolIds": [204, 205, 208],
+      "inputs": [
+        {
+          "key": "sceneDescription",
+          "label": "场景描述",
+          "type": "textarea",
+          "required": true,
+          "minLength": 8,
+          "maxLength": 800,
+          "placeholder": "例：黄昏的明清宫苑外景，长廊尽头逆光，地面积水倒映屋檐，画面偏冷。",
+          "help": "写清时间、地点、光线和情绪，比堆砌形容词有效。"
+        },
+        {
+          "key": "style",
+          "label": "画风",
+          "type": "select",
+          "required": true,
+          "default": "cinematic",
+          "options": [
+            { "value": "cinematic", "label": "电影感实拍" },
+            { "value": "ink", "label": "水墨写意" },
+            { "value": "matte", "label": "接景绘景" },
+            { "value": "storyboard", "label": "分镜线稿" }
+          ]
+        },
+        {
+          "key": "aspectRatio",
+          "label": "画幅",
+          "type": "select",
+          "required": true,
+          "default": "16:9",
+          "options": [
+            { "value": "16:9", "label": "16:9 横屏" },
+            { "value": "9:16", "label": "9:16 竖屏短剧" },
+            { "value": "2.39:1", "label": "2.39:1 宽银幕" },
+            { "value": "1:1", "label": "1:1 方图" }
+          ]
+        },
+        {
+          "key": "count",
+          "label": "出图张数",
+          "type": "number",
+          "required": true,
+          "default": 2,
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        {
+          "key": "referenceUrl",
+          "label": "参考图链接",
+          "type": "image_url",
+          "required": false,
+          "maxLength": 500,
+          "placeholder": "https://…（可留空）",
+          "help": "本期只接受公网可访问的图片链接，尚不支持本地上传。请勿填入含项目内容的未公开素材。"
+        }
+      ]
+    },
+    {
+      "slug": "storyboard-sheet",
+      "name": "分镜连环图",
+      "sceneSlug": "concept-art",
+      "summary": "把一场戏拆成连续分镜，标注景别与运镜。",
+      "description": "输入场次内容与镜头数，产出连续分镜图并标注景别、运镜与时长建议，用于现场沟通。分镜为参考稿，实际拍摄以导演与摄影指导的现场判断为准。",
+      "provider": "liblib",
+      "providerRef": "image/storyboard-v1",
+      "outputKind": "image",
+      "estimatedSeconds": 60,
+      "costCredits": 3,
+      "relatedToolIds": [204, 290],
+      "inputs": [
+        {
+          "key": "sceneText",
+          "label": "场次内容",
+          "type": "textarea",
+          "required": true,
+          "minLength": 20,
+          "maxLength": 1500,
+          "placeholder": "把这一场的剧本原文贴进来。",
+          "help": "贴剧本原文比写概述效果好；台词会被用于判断镜头切分。"
+        },
+        {
+          "key": "shots",
+          "label": "镜头数",
+          "type": "number",
+          "required": true,
+          "default": 6,
+          "min": 2,
+          "max": 12,
+          "step": 1
+        },
+        {
+          "key": "lensStyle",
+          "label": "运镜倾向",
+          "type": "select",
+          "required": true,
+          "default": "standard",
+          "options": [
+            { "value": "standard", "label": "常规稳定" },
+            { "value": "handheld", "label": "手持跟拍" },
+            { "value": "long-take", "label": "长镜头调度" },
+            { "value": "short-drama", "label": "竖屏短剧快切" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "shot-preview",
+      "name": "镜头预演短片",
+      "sceneSlug": "video-generation",
+      "summary": "生成几秒预演视频，低成本验证镜头创意再决定要不要实拍。",
+      "description": "输入镜头描述与时长，产出预演短片，用于开机前验证调度与镜头感。产出为预演素材，分辨率与稳定性不足以直接进成片。",
+      "provider": "liblib",
+      "providerRef": "video/preview-v1",
+      "outputKind": "video",
+      "estimatedSeconds": 180,
+      "costCredits": 8,
+      "relatedToolIds": [377, 401, 460, 390],
+      "inputs": [
+        {
+          "key": "shotDescription",
+          "label": "镜头描述",
+          "type": "textarea",
+          "required": true,
+          "minLength": 10,
+          "maxLength": 600,
+          "placeholder": "例：镜头从主角背后缓慢推近，越过肩膀看见远处灯笼逐盏亮起。",
+          "help": "一次只描述一个镜头。多镜头请分多次提交，便于逐条比对。"
+        },
+        {
+          "key": "duration",
+          "label": "时长（秒）",
+          "type": "number",
+          "required": true,
+          "default": 5,
+          "min": 3,
+          "max": 10,
+          "step": 1
+        },
+        {
+          "key": "aspectRatio",
+          "label": "画幅",
+          "type": "select",
+          "required": true,
+          "default": "16:9",
+          "options": [
+            { "value": "16:9", "label": "16:9 横屏" },
+            { "value": "9:16", "label": "9:16 竖屏短剧" }
+          ]
+        },
+        {
+          "key": "firstFrameUrl",
+          "label": "首帧图链接",
+          "type": "image_url",
+          "required": false,
+          "maxLength": 500,
+          "placeholder": "https://…（可留空）",
+          "help": "填入概念气氛图的产出链接可让预演延续同一视觉方向。"
+        }
+      ]
+    },
+    {
+      "slug": "poster-set",
+      "name": "宣发海报三件套",
+      "sceneSlug": "promotion",
+      "summary": "一次出横版、竖版与方图，直接投放到不同渠道。",
+      "description": "输入片名、卖点与风格，产出横版、竖版与方图三种规格的海报底图，供宣发二次排版。片名与字体排印需设计二次处理，产出不含最终字体授权。",
+      "provider": "liblib",
+      "providerRef": "image/poster-v1",
+      "outputKind": "image",
+      "estimatedSeconds": 50,
+      "costCredits": 3,
+      "relatedToolIds": [204, 208],
+      "inputs": [
+        {
+          "key": "title",
+          "label": "片名",
+          "type": "text",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 40
+        },
+        {
+          "key": "sellingPoint",
+          "label": "核心卖点",
+          "type": "textarea",
+          "required": true,
+          "minLength": 6,
+          "maxLength": 300,
+          "placeholder": "例：横店实景拍摄的悬疑短剧，主打替身与真身的身份互换。"
+        },
+        {
+          "key": "tone",
+          "label": "调性",
+          "type": "select",
+          "required": true,
+          "default": "suspense",
+          "options": [
+            { "value": "suspense", "label": "悬疑冷色" },
+            { "value": "epic", "label": "史诗厚重" },
+            { "value": "warm", "label": "温情暖色" },
+            { "value": "youth", "label": "青春明快" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "subtitle-polish",
+      "name": "字幕校对与压缩",
+      "sceneSlug": "post-production",
+      "summary": "把口语转写稿改成能上屏的字幕，控制每行字数。",
+      "description": "输入转写稿与每行字数上限，产出断句规范、去除口头语的字幕文本。仅处理文本，不做时间轴对齐，导入剪辑软件后仍需校时。",
+      "provider": "liblib",
+      "providerRef": "text/subtitle-v1",
+      "outputKind": "text",
+      "estimatedSeconds": 20,
+      "costCredits": 1,
+      "relatedToolIds": [],
+      "inputs": [
+        {
+          "key": "transcript",
+          "label": "转写稿",
+          "type": "textarea",
+          "required": true,
+          "minLength": 20,
+          "maxLength": 4000,
+          "placeholder": "把语音转写的原始文本贴进来。",
+          "help": "请勿贴入未公开的项目内容或涉及个人隐私的录音转写。"
+        },
+        {
+          "key": "maxCharsPerLine",
+          "label": "每行字数上限",
+          "type": "number",
+          "required": true,
+          "default": 16,
+          "min": 8,
+          "max": 30,
+          "step": 1,
+          "help": "横屏常用 16 至 20 字，竖屏短剧建议 12 至 14 字。"
+        },
+        {
+          "key": "removeFillers",
+          "label": "去除口头语",
+          "type": "toggle",
+          "required": false,
+          "default": true,
+          "help": "去掉「嗯」「那个」「就是说」这类填充词。"
+        }
+      ]
+    }
+  ]
+}

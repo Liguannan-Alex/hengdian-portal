@@ -1,9 +1,9 @@
 {
   "name": "hengdian-portal-server",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
-  "description": "横店影视 AIGC 门户后端：身份、收藏同步、工具点击埋点与运营统计",
+  "description": "横店影视 AIGC 门户后端：身份、收藏同步、埋点与运营统计、AI 工作流编排层",
   "engines": {
     "node": ">=22.5.0"
   },
@@ -11,8 +11,9 @@
     "dev": "node --watch --experimental-strip-types src/index.ts",
     "start": "node --experimental-strip-types src/index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test src/**/*.test.ts",
-    "seed:tools": "node --experimental-strip-types scripts/sync-tools.ts"
+    "test": "NODE_ENV=test node --experimental-strip-types --test src/**/*.test.ts",
+    "seed:tools": "node --experimental-strip-types scripts/sync-tools.ts",
+    "seed:workflows": "node --experimental-strip-types scripts/sync-workflows.ts"
   },
   "dependencies": {
     "hono": "^4.10.3",

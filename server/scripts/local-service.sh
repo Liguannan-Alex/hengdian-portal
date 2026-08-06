@@ -18,6 +18,27 @@ LOG_DIR="$SERVER_DIR/logs"
 NODE_BIN="$(command -v node)"
 PORT="${PORT:-8787}"
 
+# launchd 不读 .env，所以这里把 .env 的值读进来再写进 plist。
+# 早先 plist 把 ALLOWED_ORIGINS 写死，与 .env 各说各话，本地联调时前端拿不到
+# CORS 响应头却看不出原因；改为以 .env 为准，缺省值兜底。
+env_value() {
+  local key="$1" fallback="$2" file="$SERVER_DIR/.env"
+  if [[ -f "$file" ]]; then
+    local line
+    line="$(grep -E "^${key}=" "$file" | tail -1)"
+    if [[ -n "$line" ]]; then
+      printf '%s' "${line#*=}"
+      return
+    fi
+  fi
+  printf '%s' "$fallback"
+}
+
+# vite.config.ts 把开发服务器固定在 3000，预览在 4173。
+ALLOWED_ORIGINS_VALUE="$(env_value ALLOWED_ORIGINS 'http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://localhost:4173')"
+ADMIN_USERNAMES_VALUE="$(env_value ADMIN_USERNAMES 'hdadmin')"
+WORKFLOW_ALLOW_MOCK_VALUE="$(env_value WORKFLOW_ALLOW_MOCK 'true')"
+
 info() { printf '  %s\n' "$1"; }
 
 write_plist() {
@@ -40,8 +61,9 @@ write_plist() {
     <key>PORT</key><string>$PORT</string>
     <key>DB_PATH</key><string>$SERVER_DIR/data/portal.db</string>
     <key>COOKIE_SECURE</key><string>false</string>
-    <key>ALLOWED_ORIGINS</key><string>http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173</string>
-    <key>ADMIN_USERNAMES</key><string>hdadmin</string>
+    <key>ALLOWED_ORIGINS</key><string>$ALLOWED_ORIGINS_VALUE</string>
+    <key>ADMIN_USERNAMES</key><string>$ADMIN_USERNAMES_VALUE</string>
+    <key>WORKFLOW_ALLOW_MOCK</key><string>$WORKFLOW_ALLOW_MOCK_VALUE</string>
     <key>NODE_ENV</key><string>production</string>
   </dict>
   <key>RunAtLoad</key><true/>
@@ -81,6 +103,8 @@ case "${1:-status}" in
     info "已停止"
     ;;
   restart)
+    # 重写 plist：改了 .env 却只重启进程，配置不会生效，排查起来很费时间。
+    write_plist
     launchctl unload "$PLIST" 2>/dev/null
     sleep 1
     launchctl load "$PLIST" 2>/dev/null

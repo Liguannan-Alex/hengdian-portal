@@ -114,6 +114,47 @@ statsRoutes.get('/weekly', (c) => {
 
   const activeRatio = totalUsers === 0 ? null : Number(((everActiveUsers / totalUsers) * 100).toFixed(2))
 
+  // 工作流口径：从「点了哪个工具」升级到「在门户里跑出了什么」，是本期新增的证据。
+  const runStatusRows = db
+    .prepare(
+      `SELECT status, COUNT(*) AS n FROM workflow_runs WHERE created_at >= ? AND created_at < ?
+       GROUP BY status ORDER BY n DESC`,
+    )
+    .all(since, until) as { status: string; n: number }[]
+
+  const topWorkflows = db
+    .prepare(
+      `SELECT workflow_slug, COALESCE(MAX(workflow_name), workflow_slug) AS workflow_name,
+              COUNT(*) AS runs, COUNT(DISTINCT user_id) AS users,
+              SUM(CASE WHEN status = 'succeeded' THEN 1 ELSE 0 END) AS succeeded,
+              SUM(cost_credits) AS credits
+       FROM workflow_runs WHERE created_at >= ? AND created_at < ?
+       GROUP BY workflow_slug ORDER BY runs DESC LIMIT 20`,
+    )
+    .all(since, until) as {
+    workflow_slug: string
+    workflow_name: string
+    runs: number
+    users: number
+    succeeded: number
+    credits: number
+  }[]
+
+  const runUsers = (
+    db
+      .prepare(
+        'SELECT COUNT(DISTINCT user_id) AS n FROM workflow_runs WHERE created_at >= ? AND created_at < ?',
+      )
+      .get(since, until) as { n: number }
+  ).n
+
+  const totalRuns = runStatusRows.reduce((sum, row) => sum + row.n, 0)
+  const succeededRuns = runStatusRows.find((row) => row.status === 'succeeded')?.n ?? 0
+  // 成功率分母排除用户主动取消：取消是用户决定，不是系统失败。
+  const canceledRuns = runStatusRows.find((row) => row.status === 'canceled')?.n ?? 0
+  const judgedRuns = totalRuns - canceledRuns
+  const successRate = judgedRuns === 0 ? null : Number(((succeededRuns / judgedRuns) * 100).toFixed(2))
+
   return c.json({
     ok: true,
     range: { since, until },
@@ -143,6 +184,59 @@ statsRoutes.get('/weekly', (c) => {
     })),
     topKeywords,
     daily: dailyRows,
+    workflows: {
+      totalRuns,
+      runUsers,
+      succeededRuns,
+      canceledRuns,
+      successRatePercent: successRate,
+      creditsSpent: topWorkflows.reduce((sum, row) => sum + Number(row.credits ?? 0), 0),
+      byStatus: runStatusRows,
+      top: topWorkflows,
+    },
+  })
+})
+
+/** 工作流运行榜导出，与工具点击榜分开，两张表在汇报里回答不同的问题。 */
+statsRoutes.get('/weekly-workflows.csv', (c) => {
+  const until = c.req.query('until') ?? new Date().toISOString()
+  const since = c.req.query('since') ?? new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString()
+
+  const rows = getDb()
+    .prepare(
+      `SELECT workflow_slug, COALESCE(MAX(workflow_name), workflow_slug) AS workflow_name,
+              COUNT(*) AS runs, COUNT(DISTINCT user_id) AS users,
+              SUM(CASE WHEN status = 'succeeded' THEN 1 ELSE 0 END) AS succeeded,
+              SUM(CASE WHEN status = 'failed' THEN 1 ELSE 0 END) AS failed,
+              SUM(cost_credits) AS credits
+       FROM workflow_runs WHERE created_at >= ? AND created_at < ?
+       GROUP BY workflow_slug ORDER BY runs DESC`,
+    )
+    .all(since, until) as {
+    workflow_slug: string
+    workflow_name: string
+    runs: number
+    users: number
+    succeeded: number
+    failed: number
+    credits: number
+  }[]
+
+  const escape = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`
+  const lines = [
+    ['工作流', '名称', '运行次数', '去重用户数', '成功', '失败', '消耗额度'].map(escape).join(','),
+    ...rows.map((r) =>
+      [r.workflow_slug, r.workflow_name, r.runs, r.users, r.succeeded, r.failed, r.credits]
+        .map(escape)
+        .join(','),
+    ),
+  ]
+
+  return new Response('﻿' + lines.join('\r\n'), {
+    headers: {
+      'content-type': 'text/csv; charset=utf-8',
+      'content-disposition': `attachment; filename="portal-workflows-${since.slice(0, 10)}.csv"`,
+    },
   })
 })
 

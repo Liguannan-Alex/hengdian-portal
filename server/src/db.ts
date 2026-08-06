@@ -17,9 +17,30 @@ import { dirname, resolve } from 'node:path'
 export const IDENTITIES = ['opc', 'crew', 'director', 'individual'] as const
 export type Identity = (typeof IDENTITIES)[number]
 
-/** 埋点动作类型。scene 与 source_page 用于周报交叉表。 */
-export const EVENT_ACTIONS = ['tool_click', 'tool_view', 'search', 'favorite_add', 'favorite_remove'] as const
+/**
+ * 埋点动作类型。scene 与 source_page 用于周报交叉表。
+ *
+ * `workflow_*` 是 v0.2 工作流编排层引入的。PRD 门禁是「无埋点不上线」，
+ * 因此新功能与工具点击同表同口径，而不是另起一套统计。
+ */
+export const EVENT_ACTIONS = [
+  'tool_click',
+  'tool_view',
+  'search',
+  'favorite_add',
+  'favorite_remove',
+  'workflow_view',
+  'workflow_submit',
+  'workflow_finish',
+] as const
 export type EventAction = (typeof EVENT_ACTIONS)[number]
+
+/** 工作流任务状态机：queued → running → succeeded / failed / canceled。 */
+export const RUN_STATUSES = ['queued', 'running', 'succeeded', 'failed', 'canceled'] as const
+export type RunStatus = (typeof RUN_STATUSES)[number]
+
+/** 已进入终态的任务不再被队列拾取，也不能再被取消。 */
+export const TERMINAL_RUN_STATUSES: readonly RunStatus[] = ['succeeded', 'failed', 'canceled']
 
 const DEFAULT_DB_PATH = 'data/portal.db'
 
@@ -113,7 +134,62 @@ function migrate(db: DatabaseSync): void {
       url      TEXT,
       scenes   TEXT
     );
+
+    CREATE TABLE IF NOT EXISTS workflows (
+      slug              TEXT    PRIMARY KEY,
+      name              TEXT    NOT NULL,
+      scene_slug        TEXT    NOT NULL,
+      provider          TEXT    NOT NULL,
+      provider_ref      TEXT    NOT NULL,
+      output_kind       TEXT    NOT NULL,
+      cost_credits      INTEGER NOT NULL,
+      estimated_seconds INTEGER NOT NULL,
+      definition        TEXT    NOT NULL,
+      synced_at         TEXT    NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS workflow_runs (
+      id              INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id         INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      workflow_slug   TEXT    NOT NULL,
+      workflow_name   TEXT    NOT NULL,
+      provider        TEXT    NOT NULL,
+      provider_ref    TEXT    NOT NULL,
+      output_kind     TEXT    NOT NULL,
+      cost_credits    INTEGER NOT NULL,
+      status          TEXT    NOT NULL,
+      params_json     TEXT    NOT NULL,
+      provider_job_id TEXT,
+      outputs_json    TEXT,
+      error           TEXT,
+      created_at      TEXT    NOT NULL,
+      started_at      TEXT,
+      finished_at     TEXT,
+      /** 队列心跳。进程重启后据此把僵死的 running 任务放回队列。 */
+      heartbeat_at    TEXT,
+      attempts        INTEGER NOT NULL DEFAULT 0,
+      client_hash     TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_runs_user ON workflow_runs(user_id, created_at);
+    CREATE INDEX IF NOT EXISTS idx_runs_status ON workflow_runs(status);
+    CREATE INDEX IF NOT EXISTS idx_runs_workflow ON workflow_runs(workflow_slug);
+    CREATE INDEX IF NOT EXISTS idx_runs_created ON workflow_runs(created_at);
   `)
+
+  addColumnIfMissing(db, 'tool_events', 'workflow_slug', 'TEXT')
+  db.exec('CREATE INDEX IF NOT EXISTS idx_events_workflow ON tool_events(workflow_slug)')
+}
+
+/**
+ * 幂等加列。
+ *
+ * SQLite 没有 `ADD COLUMN IF NOT EXISTS`，而已部署的库里 tool_events 已有数据，
+ * 不能靠重建表迁移。先查 pragma 再决定是否加列。
+ */
+function addColumnIfMissing(db: DatabaseSync, table: string, column: string, type: string): void {
+  const columns = db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[]
+  if (columns.some((c) => c.name === column)) return
+  db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${type}`)
 }
 
 export function nowIso(): string {

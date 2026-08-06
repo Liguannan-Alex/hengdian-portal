@@ -25,7 +25,14 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       # 用 vite.config.build.ts：不引入仅 Kimi IDE 本地调试用的 inspect 插件
+      #
+      # VITE_DEMO_MODE=true：GitHub Pages 是静态托管，跑不了后端，而工作流需要后端。
+      # 打开演示模式后，工作流的表单、校验、排队、额度与结果页仍按真实逻辑运行，
+      # 只有生成那一步由浏览器本地模拟，页面顶部常驻醒目提示。
+      # 将来后端有了公网落点，把这里换成 VITE_PORTAL_API=https://<后端地址> 即可。
       - run: npx vite build --config vite.config.build.ts
+        env:
+          VITE_DEMO_MODE: 'true'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

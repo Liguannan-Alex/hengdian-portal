@@ -19,6 +19,8 @@ export interface EventInput {
   action: EventAction
   toolId: number | null
   toolName: string | null
+  /** 工作流事件的主键。工具事件为 null。 */
+  workflowSlug: string | null
   scene: string | null
   sourcePage: string
   keyword: string | null
@@ -32,14 +34,18 @@ const REQUIRED_BY_ACTION: Record<EventAction, (keyof EventInput)[]> = {
   search: ['keyword', 'sourcePage'],
   favorite_add: ['toolId', 'sourcePage'],
   favorite_remove: ['toolId', 'sourcePage'],
+  workflow_view: ['workflowSlug', 'sourcePage'],
+  workflow_submit: ['workflowSlug', 'sourcePage'],
+  // keyword 存终态（succeeded / failed / canceled），周报据此算成功率。
+  workflow_finish: ['workflowSlug', 'sourcePage', 'keyword'],
 }
 
 export function recordEvent(input: EventInput): void {
   getDb()
     .prepare(
       `INSERT INTO tool_events
-         (user_id, identity, action, tool_id, tool_name, scene, source_page, keyword, occurred_at, client_hash)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         (user_id, identity, action, tool_id, tool_name, workflow_slug, scene, source_page, keyword, occurred_at, client_hash)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
     .run(
       input.userId,
@@ -47,6 +53,7 @@ export function recordEvent(input: EventInput): void {
       input.action,
       input.toolId,
       input.toolName,
+      input.workflowSlug,
       input.scene,
       input.sourcePage,
       input.keyword,
@@ -63,6 +70,7 @@ interface EventBody {
   action?: unknown
   toolId?: unknown
   toolName?: unknown
+  workflowSlug?: unknown
   scene?: unknown
   sourcePage?: unknown
   keyword?: unknown
@@ -82,6 +90,10 @@ eventRoutes.post('/', async (c) => {
     action: body.action,
     toolId: typeof body.toolId === 'number' && Number.isInteger(body.toolId) ? body.toolId : null,
     toolName: typeof body.toolName === 'string' && body.toolName.trim() ? body.toolName.trim().slice(0, 120) : null,
+    workflowSlug:
+      typeof body.workflowSlug === 'string' && body.workflowSlug.trim()
+        ? body.workflowSlug.trim().slice(0, 60)
+        : null,
     scene: typeof body.scene === 'string' && body.scene.trim() ? body.scene.trim().slice(0, 60) : null,
     sourcePage: typeof body.sourcePage === 'string' && body.sourcePage.trim() ? body.sourcePage.trim().slice(0, 200) : '',
     keyword: typeof body.keyword === 'string' && body.keyword.trim() ? body.keyword.trim().slice(0, 120) : null,
@@ -123,6 +135,11 @@ eventRoutes.get('/completeness', (c) => {
              (action IN ('tool_click') AND tool_id IS NOT NULL AND tool_name IS NOT NULL AND tool_name <> '')
              OR (action IN ('tool_view','favorite_add','favorite_remove') AND tool_id IS NOT NULL)
              OR (action = 'search' AND keyword IS NOT NULL AND keyword <> '')
+             OR (action IN ('workflow_view','workflow_submit')
+                 AND workflow_slug IS NOT NULL AND workflow_slug <> '')
+             OR (action = 'workflow_finish'
+                 AND workflow_slug IS NOT NULL AND workflow_slug <> ''
+                 AND keyword IS NOT NULL AND keyword <> '')
            )`,
       )
       .get(since) as { n: number }

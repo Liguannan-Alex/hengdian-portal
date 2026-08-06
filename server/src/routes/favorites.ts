@@ -79,6 +79,7 @@ favoriteRoutes.put('/:toolId', (c) => {
     action: favorited ? 'favorite_add' : 'favorite_remove',
     toolId,
     toolName: tool?.name ?? null,
+    workflowSlug: null,
     scene: null,
     sourcePage: c.req.header('referer')?.slice(0, 200) ?? 'unknown',
     keyword: null,

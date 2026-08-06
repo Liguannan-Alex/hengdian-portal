@@ -1,14 +1,16 @@
 {
   "name": "hengdian-aigc-portal",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite --configLoader runner",
     "build": "npm run typecheck && vite build --configLoader runner",
     "lint": "eslint .",
     "preview": "vite preview --configLoader runner",
-    "validate:data": "node scripts/validate-tools.mjs",
+    "validate:data": "npm run validate:tools && npm run validate:workflows",
+    "validate:tools": "node scripts/validate-tools.mjs",
+    "validate:workflows": "node scripts/validate-workflows.mjs",
     "typecheck": "tsc -p tsconfig.app.json --noEmit --incremental false && tsc -p tsconfig.node.json --noEmit --incremental false",
     "test": "node --test scripts/*.test.mjs"
   },
