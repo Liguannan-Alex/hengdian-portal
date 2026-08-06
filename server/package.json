@@ -1,9 +1,9 @@
 {
   "name": "hengdian-portal-server",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
-  "description": "横店影视 AIGC 门户后端：身份、收藏同步、埋点与运营统计、AI 工作流编排层",
+  "description": "横店影视 AIGC 门户后端：身份、收藏同步、埋点与运营统计、AI 工作流编排层、画布",
   "engines": {
     "node": ">=22.5.0"
   },

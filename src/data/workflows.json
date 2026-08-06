@@ -1,12 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-05",
-  "note": "工作流定义的唯一来源。前端渲染表单、后端校验参数与派单都读这一份，通过 server/scripts/sync-workflows.ts 同步进库。新增或修改必须先跑 npm run validate:workflows。",
+  "updatedAt": "2026-08-06",
+  "note": "工作流定义的唯一来源。前端渲染表单、后端校验参数与派单都读这一份，通过 server/scripts/sync-workflows.ts 同步进库。surface=library 的在「AI 工作流」列表里露出；surface=canvas 的是画布上的操作，不进列表，参数中标了 supplied=canvas 的字段由画布按当前选区与选中图自动填入，界面不渲染。新增或修改必须先跑 npm run validate:workflows。",
   "workflows": [
     {
       "slug": "script-outline",
       "name": "剧本大纲扩写",
       "sceneSlug": "scriptwriting",
+      "surface": "library",
       "summary": "把一句话故事扩成分场大纲，给编剧一个可改的第一稿。",
       "description": "输入题材、一句话故事和集数，产出带场次编号、地点、人物与冲突点的分场大纲。产出是初稿素材，不替代编剧判断，落地前需人工改写。",
       "provider": "liblib",
@@ -14,7 +15,9 @@
       "outputKind": "text",
       "estimatedSeconds": 25,
       "costCredits": 1,
-      "relatedToolIds": [1],
+      "relatedToolIds": [
+        1
+      ],
       "inputs": [
         {
           "key": "logline",
@@ -33,11 +36,26 @@
           "required": true,
           "default": "suspense",
           "options": [
-            { "value": "suspense", "label": "悬疑" },
-            { "value": "costume", "label": "古装" },
-            { "value": "realism", "label": "现实题材" },
-            { "value": "comedy", "label": "喜剧" },
-            { "value": "romance", "label": "情感" }
+            {
+              "value": "suspense",
+              "label": "悬疑"
+            },
+            {
+              "value": "costume",
+              "label": "古装"
+            },
+            {
+              "value": "realism",
+              "label": "现实题材"
+            },
+            {
+              "value": "comedy",
+              "label": "喜剧"
+            },
+            {
+              "value": "romance",
+              "label": "情感"
+            }
           ]
         },
         {
@@ -65,6 +83,7 @@
       "slug": "concept-still",
       "name": "概念气氛图",
       "sceneSlug": "concept-art",
+      "surface": "library",
       "summary": "用一段场景描述出一组气氛图，快速跟导演对齐视觉方向。",
       "description": "输入场景描述、画风与画幅，产出一组概念气氛图，用于开会对齐视觉方向。不用于最终成片素材，商用前需确认所用模型的授权条款。",
       "provider": "liblib",
@@ -72,7 +91,11 @@
       "outputKind": "image",
       "estimatedSeconds": 45,
       "costCredits": 2,
-      "relatedToolIds": [204, 205, 208],
+      "relatedToolIds": [
+        204,
+        205,
+        208
+      ],
       "inputs": [
         {
           "key": "sceneDescription",
@@ -91,10 +114,22 @@
           "required": true,
           "default": "cinematic",
           "options": [
-            { "value": "cinematic", "label": "电影感实拍" },
-            { "value": "ink", "label": "水墨写意" },
-            { "value": "matte", "label": "接景绘景" },
-            { "value": "storyboard", "label": "分镜线稿" }
+            {
+              "value": "cinematic",
+              "label": "电影感实拍"
+            },
+            {
+              "value": "ink",
+              "label": "水墨写意"
+            },
+            {
+              "value": "matte",
+              "label": "接景绘景"
+            },
+            {
+              "value": "storyboard",
+              "label": "分镜线稿"
+            }
           ]
         },
         {
@@ -104,10 +139,22 @@
           "required": true,
           "default": "16:9",
           "options": [
-            { "value": "16:9", "label": "16:9 横屏" },
-            { "value": "9:16", "label": "9:16 竖屏短剧" },
-            { "value": "2.39:1", "label": "2.39:1 宽银幕" },
-            { "value": "1:1", "label": "1:1 方图" }
+            {
+              "value": "16:9",
+              "label": "16:9 横屏"
+            },
+            {
+              "value": "9:16",
+              "label": "9:16 竖屏短剧"
+            },
+            {
+              "value": "2.39:1",
+              "label": "2.39:1 宽银幕"
+            },
+            {
+              "value": "1:1",
+              "label": "1:1 方图"
+            }
           ]
         },
         {
@@ -135,6 +182,7 @@
       "slug": "storyboard-sheet",
       "name": "分镜连环图",
       "sceneSlug": "concept-art",
+      "surface": "library",
       "summary": "把一场戏拆成连续分镜，标注景别与运镜。",
       "description": "输入场次内容与镜头数，产出连续分镜图并标注景别、运镜与时长建议，用于现场沟通。分镜为参考稿，实际拍摄以导演与摄影指导的现场判断为准。",
       "provider": "liblib",
@@ -142,7 +190,10 @@
       "outputKind": "image",
       "estimatedSeconds": 60,
       "costCredits": 3,
-      "relatedToolIds": [204, 290],
+      "relatedToolIds": [
+        204,
+        290
+      ],
       "inputs": [
         {
           "key": "sceneText",
@@ -171,10 +222,22 @@
           "required": true,
           "default": "standard",
           "options": [
-            { "value": "standard", "label": "常规稳定" },
-            { "value": "handheld", "label": "手持跟拍" },
-            { "value": "long-take", "label": "长镜头调度" },
-            { "value": "short-drama", "label": "竖屏短剧快切" }
+            {
+              "value": "standard",
+              "label": "常规稳定"
+            },
+            {
+              "value": "handheld",
+              "label": "手持跟拍"
+            },
+            {
+              "value": "long-take",
+              "label": "长镜头调度"
+            },
+            {
+              "value": "short-drama",
+              "label": "竖屏短剧快切"
+            }
           ]
         }
       ]
@@ -183,6 +246,7 @@
       "slug": "shot-preview",
       "name": "镜头预演短片",
       "sceneSlug": "video-generation",
+      "surface": "library",
       "summary": "生成几秒预演视频，低成本验证镜头创意再决定要不要实拍。",
       "description": "输入镜头描述与时长，产出预演短片，用于开机前验证调度与镜头感。产出为预演素材，分辨率与稳定性不足以直接进成片。",
       "provider": "liblib",
@@ -190,7 +254,12 @@
       "outputKind": "video",
       "estimatedSeconds": 180,
       "costCredits": 8,
-      "relatedToolIds": [377, 401, 460, 390],
+      "relatedToolIds": [
+        377,
+        401,
+        460,
+        390
+      ],
       "inputs": [
         {
           "key": "shotDescription",
@@ -219,8 +288,14 @@
           "required": true,
           "default": "16:9",
           "options": [
-            { "value": "16:9", "label": "16:9 横屏" },
-            { "value": "9:16", "label": "9:16 竖屏短剧" }
+            {
+              "value": "16:9",
+              "label": "16:9 横屏"
+            },
+            {
+              "value": "9:16",
+              "label": "9:16 竖屏短剧"
+            }
           ]
         },
         {
@@ -238,6 +313,7 @@
       "slug": "poster-set",
       "name": "宣发海报三件套",
       "sceneSlug": "promotion",
+      "surface": "library",
       "summary": "一次出横版、竖版与方图，直接投放到不同渠道。",
       "description": "输入片名、卖点与风格，产出横版、竖版与方图三种规格的海报底图，供宣发二次排版。片名与字体排印需设计二次处理，产出不含最终字体授权。",
       "provider": "liblib",
@@ -245,7 +321,10 @@
       "outputKind": "image",
       "estimatedSeconds": 50,
       "costCredits": 3,
-      "relatedToolIds": [204, 208],
+      "relatedToolIds": [
+        204,
+        208
+      ],
       "inputs": [
         {
           "key": "title",
@@ -271,10 +350,22 @@
           "required": true,
           "default": "suspense",
           "options": [
-            { "value": "suspense", "label": "悬疑冷色" },
-            { "value": "epic", "label": "史诗厚重" },
-            { "value": "warm", "label": "温情暖色" },
-            { "value": "youth", "label": "青春明快" }
+            {
+              "value": "suspense",
+              "label": "悬疑冷色"
+            },
+            {
+              "value": "epic",
+              "label": "史诗厚重"
+            },
+            {
+              "value": "warm",
+              "label": "温情暖色"
+            },
+            {
+              "value": "youth",
+              "label": "青春明快"
+            }
           ]
         }
       ]
@@ -283,6 +374,7 @@
       "slug": "subtitle-polish",
       "name": "字幕校对与压缩",
       "sceneSlug": "post-production",
+      "surface": "library",
       "summary": "把口语转写稿改成能上屏的字幕，控制每行字数。",
       "description": "输入转写稿与每行字数上限，产出断句规范、去除口头语的字幕文本。仅处理文本，不做时间轴对齐，导入剪辑软件后仍需校时。",
       "provider": "liblib",
@@ -320,6 +412,221 @@
           "required": false,
           "default": true,
           "help": "去掉「嗯」「那个」「就是说」这类填充词。"
+        }
+      ]
+    },
+    {
+      "slug": "canvas-inpaint",
+      "name": "局部重绘",
+      "sceneSlug": "concept-art",
+      "surface": "canvas",
+      "summary": "框出画面里要改的那块，只重画这一块，其余保持不动。",
+      "description": "在画布上框选区域并描述想要的内容，只重绘选中范围。用于改天空、换服装细节、去掉穿帮物，不必整张重出。",
+      "provider": "liblib",
+      "providerRef": "image/inpaint-v1",
+      "outputKind": "image",
+      "estimatedSeconds": 35,
+      "costCredits": 2,
+      "relatedToolIds": [
+        204,
+        290
+      ],
+      "inputs": [
+        {
+          "key": "sourceUrl",
+          "label": "原图",
+          "type": "image_url",
+          "required": true,
+          "maxLength": 300000,
+          "help": "由画布填入，取自被框选的那张图。",
+          "supplied": "canvas"
+        },
+        {
+          "key": "prompt",
+          "label": "这块要改成什么",
+          "type": "textarea",
+          "required": true,
+          "minLength": 2,
+          "maxLength": 500,
+          "placeholder": "例：把天空换成黄昏，压低整体亮度。",
+          "help": "只描述选区里想要的结果，不用重复画面其余部分。"
+        },
+        {
+          "key": "regionX",
+          "label": "选区左边距",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "max": 100,
+          "default": 0,
+          "help": "百分比，由画布填入。",
+          "supplied": "canvas"
+        },
+        {
+          "key": "regionY",
+          "label": "选区上边距",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "max": 100,
+          "default": 0,
+          "help": "百分比，由画布填入。",
+          "supplied": "canvas"
+        },
+        {
+          "key": "regionW",
+          "label": "选区宽",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "max": 100,
+          "default": 40,
+          "help": "百分比，由画布填入。",
+          "supplied": "canvas"
+        },
+        {
+          "key": "regionH",
+          "label": "选区高",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "max": 100,
+          "default": 40,
+          "help": "百分比，由画布填入。",
+          "supplied": "canvas"
+        }
+      ]
+    },
+    {
+      "slug": "canvas-outpaint",
+      "name": "扩图",
+      "sceneSlug": "concept-art",
+      "surface": "canvas",
+      "summary": "把画面往外补，换画幅时不用重新出图。",
+      "description": "沿指定方向补全画面内容，用于把 16:9 的概念图改成竖屏，或给海报留出文字位置。",
+      "provider": "liblib",
+      "providerRef": "image/outpaint-v1",
+      "outputKind": "image",
+      "estimatedSeconds": 40,
+      "costCredits": 2,
+      "relatedToolIds": [
+        204,
+        208
+      ],
+      "inputs": [
+        {
+          "key": "sourceUrl",
+          "label": "原图",
+          "type": "image_url",
+          "required": true,
+          "maxLength": 300000,
+          "help": "由画布填入。",
+          "supplied": "canvas"
+        },
+        {
+          "key": "direction",
+          "label": "扩展方向",
+          "type": "select",
+          "required": true,
+          "default": "all",
+          "options": [
+            {
+              "value": "all",
+              "label": "四周"
+            },
+            {
+              "value": "horizontal",
+              "label": "左右（转横屏）"
+            },
+            {
+              "value": "vertical",
+              "label": "上下（转竖屏）"
+            },
+            {
+              "value": "top",
+              "label": "向上"
+            },
+            {
+              "value": "bottom",
+              "label": "向下"
+            }
+          ]
+        },
+        {
+          "key": "amount",
+          "label": "扩展幅度",
+          "type": "number",
+          "required": true,
+          "default": 30,
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "help": "百分比。超过 60 后补出来的内容会明显失真。"
+        },
+        {
+          "key": "prompt",
+          "label": "补出来的部分画什么",
+          "type": "text",
+          "required": false,
+          "maxLength": 200,
+          "placeholder": "留空则顺着原图延续"
+        }
+      ]
+    },
+    {
+      "slug": "canvas-variation",
+      "name": "生成变体",
+      "sceneSlug": "concept-art",
+      "surface": "canvas",
+      "summary": "以选中的图为底出几个变体，并排比着挑。",
+      "description": "保持构图与氛围，产出若干变体供比选。用于定方向阶段的收敛，不用每次从头描述。",
+      "provider": "liblib",
+      "providerRef": "image/variation-v1",
+      "outputKind": "image",
+      "estimatedSeconds": 40,
+      "costCredits": 2,
+      "relatedToolIds": [
+        204,
+        205
+      ],
+      "inputs": [
+        {
+          "key": "sourceUrl",
+          "label": "原图",
+          "type": "image_url",
+          "required": true,
+          "maxLength": 300000,
+          "help": "由画布填入。",
+          "supplied": "canvas"
+        },
+        {
+          "key": "count",
+          "label": "变体数量",
+          "type": "number",
+          "required": true,
+          "default": 2,
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        {
+          "key": "strength",
+          "label": "变化幅度",
+          "type": "number",
+          "required": true,
+          "default": 40,
+          "min": 10,
+          "max": 90,
+          "step": 1,
+          "help": "百分比。数值越大离原图越远。"
+        },
+        {
+          "key": "prompt",
+          "label": "想强调什么",
+          "type": "text",
+          "required": false,
+          "maxLength": 200,
+          "placeholder": "留空则只做随机变化"
         }
       ]
     }

@@ -75,3 +75,29 @@ test('没有必填字段的工作流会被拒绝', async () => {
   const result = validateWorkflowData(clone, tools)
   assert.ok(result.errors.some((error) => error.includes('没有任何必填字段')))
 })
+
+test('画布操作不进列表，且 surface 取值受限', async () => {
+  const { workflows, tools } = await loadWorkflowData()
+  const result = validateWorkflowData(workflows, tools)
+
+  assert.equal(result.summary.libraryWorkflows + result.summary.canvasWorkflows, result.summary.workflows)
+  assert.ok(result.summary.canvasWorkflows >= 3, '画布至少要有重绘/扩图/变体三个操作')
+
+  const clone = structuredClone(workflows)
+  clone.workflows[0].surface = 'sidebar'
+  const bad = validateWorkflowData(clone, tools)
+  assert.ok(bad.errors.some((error) => error.includes('surface 需为 library 或 canvas')))
+})
+
+test('画布操作都以图片入、图片出', async () => {
+  const { workflows } = await loadWorkflowData()
+  const canvasOps = workflows.workflows.filter((workflow) => workflow.surface === 'canvas')
+
+  for (const op of canvasOps) {
+    assert.equal(op.outputKind, 'image', `${op.slug} 的产出必须是图片`)
+    const source = op.inputs.find((input) => input.key === 'sourceUrl')
+    assert.ok(source, `${op.slug} 必须有 sourceUrl 字段供画布填入`)
+    assert.equal(source.type, 'image_url')
+    assert.equal(source.required, true)
+  }
+})

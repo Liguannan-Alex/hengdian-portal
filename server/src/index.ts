@@ -15,6 +15,7 @@ import { favoriteRoutes } from './routes/favorites.ts'
 import { eventRoutes } from './routes/events.ts'
 import { statsRoutes } from './routes/stats.ts'
 import { workflowRoutes } from './routes/workflows.ts'
+import { canvasRoutes } from './routes/canvases.ts'
 import { syncWorkflows } from './workflow/definitions.ts'
 import { startRunner } from './workflow/runner.ts'
 
@@ -74,6 +75,7 @@ app.route('/api/favorites', favoriteRoutes)
 app.route('/api/events', eventRoutes)
 app.route('/api/stats', statsRoutes)
 app.route('/api/workflows', workflowRoutes)
+app.route('/api/canvases', canvasRoutes)
 
 app.notFound((c) => c.json({ ok: false, error: '接口不存在' }, 404))
 

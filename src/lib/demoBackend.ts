@@ -12,8 +12,16 @@
  * 边界：只在构建时 `VITE_DEMO_MODE=true` 时启用；数据存在 sessionStorage，
  * 关掉标签页就没了；不产生任何网络请求，也不消耗任何真实算力。
  */
-import { validateParams, workflowBySlug, workflows, type ParamValue } from '@/data/workflows'
+import {
+  allWorkflows,
+  canvasWorkflows,
+  validateParams,
+  workflowBySlug,
+  workflows,
+  type ParamValue,
+} from '@/data/workflows'
 import type { Quota, RunOutput, RunStatus, ServerAccount, WorkflowRun } from '@/lib/portalApi'
+import type { CanvasItem } from '@/lib/canvasApi'
 
 const STORAGE_KEY = 'hd_demo_state_v1'
 const DAILY_CREDITS = 30
@@ -33,9 +41,20 @@ const DEMO_ACCOUNT: ServerAccount = {
   org: '演示剧组',
 }
 
+interface DemoCanvas {
+  id: number
+  name: string
+  createdAt: string
+  updatedAt: string
+}
+
 interface DemoState {
   runs: WorkflowRun[]
   nextId: number
+  canvases: DemoCanvas[]
+  items: (CanvasItem & { canvasId: number })[]
+  nextCanvasId: number
+  nextItemId: number
 }
 
 let state: DemoState = load()
@@ -46,6 +65,10 @@ function load(): DemoState {
     if (raw) {
       const parsed = JSON.parse(raw) as DemoState
       if (Array.isArray(parsed.runs) && typeof parsed.nextId === 'number') {
+        parsed.canvases ??= []
+        parsed.items ??= []
+        parsed.nextCanvasId ??= 1
+        parsed.nextItemId ??= 1
         // 上次会话里没跑完的任务，重新打开时直接判为已取消，避免永远停在「生成中」。
         parsed.runs = parsed.runs.map((run) =>
           run.status === 'queued' || run.status === 'running'
@@ -58,7 +81,41 @@ function load(): DemoState {
   } catch {
     // sessionStorage 不可用（隐私模式等）时退回内存，演示照常进行。
   }
-  return { runs: [], nextId: 1 }
+  return seeded()
+}
+
+/**
+ * 演示站开局就放一块有图的画布。
+ *
+ * 否则要先去跑一条流水线、再回来加入画布，看的人才能明白画布是干什么的——
+ * 演示里这三步足以让人放弃。图是明确标注的占位内容，与横幅口径一致。
+ */
+function seeded(): DemoState {
+  const now = new Date().toISOString()
+  const size = { width: 360, height: 203 }
+  const make = (id: number, label: string, seed: string, x: number): CanvasItem & { canvasId: number } => ({
+    id,
+    canvasId: 1,
+    src: placeholderImage(label, seed, id),
+    label,
+    x,
+    y: 0,
+    width: size.width,
+    height: size.height,
+    z: id,
+    sourceRunId: null,
+    sourceItemId: null,
+    createdAt: now,
+  })
+
+  return {
+    runs: [],
+    nextId: 1,
+    canvases: [{ id: 1, name: '示例画布 · 宫苑外景', createdAt: now, updatedAt: now }],
+    items: [make(1, '概念气氛图', 'demo-a', 0), make(2, '概念气氛图', 'demo-b', 384)],
+    nextCanvasId: 2,
+    nextItemId: 3,
+  }
 }
 
 function save(): void {
@@ -216,7 +273,7 @@ function publicWorkflow(slug: string) {
  * 新增真实接口时若忘了在这里补，演示站会明确报 404，而不是静默给出假数据。
  */
 export function demoRequest(path: string, method: string, body: unknown): DemoResponse {
-  const [pathname] = path.split('?')
+  const [pathname, search] = path.split('?')
   const parts = (pathname ?? '').replace(/^\/+|\/+$/g, '').split('/')
 
   // /api/auth/*
@@ -229,11 +286,19 @@ export function demoRequest(path: string, method: string, body: unknown): DemoRe
   // 埋点在演示站没有去处，直接接受但不留存。
   if (parts[1] === 'events') return ok({})
 
+  if (parts[1] === 'canvases') return canvasRequest(parts, method, body)
+
   if (parts[1] !== 'workflows') return fail(404, '演示模式未实现该接口')
 
-  // /api/workflows
+  // /api/workflows —— 与真实后端一致：默认只给 library，画布操作需显式索取。
   if (parts.length === 2) {
-    return ok({ workflows: workflows.map((workflow) => publicWorkflow(workflow.slug)) })
+    const surface = new URLSearchParams(search ?? '').get('surface') ?? 'library'
+    if (!['library', 'canvas', 'all'].includes(surface)) {
+      return fail(400, 'surface 需为 library / canvas / all 之一')
+    }
+    const source =
+      surface === 'all' ? allWorkflows : surface === 'canvas' ? canvasWorkflows : workflows
+    return ok({ surface, workflows: source.map((workflow) => publicWorkflow(workflow.slug)) })
   }
 
   // /api/workflows/quota
@@ -311,8 +376,136 @@ export function demoRequest(path: string, method: string, body: unknown): DemoRe
   return { status: 201, body: { ok: true, run, usingMock: true } }
 }
 
+/**
+ * 画布接口的演示实现。路径与响应形状与真实后端一一对应。
+ * 校验规则（图片来源协议、数量上限）也保持一致，演示站的报错与线上同口径。
+ */
+function canvasRequest(parts: string[], method: string, body: unknown): DemoResponse {
+  const payload = (body && typeof body === 'object' ? body : {}) as Record<string, unknown>
+  const now = () => new Date().toISOString()
+
+  const itemsOf = (canvasId: number) =>
+    state.items.filter((item) => item.canvasId === canvasId).sort((a, b) => a.z - b.z)
+
+  if (parts.length === 2) {
+    if (method === 'POST') {
+      const id = state.nextCanvasId++
+      const canvas: DemoCanvas = {
+        id,
+        name:
+          typeof payload.name === 'string' && payload.name.trim()
+            ? payload.name.trim().slice(0, 40)
+            : `未命名画布 ${state.canvases.length + 1}`,
+        createdAt: now(),
+        updatedAt: now(),
+      }
+      state.canvases.push(canvas)
+      save()
+      return { status: 201, body: { ok: true, canvas } }
+    }
+    return ok({
+      canvases: [...state.canvases]
+        .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+        .map((canvas) => {
+          const items = itemsOf(canvas.id)
+          return {
+            ...canvas,
+            itemCount: items.length,
+            previewSrc: items.at(-1)?.src ?? null,
+          }
+        }),
+      limit: 20,
+    })
+  }
+
+  const canvasId = Number(parts[2])
+  const canvas = state.canvases.find((entry) => entry.id === canvasId)
+  if (!canvas) return fail(404, '画布不存在')
+
+  if (parts.length === 3) {
+    if (method === 'DELETE') {
+      state.canvases = state.canvases.filter((entry) => entry.id !== canvasId)
+      state.items = state.items.filter((item) => item.canvasId !== canvasId)
+      save()
+      return ok({})
+    }
+    if (method === 'PATCH') {
+      if (typeof payload.name !== 'string' || !payload.name.trim()) {
+        return fail(400, '画布名称不能为空')
+      }
+      canvas.name = payload.name.trim().slice(0, 40)
+      canvas.updatedAt = now()
+      save()
+      return ok({ canvas })
+    }
+    return ok({ canvas, items: itemsOf(canvasId), limits: { maxItems: 120 } })
+  }
+
+  if (parts[3] !== 'items') return fail(404, '演示模式未实现该接口')
+
+  if (parts.length === 4) {
+    if (method !== 'POST') return fail(404, '演示模式未实现该接口')
+    const src = typeof payload.src === 'string' ? payload.src.trim() : ''
+    if (!src) return fail(400, '缺少图片来源')
+    if (src.startsWith('data:')) {
+      if (!/^data:image\/(png|jpeg|jpg|webp|gif|svg\+xml);/i.test(src)) {
+        return fail(400, '只支持图片类型的内联数据')
+      }
+    } else if (!/^https?:\/\//i.test(src)) {
+      return fail(400, '只支持 http 或 https 链接')
+    }
+    const existing = itemsOf(canvasId)
+    if (existing.length >= 120) return fail(429, '本画布图片已达上限 120 张')
+
+    const item: CanvasItem & { canvasId: number } = {
+      id: state.nextItemId++,
+      canvasId,
+      src,
+      label: typeof payload.label === 'string' ? payload.label.slice(0, 60) : null,
+      x: Number(payload.x) || 0,
+      y: Number(payload.y) || 0,
+      width: Number(payload.width) || 320,
+      height: Number(payload.height) || 180,
+      z: (existing.at(-1)?.z ?? 0) + 1,
+      sourceRunId: Number.isInteger(payload.sourceRunId) ? (payload.sourceRunId as number) : null,
+      sourceItemId: Number.isInteger(payload.sourceItemId) ? (payload.sourceItemId as number) : null,
+      createdAt: now(),
+    }
+    state.items.push(item)
+    canvas.updatedAt = now()
+    save()
+    return { status: 201, body: { ok: true, item } }
+  }
+
+  const item = state.items.find(
+    (entry) => entry.id === Number(parts[4]) && entry.canvasId === canvasId,
+  )
+  if (!item) return fail(404, '图片不存在')
+
+  if (method === 'DELETE') {
+    state.items = state.items.filter((entry) => entry !== item)
+    canvas.updatedAt = now()
+    save()
+    return ok({})
+  }
+
+  if (method === 'PATCH') {
+    for (const key of ['x', 'y', 'width', 'height', 'z'] as const) {
+      if (payload[key] !== undefined && Number.isFinite(Number(payload[key]))) {
+        item[key] = Number(payload[key])
+      }
+    }
+    if (typeof payload.label === 'string') item.label = payload.label.slice(0, 60)
+    canvas.updatedAt = now()
+    save()
+    return ok({ item })
+  }
+
+  return fail(404, '演示模式未实现该接口')
+}
+
 /** 清空演示数据，供横幅上的「重置」使用。 */
 export function resetDemo(): void {
-  state = { runs: [], nextId: 1 }
+  state = seeded()
   save()
 }

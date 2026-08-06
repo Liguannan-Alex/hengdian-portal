@@ -17,6 +17,8 @@ export interface WorkflowInput {
   label: string
   type: InputType
   required: boolean
+  /** 'canvas' 表示由画布填入，界面不渲染。服务端仍照常校验。 */
+  supplied?: 'canvas'
   help?: string
   placeholder?: string
   default?: string | number | boolean
@@ -32,6 +34,8 @@ export interface WorkflowDefinition {
   slug: string
   name: string
   sceneSlug: string
+  /** library：列表里露出；canvas：画布操作，不进列表。 */
+  surface: 'library' | 'canvas'
   summary: string
   description: string
   provider: string

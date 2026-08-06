@@ -12,7 +12,17 @@ import { SCENE_DEFINITIONS, toolById, type SceneSlug, type EffectiveTool } from 
 export const OUTPUT_KINDS = ['image', 'video', 'text'] as const
 export type OutputKind = (typeof OUTPUT_KINDS)[number]
 
-/** 表单控件类型。本期不含文件上传，参考图只接受公网链接。 */
+/**
+ * 工作流的露出位置。
+ *
+ * library：在「AI 工作流」列表里露出，用户填表单运行。
+ * canvas：画布上的操作，参数由画布按当前选区/选中图填写，不进列表——
+ *   把「局部重绘」摆进流水线列表，用户点进去只会看到一堆填不了的坐标字段。
+ */
+export const SURFACES = ['library', 'canvas'] as const
+export type Surface = (typeof SURFACES)[number]
+
+/** 表单控件类型。本期不含文件上传，图片只接受链接或内联图片数据。 */
 export const INPUT_TYPES = ['text', 'textarea', 'select', 'number', 'toggle', 'image_url'] as const
 export type InputType = (typeof INPUT_TYPES)[number]
 
@@ -26,6 +36,13 @@ export interface WorkflowInput {
   label: string
   type: InputType
   required: boolean
+  /**
+   * 该字段由谁填。
+   *
+   * 'canvas' 表示由画布按当前选中图与选区自动填入，界面不渲染——
+   * 让用户手填「选区左边距 37.2%」是没有意义的。
+   */
+  supplied?: 'canvas'
   help?: string
   placeholder?: string
   default?: string | number | boolean
@@ -41,6 +58,7 @@ export interface WorkflowDefinition {
   slug: string
   name: string
   sceneSlug: SceneSlug
+  surface: Surface
   summary: string
   description: string
   /** 算力来源标识。是否真正可用由后端按凭据配置判定，前端不做假设。 */
@@ -64,10 +82,21 @@ const dataset = workflowsJson as unknown as WorkflowsFile
 
 export const WORKFLOWS_VERSION = dataset.version
 export const WORKFLOWS_UPDATED_AT = dataset.updatedAt
-export const workflows: WorkflowDefinition[] = dataset.workflows
+/** 全部定义，含画布操作。列表页应使用 libraryWorkflows。 */
+export const allWorkflows: WorkflowDefinition[] = dataset.workflows
+
+/** 「AI 工作流」列表页使用的集合。 */
+export const workflows: WorkflowDefinition[] = allWorkflows.filter(
+  (workflow) => workflow.surface === 'library',
+)
+
+/** 画布操作，按 slug 取用。 */
+export const canvasWorkflows: WorkflowDefinition[] = allWorkflows.filter(
+  (workflow) => workflow.surface === 'canvas',
+)
 
 export const workflowBySlug = new Map<string, WorkflowDefinition>(
-  workflows.map((workflow) => [workflow.slug, workflow]),
+  allWorkflows.map((workflow) => [workflow.slug, workflow]),
 )
 
 const sceneBySlug = new Map(SCENE_DEFINITIONS.map((scene) => [scene.slug, scene]))
@@ -84,6 +113,11 @@ export function relatedToolsOf(workflow: WorkflowDefinition): EffectiveTool[] {
     .filter((tool): tool is EffectiveTool => Boolean(tool))
 }
 
+/** 需要用户填的字段。画布自动填入的那些不进表单。 */
+export function editableInputs(workflow: WorkflowDefinition): WorkflowInput[] {
+  return workflow.inputs.filter((input) => input.supplied === undefined)
+}
+
 export function workflowsByScene(slug: SceneSlug): WorkflowDefinition[] {
   return workflows.filter((workflow) => workflow.sceneSlug === slug)
 }
@@ -95,6 +129,34 @@ export const OUTPUT_KIND_LABELS: Record<OutputKind, string> = {
 }
 
 export type ParamValue = string | number | boolean
+
+/**
+ * 图片引用的合法性判定。前后端共用同一条规则（后端 params.ts 有等价实现）。
+ *
+ * 放行 `data:image/` 的原因：画布上的图既可能是外部链接，也可能是本地生成的
+ * 内联图（演示模式的占位产出就是内联 SVG）。限制有两条：
+ *   - 只接受 image/* 媒体类型，`data:text/html` 这类一律拒绝；
+ *   - 产出与原图在界面上只经由 `<img>` 渲染，不进 `<object>` / `<iframe>`——
+ *     `<img>` 不执行 SVG 内的脚本，这是放行 svg 数据 URI 的前提。
+ * 其余协议（尤其 `javascript:`）一律拒绝。
+ */
+export function checkImageRef(text: string, label: string): string | null {
+  if (text.startsWith('data:')) {
+    return /^data:image\/(png|jpeg|jpg|webp|gif|svg\+xml);/i.test(text)
+      ? null
+      : `${label} 只支持图片类型的内联数据`
+  }
+  let parsed: URL
+  try {
+    parsed = new URL(text)
+  } catch {
+    return `${label} 需为完整链接，以 http:// 或 https:// 开头`
+  }
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+    return `${label} 只支持 http 或 https 链接`
+  }
+  return null
+}
 
 /** 表单初始值。有 default 用 default，否则按控件类型给一个空值。 */
 export function defaultParams(workflow: WorkflowDefinition): Record<string, ParamValue> {
@@ -140,16 +202,8 @@ export function validateInput(input: WorkflowInput, raw: ParamValue | undefined)
   }
 
   if (input.type === 'image_url') {
-    // 只允许 http(s)，避免 javascript: 与 data: 通过参数进入后端与结果页。
-    let parsed: URL
-    try {
-      parsed = new URL(text)
-    } catch {
-      return `${input.label} 需为完整链接，以 http:// 或 https:// 开头`
-    }
-    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-      return `${input.label} 只支持 http 或 https 链接`
-    }
+    const error = checkImageRef(text, input.label)
+    if (error) return error
   }
 
   if (input.minLength !== undefined && text.length < input.minLength) {

@@ -174,6 +174,34 @@ function migrate(db: DatabaseSync): void {
     CREATE INDEX IF NOT EXISTS idx_runs_status ON workflow_runs(status);
     CREATE INDEX IF NOT EXISTS idx_runs_workflow ON workflow_runs(workflow_slug);
     CREATE INDEX IF NOT EXISTS idx_runs_created ON workflow_runs(created_at);
+
+    CREATE TABLE IF NOT EXISTS canvases (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      name       TEXT    NOT NULL,
+      created_at TEXT    NOT NULL,
+      updated_at TEXT    NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_canvases_user ON canvases(user_id, updated_at);
+
+    CREATE TABLE IF NOT EXISTS canvas_items (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      canvas_id  INTEGER NOT NULL REFERENCES canvases(id) ON DELETE CASCADE,
+      /** 图片来源：外部链接或内联图片数据，写入前按 image_url 同一套规则校验。 */
+      src        TEXT    NOT NULL,
+      label      TEXT,
+      x          REAL    NOT NULL,
+      y          REAL    NOT NULL,
+      width      REAL    NOT NULL,
+      height     REAL    NOT NULL,
+      z          INTEGER NOT NULL DEFAULT 0,
+      /** 由哪个任务产出。用于从产出回溯到当时的参数。 */
+      source_run_id  INTEGER,
+      /** 由画布上哪张图派生。重绘、扩图、变体据此形成一条可追溯的链。 */
+      source_item_id INTEGER,
+      created_at TEXT    NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_canvas_items_canvas ON canvas_items(canvas_id, z);
   `)
 
   addColumnIfMissing(db, 'tool_events', 'workflow_slug', 'TEXT')

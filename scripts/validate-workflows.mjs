@@ -22,6 +22,7 @@ export const SCENE_SLUGS = new Set([
 ])
 
 export const OUTPUT_KINDS = new Set(['image', 'video', 'text'])
+export const SURFACES = new Set(['library', 'canvas'])
 export const INPUT_TYPES = new Set(['text', 'textarea', 'select', 'number', 'toggle', 'image_url'])
 
 const SLUG_PATTERN = /^[a-z][a-z0-9-]{1,48}[a-z0-9]$/
@@ -53,6 +54,8 @@ export function validateWorkflowData(dataset, tools) {
   const providers = new Set()
   const coveredScenes = new Set()
   let inputCount = 0
+  let libraryCount = 0
+  let canvasCount = 0
 
   for (const workflow of dataset.workflows) {
     const label = workflow?.slug ?? '(缺少 slug)'
@@ -73,11 +76,17 @@ export function validateWorkflowData(dataset, tools) {
     } else {
       providers.add(workflow.provider)
     }
+    if (!SURFACES.has(workflow.surface)) {
+      addError(`工作流 ${label} 的 surface 需为 library 或 canvas，当前: ${workflow.surface}`)
+    }
     if (!SCENE_SLUGS.has(workflow.sceneSlug)) {
       addError(`工作流 ${label} 的 sceneSlug 非法: ${workflow.sceneSlug}`)
-    } else {
+    } else if (workflow.surface === 'library') {
+      // 场景覆盖只统计列表里露出的流水线：画布操作不需要在场景导航中出现。
       coveredScenes.add(workflow.sceneSlug)
     }
+    if (workflow.surface === 'library') libraryCount += 1
+    if (workflow.surface === 'canvas') canvasCount += 1
     if (!OUTPUT_KINDS.has(workflow.outputKind)) {
       addError(`工作流 ${label} 的 outputKind 非法: ${workflow.outputKind}`)
     }
@@ -118,6 +127,17 @@ export function validateWorkflowData(dataset, tools) {
       if (!INPUT_TYPES.has(input.type)) addError(`字段 ${inputLabel} 的 type 非法: ${input.type}`)
       if (typeof input.required !== 'boolean') addError(`字段 ${inputLabel} 的 required 需为布尔值`)
       if (input.required) hasRequired = true
+
+      if (input.supplied !== undefined) {
+        if (input.supplied !== 'canvas') {
+          addError(`字段 ${inputLabel} 的 supplied 目前只支持 canvas`)
+        } else if (workflow.surface !== 'canvas') {
+          addError(`字段 ${inputLabel} 标了 supplied=canvas，但所属工作流不在画布上`)
+        } else if (!input.required) {
+          // 画布自动填的字段若可选，忘了填也不会报错，问题会推迟到算力方才暴露。
+          addError(`字段 ${inputLabel} 由画布填入，必须是必填字段`)
+        }
+      }
 
       if (input.type === 'select') {
         if (!Array.isArray(input.options) || input.options.length < 2) {
@@ -170,12 +190,25 @@ export function validateWorkflowData(dataset, tools) {
     }
 
     if (!hasRequired) addError(`工作流 ${label} 没有任何必填字段，无法判断提交是否有效`)
+
+    if (workflow.surface === 'canvas') {
+      const source = workflow.inputs.find((input) => input.key === 'sourceUrl')
+      if (!source || source.supplied !== 'canvas') {
+        addError(`画布操作 ${label} 必须有由画布填入的 sourceUrl 字段`)
+      }
+      // 画布操作至少要留一个用户能填的字段，否则它就是个没有可调参数的按钮。
+      if (!workflow.inputs.some((input) => input.supplied === undefined)) {
+        addError(`画布操作 ${label} 全部字段都由画布填入，用户没有任何可调参数`)
+      }
+    }
   }
 
   return {
     errors,
     summary: {
       workflows: dataset.workflows.length,
+      libraryWorkflows: libraryCount,
+      canvasWorkflows: canvasCount,
       inputs: inputCount,
       providers: [...providers].sort(),
       coveredScenes: [...coveredScenes].sort(),

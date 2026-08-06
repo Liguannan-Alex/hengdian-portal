@@ -54,15 +54,26 @@ function checkOne(input: WorkflowInput, raw: unknown): { error: string | null; v
   }
 
   if (input.type === 'image_url') {
-    let parsed: URL
-    try {
-      parsed = new URL(text)
-    } catch {
-      return { error: `${input.label} 需为完整链接，以 http:// 或 https:// 开头` }
-    }
-    // 只放行 http(s)。javascript: 与 data: 一旦入库，结果页把它渲染成 <img src> 就成了注入面。
-    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-      return { error: `${input.label} 只支持 http 或 https 链接` }
+    /**
+     * 画布上的图既可能是外部链接，也可能是内联图，因此在 http(s) 之外放行
+     * `data:image/`——但仅限图片媒体类型：`data:text/html` 与 `javascript:`
+     * 一旦入库，界面把它当成图片源渲染就成了注入面。
+     * 前端 `checkImageRef()` 是等价实现，两处必须同时改。
+     */
+    if (text.startsWith('data:')) {
+      if (!/^data:image\/(png|jpeg|jpg|webp|gif|svg\+xml);/i.test(text)) {
+        return { error: `${input.label} 只支持图片类型的内联数据` }
+      }
+    } else {
+      let parsed: URL
+      try {
+        parsed = new URL(text)
+      } catch {
+        return { error: `${input.label} 需为完整链接，以 http:// 或 https:// 开头` }
+      }
+      if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+        return { error: `${input.label} 只支持 http 或 https 链接` }
+      }
     }
   }
 

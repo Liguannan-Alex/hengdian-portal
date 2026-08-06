@@ -117,6 +117,42 @@ check "工作流埋点上报成功" '"ok":true' "$(post /api/events "$body")"
 body="{\"action\":\"workflow_view\",\"sourcePage\":\"/workflows\"}"
 check "缺 workflowSlug 的埋点被拒" 'workflowSlug' "$(post /api/events "$body")"
 
+echo "== 画布 =="
+check "工作流列表默认不含画布操作" '"surface":"library"' "$(c "$BASE/api/workflows")"
+check "画布操作可显式索取" '"slug":"canvas-inpaint"' "$(c "$BASE/api/workflows?surface=canvas")"
+check "非法 surface 被拒" 'surface 需为' "$(c "$BASE/api/workflows?surface=nope")"
+
+body='{"name":"冒烟画布"}'
+CANVAS_JSON="$(post /api/canvases "$body")"
+check "新建画布" '"name":"冒烟画布"' "$CANVAS_JSON"
+CANVAS_ID="$(printf '%s' "$CANVAS_JSON" | sed -n 's/.*"canvas":{"id":\([0-9]*\).*/\1/p')"
+
+body='{"src":"javascript:alert(1)"}'
+check "非法图片来源被拒" '只支持 http' "$(post "/api/canvases/$CANVAS_ID/items" "$body")"
+
+body='{"src":"data:text/html,<b>x</b>"}'
+check "非图片内联数据被拒" '只支持图片类型' "$(post "/api/canvases/$CANVAS_ID/items" "$body")"
+
+body='{"src":"https://example.com/a.png","x":0,"y":0,"width":360,"height":203}'
+ITEM_JSON="$(post "/api/canvases/$CANVAS_ID/items" "$body")"
+check "加入图片成功" '"src":"https://example.com/a.png"' "$ITEM_JSON"
+ITEM_ID="$(printf '%s' "$ITEM_JSON" | sed -n 's/.*"item":{"id":\([0-9]*\).*/\1/p')"
+
+body='{"x":120,"y":60}'
+check "移动图片" '"x":120' "$(c -X PATCH "$BASE/api/canvases/$CANVAS_ID/items/$ITEM_ID" -H "$JSON" -d "$body")"
+check "画布详情含该图" "\"id\":$ITEM_ID" "$(c "$BASE/api/canvases/$CANVAS_ID")"
+check "画布列表含计数" '"itemCount":1' "$(c "$BASE/api/canvases")"
+
+body='{"params":{"sourceUrl":"https://example.com/a.png","prompt":"把天空换成黄昏","regionX":10,"regionY":10,"regionW":40,"regionH":30}}'
+check "局部重绘可提交" '"workflowSlug":"canvas-inpaint"' "$(post /api/workflows/canvas-inpaint/runs "$body")"
+
+body='{"params":{"sourceUrl":"https://example.com/a.png","prompt":"只改一点"}}'
+check "缺选区被逐字段拒绝" 'regionW' "$(post /api/workflows/canvas-inpaint/runs "$body")"
+
+check "删除图片" '"ok":true' "$(c -X DELETE "$BASE/api/canvases/$CANVAS_ID/items/$ITEM_ID")"
+check "删除画布" '"ok":true' "$(c -X DELETE "$BASE/api/canvases/$CANVAS_ID")"
+check "画布删除后不可读" '画布不存在' "$(c "$BASE/api/canvases/$CANVAS_ID")"
+
 echo "== 统计权限 =="
 check "非管理员被拒" '需要管理员权限' "$(c "$BASE/api/stats/weekly")"
 
@@ -125,6 +161,7 @@ check "登出成功" '"ok":true' "$(c -X POST "$BASE/api/auth/logout")"
 check "登出后 me 为空" '"user":null' "$(c "$BASE/api/auth/me")"
 check "登出后收藏需鉴权" '未登录' "$(c "$BASE/api/favorites")"
 check "登出后任务列表需鉴权" '未登录' "$(c "$BASE/api/workflows/runs")"
+check "登出后画布需鉴权" '未登录' "$(c "$BASE/api/canvases")"
 
 echo "== 管理员统计 =="
 ADMIN="${ADMIN_USERNAME:-hdadmin}"

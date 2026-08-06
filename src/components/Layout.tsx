@@ -20,6 +20,7 @@ const NAV_ITEMS = [
   { to: '/', label: '首页', end: true },
   { to: '/tools', label: 'AI 工具库', end: false },
   { to: '/workflows', label: 'AI 工作流', end: false },
+  { to: '/canvas', label: '画布', end: false },
 ] as const
 
 const requireProfile = () => window.dispatchEvent(new CustomEvent('hd:require-auth'))
@@ -492,6 +493,7 @@ export default function Layout() {
           <nav className="grid grid-cols-2 gap-x-7 gap-y-3 text-sm sm:text-right" aria-label="页脚导航">
             <Link className="hover:text-paper" to="/tools">AI 工具</Link>
             <Link className="hover:text-paper" to="/workflows">AI 工作流</Link>
+            <Link className="hover:text-paper" to="/canvas">画布</Link>
             <Link className="hover:text-paper" to={{ pathname: '/', hash: '#scenes' }}>场景总览</Link>
             <Link className="hover:text-paper" to="/favorites">我的收藏</Link>
             <Link className="hover:text-paper" to="/about">关于门户</Link>
@@ -500,7 +502,7 @@ export default function Layout() {
         <div className="border-t border-paper/10">
           <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-2 px-4 py-4 text-xs text-paper/60 lg:px-6">
             <span>数据经编辑整理与核验，访问与使用请以工具官网条款为准。</span>
-            <span>© 2026 横店影视数智服务门户 · v0.3 内部可用版</span>
+            <span>© 2026 横店影视数智服务门户 · v0.4 内部可用版</span>
           </div>
         </div>
       </footer>

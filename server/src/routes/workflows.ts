@@ -81,12 +81,23 @@ function publicRun(row: RunRow) {
   }
 }
 
+/**
+ * 工作流列表。
+ *
+ * 默认只返回 surface=library。画布操作（局部重绘、扩图、生成变体）是画布上的
+ * 动作，参数由画布填，混进列表会让人点进去看到一堆填不了的坐标字段。
+ * 需要时用 `?surface=canvas` 或 `?surface=all` 显式索取。
+ */
 workflowRoutes.get('/', (c) => {
-  const definitions = loadDefinitions()
-  return c.json({
-    ok: true,
-    workflows: definitions.map(publicWorkflow),
-  })
+  const surface = c.req.query('surface') ?? 'library'
+  if (!['library', 'canvas', 'all'].includes(surface)) {
+    return c.json({ ok: false, error: 'surface 需为 library / canvas / all 之一' }, 400)
+  }
+
+  const definitions = loadDefinitions().filter(
+    (definition) => surface === 'all' || definition.surface === surface,
+  )
+  return c.json({ ok: true, surface, workflows: definitions.map(publicWorkflow) })
 })
 
 /** 当前用户的配额情况。列表页和详情页都要显示「今天还剩多少」。 */
