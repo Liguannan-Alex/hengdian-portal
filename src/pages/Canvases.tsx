@@ -64,7 +64,7 @@ function CanvasList() {
 
   const handleDelete = async (canvas: CanvasSummary) => {
     // 删画布会连带删掉上面所有图，且没有回收站，必须确认。
-    if (!window.confirm(`删除「${canvas.name}」？画布上的 ${canvas.itemCount} 张图会一并删除，且无法恢复。`)) {
+    if (!window.confirm(`删除「${canvas.name}」？画布上的 ${canvas.nodeCount} 个节点会一并删除，且无法恢复。`)) {
       return
     }
     try {
@@ -110,7 +110,7 @@ function CanvasList() {
         <div className="rounded-2xl border border-dashed border-border px-6 py-16 text-center">
           <Frame className="mx-auto h-8 w-8 text-muted-foreground" aria-hidden="true" />
           <p className="mt-3 text-sm text-muted-foreground">
-            还没有画布。新建一块，把任务产出摆上去反复改。
+            还没有画布。新建一块，把节点连起来跑一条自己的流水线。
           </p>
         </div>
       ) : (
@@ -136,7 +136,7 @@ function CanvasList() {
                 <div className="p-4">
                   <h2 className="truncate font-semibold text-paper">{canvas.name}</h2>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {canvas.itemCount} 张图 · {formatTime(canvas.updatedAt)}
+                    {canvas.nodeCount} 个节点 · {formatTime(canvas.updatedAt)}
                   </p>
                 </div>
               </Link>

@@ -202,10 +202,106 @@ function migrate(db: DatabaseSync): void {
       created_at TEXT    NOT NULL
     );
     CREATE INDEX IF NOT EXISTS idx_canvas_items_canvas ON canvas_items(canvas_id, z);
+
+    /*
+     * 节点图。canvas_items 是纯图板时代的表，只能表达「图摆在哪」；
+     * 节点画布还要表达「这张图是谁生成的、吃了哪些上游、参数是什么」，
+     * 因此另起两张表，旧数据在 migrateCanvasItemsToNodes() 里一次性搬过来。
+     */
+    CREATE TABLE IF NOT EXISTS canvas_nodes (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      canvas_id  INTEGER NOT NULL REFERENCES canvases(id) ON DELETE CASCADE,
+      /* 前端生成的稳定键（如 i-ab12cd），连线两端引用它而不是自增 id：
+         新建节点在落库前就要能连线，此时自增 id 还不存在。 */
+      node_key   TEXT    NOT NULL,
+      /* 产出形态：image / video / text。与工作流的 outputKind 同一套口径。 */
+      type       TEXT    NOT NULL,
+      x          REAL    NOT NULL,
+      y          REAL    NOT NULL,
+      width      REAL    NOT NULL,
+      height     REAL    NOT NULL,
+      z          INTEGER NOT NULL DEFAULT 0,
+      /* 业务数据整体存 JSON：action、params、taskInfo、url、isStale 等。
+         这些字段随工作流定义演进，拆成列会让每加一个参数就要改表。 */
+      data       TEXT    NOT NULL,
+      created_at TEXT    NOT NULL,
+      updated_at TEXT    NOT NULL,
+      UNIQUE (canvas_id, node_key)
+    );
+    CREATE INDEX IF NOT EXISTS idx_canvas_nodes_canvas ON canvas_nodes(canvas_id);
+
+    CREATE TABLE IF NOT EXISTS canvas_edges (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      canvas_id  INTEGER NOT NULL REFERENCES canvases(id) ON DELETE CASCADE,
+      edge_key   TEXT    NOT NULL,
+      source_key TEXT    NOT NULL,
+      target_key TEXT    NOT NULL,
+      created_at TEXT    NOT NULL,
+      UNIQUE (canvas_id, edge_key)
+    );
+    CREATE INDEX IF NOT EXISTS idx_canvas_edges_canvas ON canvas_edges(canvas_id);
+    CREATE INDEX IF NOT EXISTS idx_canvas_edges_target ON canvas_edges(canvas_id, target_key);
   `)
+
+  migrateCanvasItemsToNodes(db)
 
   addColumnIfMissing(db, 'tool_events', 'workflow_slug', 'TEXT')
   db.exec('CREATE INDEX IF NOT EXISTS idx_events_workflow ON tool_events(workflow_slug)')
+}
+
+/**
+ * 把图板时代的 canvas_items 搬进 canvas_nodes。
+ *
+ * 只在某块画布「有旧条目、且还没有节点」时执行，因此可重复调用；
+ * 迁移后不删 canvas_items——万一迁移逻辑有问题，原始数据还在。
+ */
+function migrateCanvasItemsToNodes(db: DatabaseSync): void {
+  const pending = db
+    .prepare(
+      `SELECT DISTINCT i.canvas_id AS canvas_id
+       FROM canvas_items i
+       WHERE NOT EXISTS (SELECT 1 FROM canvas_nodes n WHERE n.canvas_id = i.canvas_id)`,
+    )
+    .all() as { canvas_id: number }[]
+  if (pending.length === 0) return
+
+  const items = db.prepare('SELECT * FROM canvas_items WHERE canvas_id = ? ORDER BY z, id')
+  const insert = db.prepare(
+    `INSERT INTO canvas_nodes
+       (canvas_id, node_key, type, x, y, width, height, z, data, created_at, updated_at)
+     VALUES (?, ?, 'image', ?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT(canvas_id, node_key) DO NOTHING`,
+  )
+
+  db.exec('BEGIN')
+  try {
+    for (const { canvas_id } of pending) {
+      for (const row of items.all(canvas_id) as Record<string, unknown>[]) {
+        insert.run(
+          canvas_id,
+          `i-legacy${String(row.id)}`,
+          Number(row.x),
+          Number(row.y),
+          Number(row.width),
+          Number(row.height),
+          Number(row.z),
+          JSON.stringify({
+            url: row.src,
+            label: row.label,
+            sourceRunId: row.source_run_id,
+            isStale: false,
+          }),
+          String(row.created_at),
+          String(row.created_at),
+        )
+      }
+    }
+    db.exec('COMMIT')
+  } catch (error) {
+    db.exec('ROLLBACK')
+    throw error
+  }
+  console.log(`[db] 已把 ${pending.length} 块画布的图片条目迁移为节点`)
 }
 
 /**

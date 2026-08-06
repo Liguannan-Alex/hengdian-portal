@@ -147,6 +147,38 @@ workflowRoutes.get('/runs', (c) => {
   return c.json({ ok: true, runs: rows.map(publicRun) })
 })
 
+/**
+ * 批量查任务状态。
+ *
+ * 节点画布上可能同时有十几个节点在生成，逐个 `GET /runs/:id` 会把轮询开销
+ * 乘以节点数。这里一次拿回一批，前端只需要一个定时器。
+ */
+workflowRoutes.get('/runs/batch', (c) => {
+  const user = currentUser(c)
+  if (!user) return c.json({ ok: false, error: '未登录' }, 401)
+
+  const ids = [
+    ...new Set(
+      (c.req.query('ids') ?? '')
+        .split(',')
+        .map((value) => Number(value.trim()))
+        .filter((value) => Number.isInteger(value) && value > 0),
+    ),
+  ].slice(0, 100)
+
+  if (ids.length === 0) return c.json({ ok: true, runs: [] })
+
+  const placeholders = ids.map(() => '?').join(',')
+  const rows = toRunRows(
+    getDb()
+      .prepare(`SELECT * FROM workflow_runs WHERE user_id = ? AND id IN (${placeholders})`)
+      .all(user.id, ...ids),
+  )
+
+  // 查不到的 id 直接不出现在结果里，不区分「不存在」与「不是你的」。
+  return c.json({ ok: true, runs: rows.map(publicRun) })
+})
+
 workflowRoutes.get('/runs/:id', (c) => {
   const user = currentUser(c)
   if (!user) return c.json({ ok: false, error: '未登录' }, 401)

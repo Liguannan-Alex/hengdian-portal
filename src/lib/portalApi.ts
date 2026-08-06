@@ -188,6 +188,17 @@ export const fetchRuns = (limit = 30) =>
 export const fetchRun = (id: number) =>
   api<{ run: WorkflowRun }>(`/api/workflows/runs/${id}`).then((r) => r.run)
 
+/**
+ * 批量查任务状态。
+ *
+ * 节点画布上可能同时有十几个节点在生成，逐个查会把轮询开销乘以节点数。
+ * 查不到的 id 直接不出现在结果里，调用方按缺失处理即可。
+ */
+export const fetchRunsBatch = (ids: number[]) =>
+  ids.length === 0
+    ? Promise.resolve([] as WorkflowRun[])
+    : api<{ runs: WorkflowRun[] }>(`/api/workflows/runs/batch?ids=${ids.join(',')}`).then((r) => r.runs)
+
 export const cancelRun = (id: number) =>
   api<{ ok: true }>(`/api/workflows/runs/${id}/cancel`, { method: 'POST' })
 

@@ -1,150 +1,200 @@
 /**
- * 画布编辑器。
+ * 节点画布编辑器。
  *
- * 三件事在这里合流：画布的图（canvasApi）、画布上的操作（surface=canvas 的
- * 工作流）、以及运行结果落回画布。生成本身不在这里实现——提交仍走
- * `/api/workflows/:slug/runs`，因此队列、配额、算力适配与埋点都是既有那一套。
+ * 三件事在这里合流：图的读写（canvasApi）、图的语义（graph.ts：槽位、占位符、
+ * 脏标记）、以及生成——生成仍走 `/api/workflows/:slug/runs`，队列、配额、
+ * 算力适配与埋点都是既有那一套，画布不自己造第二条执行链路。
+ *
+ * 持久化策略沿用「本地先动、防抖批量落库」：拖动节点时等接口回来才更新位置，
+ * 手感会明显发黏。
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
-  ArrowLeft,
-  BringToFront,
-  Crop,
-  Frame,
-  ImagePlus,
-  Layers,
-  Loader2,
-  Maximize2,
-  MousePointer2,
-  Pencil,
-  Shuffle,
-  Trash2,
-  ZoomIn,
-  ZoomOut,
-} from 'lucide-react'
+  Background,
+  BackgroundVariant,
+  Controls,
+  MiniMap,
+  ReactFlow,
+  ReactFlowProvider,
+  addEdge,
+  applyEdgeChanges,
+  applyNodeChanges,
+  type Connection,
+  type Edge,
+  type EdgeChange,
+  type Node,
+  type NodeChange,
+} from '@xyflow/react'
+import '@xyflow/react/dist/style.css'
+import { ArrowLeft, Frame, ImagePlus, LayoutGrid, Loader2, Plus, Type } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { DemoBanner } from '@/components/DemoBanner'
 import { ServerAccountBar, ServerAccountGate } from '@/components/ServerAccountGate'
-import { CanvasStage, type Region, type StageTool, type Viewport } from '@/components/canvas/CanvasStage'
-import { CanvasOpPanel } from '@/components/canvas/CanvasOpPanel'
+import { type FlowNodeData } from '@/components/canvas/CanvasNodes'
+import { nodeTypes } from '@/components/canvas/nodeTypes'
+import { NodeInspector, type NodeActionOption } from '@/components/canvas/NodeInspector'
 import {
-  addCanvasItem,
-  deleteCanvasItem,
   fetchCanvas,
   measureImage,
+  newKey,
   renameCanvas,
-  updateCanvasItem,
-  type CanvasItem,
+  saveGraph,
   type CanvasMeta,
+  type GraphEdge,
+  type GraphNode,
+  type NodeData,
+  type NodeType,
 } from '@/lib/canvasApi'
 import {
   ApiError,
   fetchQuota,
-  fetchRun,
   fetchRuns,
+  fetchRunsBatch,
   isTerminal,
   submitRun,
+  trackWorkflow,
   type Quota,
   type WorkflowRun,
 } from '@/lib/portalApi'
-import { canvasWorkflows, type ParamValue, type WorkflowDefinition } from '@/data/workflows'
-import { cn } from '@/lib/utils'
+import { allWorkflows, workflowBySlug } from '@/data/workflows'
+import { isRunning, resolveParams, staleKeysFrom, titleOf, wouldCreateCycle } from '@/lib/graph'
 
+/** 批量查任务状态的间隔。画布上可能同时有十几个节点在跑，一个定时器全覆盖。 */
 const POLL_MS = 2000
-
-const OP_ICONS: Record<string, typeof Pencil> = {
-  'canvas-inpaint': Pencil,
-  'canvas-outpaint': Maximize2,
-  'canvas-variation': Shuffle,
-}
-
-/** 局部重绘必须先有选区；其余操作选中一张图即可。 */
-const NEEDS_REGION = new Set(['canvas-inpaint'])
-
-interface PendingRun {
-  runId: number
-  sourceItem: CanvasItem
-  workflowName: string
-}
-
-interface Box {
-  x: number
-  y: number
-  width: number
-  height: number
-}
-
-const GAP = 24
-
-function overlaps(a: Box, b: Box): boolean {
-  return (
-    a.x < b.x + b.width + GAP / 2 &&
-    a.x + a.width + GAP / 2 > b.x &&
-    a.y < b.y + b.height + GAP / 2 &&
-    a.y + a.height + GAP / 2 > b.y
-  )
-}
+/** 落库防抖。拖动会产生大量位置变更，聚合后一次写。 */
+const SAVE_DEBOUNCE_MS = 600
 
 /**
- * 找一个不压住任何已有图的落点。
+ * 能作为节点动作的工作流。
  *
- * 产出默认摆在原图右侧以保持「从这张图改出来的」空间关系，但那个位置常常
- * 已经有图了。直接放上去会盖住别人的图，且因为 z 更高，被盖的那张要拖开
- * 才能看见——看上去像图丢了。这里沿纵向找到第一个空位。
+ * 画布能自动供上的连线输入只有 sourceUrl；其它 supplied=canvas 的字段
+ * （目前是选区坐标）由节点自己的参数提供。两者都覆盖不了的动作不出现在这里，
+ * 免得用户选了之后发现永远缺参数。
  */
-function findFreeSpot(items: Box[], preferred: Box): { x: number; y: number } {
-  const candidate = { ...preferred }
-  // 上限防御：画布最多百来张图，正常几步就能找到空位，不会真的走满。
-  for (let attempt = 0; attempt < 200; attempt += 1) {
-    if (!items.some((item) => overlaps(candidate, item))) break
-    candidate.y += candidate.height + GAP
+const NODE_ACTIONS: NodeActionOption[] = allWorkflows
+  .filter((workflow) =>
+    workflow.inputs
+      .filter((input) => input.supplied === 'canvas')
+      .every((input) => input.key === 'sourceUrl' || input.default !== undefined),
+  )
+  .map((workflow) => ({
+    slug: workflow.slug,
+    name: workflow.name,
+    outputKind: workflow.outputKind,
+    costCredits: workflow.costCredits,
+  }))
+
+const DEFAULT_SIZE: Record<NodeType, { width: number; height: number }> = {
+  image: { width: 320, height: 200 },
+  video: { width: 320, height: 200 },
+  text: { width: 280, height: 180 },
+}
+
+type FlowNode = Node<FlowNodeData>
+
+/**
+ * 领域节点 → React Flow 节点。
+ *
+ * 只在载入与新增时调用一次。**不能每次渲染都重建**：React Flow 把测量结果
+ * （节点尺寸与句柄位置）挂在它自己持有的节点对象上，每渲染一次换一批新对象，
+ * 测量就永远不会稳定，连线因此算不出端点、一条也画不出来。
+ * 所以位置与尺寸由 React Flow 持有，我们只在落库时把它读回来。
+ */
+function toFlowNode(node: GraphNode): FlowNode {
+  return {
+    id: node.key,
+    type: node.type,
+    position: { x: node.x, y: node.y },
+    style: { width: node.width, height: node.height },
+    data: { ...node.data, title: titleOf(node) },
   }
-  return { x: candidate.x, y: candidate.y }
+}
+
+/** React Flow 节点 → 领域节点，用于落库。 */
+function toGraphNode(node: FlowNode): GraphNode {
+  // title 是渲染用的派生字段，不落库：它由 label 与 action 算出来。
+  const data: NodeData = { ...node.data }
+  delete (data as Record<string, unknown>).title
+  return {
+    key: node.id,
+    type: (node.type ?? 'image') as NodeType,
+    x: Math.round(node.position.x),
+    y: Math.round(node.position.y),
+    width: Math.round(Number(node.style?.width ?? node.measured?.width ?? 320)),
+    height: Math.round(Number(node.style?.height ?? node.measured?.height ?? 200)),
+    z: 0,
+    data,
+  }
+}
+
+/** 标题依赖 label 与 action，改完要重算，否则节点头部还显示旧名字。 */
+function withTitle(node: FlowNode): FlowNode {
+  return { ...node, data: { ...node.data, title: titleOf(toGraphNode(node)) } }
 }
 
 function CanvasWorkspace({ canvasId }: { canvasId: number }) {
   const [meta, setMeta] = useState<CanvasMeta | null>(null)
-  const [items, setItems] = useState<CanvasItem[]>([])
-  const [maxItems, setMaxItems] = useState(120)
+  const [rfNodes, setRfNodes] = useState<FlowNode[]>([])
+  const [rfEdges, setRfEdges] = useState<Edge[]>([])
+  const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
-  const [viewport, setViewport] = useState<Viewport>({ x: 80, y: 60, scale: 1 })
-  const [tool, setTool] = useState<StageTool>('select')
-  const [selectedId, setSelectedId] = useState<number | null>(null)
-  const [region, setRegion] = useState<Region | null>(null)
-
-  const [activeOp, setActiveOp] = useState<WorkflowDefinition | null>(null)
+  const [notice, setNotice] = useState<string | null>(null)
+  const [quota, setQuota] = useState<Quota | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [serverErrors, setServerErrors] = useState<Record<string, string>>({})
-  const [pending, setPending] = useState<PendingRun[]>([])
-  const [quota, setQuota] = useState<Quota | null>(null)
+  const [picker, setPicker] = useState(false)
+  const [addMenu, setAddMenu] = useState(false)
 
-  const [picker, setPicker] = useState<'runs' | 'url' | null>(null)
-  const pollTimer = useRef<number | null>(null)
-  /**
-   * 落位计算要用「此刻画布上有哪些图」，但连续放多张产出时 state 还没刷新，
-   * 后一张就会算到和前一张同一个位置。这里用 ref 同步维护一份即时副本。
-   */
-  const itemsRef = useRef<CanvasItem[]>([])
+  /** 待落库的变更。合并后由防抖定时器一次性提交。 */
+  const dirtyRef = useRef({
+    nodes: new Map<string, GraphNode>(),
+    deletedNodes: new Set<string>(),
+    edges: new Map<string, GraphEdge>(),
+    deletedEdges: new Set<string>(),
+  })
+  const saveTimer = useRef<number | null>(null)
+  /** 轮询回调里要读「此刻的节点」，但不能在 state updater 里做副作用，故留一份即时副本。 */
+  const rfNodesRef = useRef<FlowNode[]>([])
+  const nodesRef = useRef<GraphNode[]>([])
+  const edgesRef = useRef<GraphEdge[]>([])
+
+  // 图语义（槽位、脏标记、成环判断）用领域形状；渲染用 React Flow 形状。
+  const nodes = useMemo(() => rfNodes.map(toGraphNode), [rfNodes])
+  const edges = useMemo<GraphEdge[]>(
+    () => rfEdges.map((edge) => ({ key: edge.id, source: edge.source, target: edge.target })),
+    [rfEdges],
+  )
 
   useEffect(() => {
-    itemsRef.current = items
-  }, [items])
+    rfNodesRef.current = rfNodes
+  }, [rfNodes])
+  useEffect(() => {
+    nodesRef.current = nodes
+  }, [nodes])
+  useEffect(() => {
+    edgesRef.current = edges
+  }, [edges])
 
   const selected = useMemo(
-    () => items.find((item) => item.id === selectedId) ?? null,
-    [items, selectedId],
+    () => nodes.find((node) => node.key === selectedKey) ?? null,
+    [nodes, selectedKey],
   )
+
+  const refreshQuota = useCallback(() => {
+    fetchQuota()
+      .then(setQuota)
+      .catch(() => undefined)
+  }, [])
 
   const load = useCallback(async () => {
     try {
       const detail = await fetchCanvas(canvasId)
       setMeta(detail.canvas)
-      setItems(detail.items)
-      setMaxItems(detail.limits.maxItems)
+      setRfNodes(detail.nodes.map(toFlowNode))
+      setRfEdges(detail.edges.map((edge) => ({ id: edge.key, source: edge.source, target: edge.target })))
       setError(null)
     } catch (caught) {
       setError(caught instanceof ApiError ? caught.message : '加载画布失败')
@@ -153,131 +203,305 @@ function CanvasWorkspace({ canvasId }: { canvasId: number }) {
     }
   }, [canvasId])
 
-  const refreshQuota = useCallback(() => {
-    fetchQuota()
-      .then(setQuota)
-      .catch(() => undefined)
-  }, [])
-
   useEffect(() => {
     void load()
     refreshQuota()
   }, [load, refreshQuota])
 
-  /**
-   * 把一张图放到画布上。宽高按图片真实比例算，落点从期望位置起找第一个空位。
-   */
-  const placeImage = useCallback(
-    async (
-      src: string,
-      preferred: { x: number; y: number },
-      extra: { label?: string; sourceRunId?: number; sourceItemId?: number } = {},
-    ) => {
-      const size = await measureImage(src)
-      const spot = findFreeSpot(itemsRef.current, { ...preferred, ...size })
-      const item = await addCanvasItem(canvasId, { src, ...spot, ...size, ...extra })
-      itemsRef.current = [...itemsRef.current, item]
-      setItems((prev) => [...prev, item])
-      return item
-    },
-    [canvasId],
-  )
-
-  // 有任务在跑就轮询；全部结束后停表。
-  useEffect(() => {
-    if (pending.length === 0) {
-      if (pollTimer.current) window.clearInterval(pollTimer.current)
-      pollTimer.current = null
+  const flush = useCallback(async () => {
+    const dirty = dirtyRef.current
+    if (
+      dirty.nodes.size === 0 &&
+      dirty.deletedNodes.size === 0 &&
+      dirty.edges.size === 0 &&
+      dirty.deletedEdges.size === 0
+    ) {
       return
     }
+    const patch = {
+      upsertNodes: [...dirty.nodes.values()],
+      deleteNodeKeys: [...dirty.deletedNodes],
+      upsertEdges: [...dirty.edges.values()],
+      deleteEdgeKeys: [...dirty.deletedEdges],
+    }
+    dirtyRef.current = {
+      nodes: new Map(),
+      deletedNodes: new Set(),
+      edges: new Map(),
+      deletedEdges: new Set(),
+    }
+    try {
+      await saveGraph(canvasId, patch)
+    } catch (caught) {
+      setError(caught instanceof ApiError ? caught.message : '保存失败')
+      // 保存失败就把服务端的权威快照拉回来，避免界面与库长期不一致。
+      void load()
+    }
+  }, [canvasId, load])
 
-    pollTimer.current = window.setInterval(() => {
+  const scheduleSave = useCallback(() => {
+    if (saveTimer.current) window.clearTimeout(saveTimer.current)
+    saveTimer.current = window.setTimeout(() => void flush(), SAVE_DEBOUNCE_MS)
+  }, [flush])
+
+  // 离开页面前把没落库的变更冲掉，否则最后几步操作会丢。
+  useEffect(() => {
+    return () => {
+      if (saveTimer.current) window.clearTimeout(saveTimer.current)
+      void flush()
+    }
+  }, [flush])
+
+  const markNodeDirty = useCallback(
+    (node: GraphNode) => {
+      dirtyRef.current.nodes.set(node.key, node)
+      scheduleSave()
+    },
+    [scheduleSave],
+  )
+
+  const patchNode = useCallback(
+    (key: string, patch: Partial<NodeData>) => {
+      setRfNodes((prev) =>
+        prev.map((node) => {
+          if (node.id !== key) return node
+          const next = withTitle({ ...node, data: { ...node.data, ...patch } })
+          dirtyRef.current.nodes.set(key, toGraphNode(next))
+          return next
+        }),
+      )
+      scheduleSave()
+    },
+    [scheduleSave],
+  )
+
+  const addNode = useCallback(
+    async (type: NodeType, seed: Partial<NodeData> = {}) => {
+      const size = seed.url ? await measureImage(seed.url) : DEFAULT_SIZE[type]
+      // 新节点摆在现有内容右侧，不压住已有布局。
+      const x = nodesRef.current.length
+        ? Math.max(...nodesRef.current.map((node) => node.x + node.width)) + 48
+        : 0
+      const node: GraphNode = {
+        key: newKey(type === 'text' ? 't' : type === 'video' ? 'v' : 'i'),
+        type,
+        x,
+        y: 0,
+        width: size.width,
+        height: size.height,
+        z: nodesRef.current.length,
+        data: { isStale: false, ...seed },
+      }
+      setRfNodes((prev) => [...prev, toFlowNode(node)])
+      nodesRef.current = [...nodesRef.current, node]
+      setSelectedKey(node.key)
+      markNodeDirty(node)
+      return node
+    },
+    [markNodeDirty],
+  )
+
+  const handleNodesChange = useCallback(
+    (changes: NodeChange<FlowNode>[]) => {
+      for (const change of changes) {
+        if (change.type === 'remove') {
+          dirtyRef.current.deletedNodes.add(change.id)
+          dirtyRef.current.nodes.delete(change.id)
+        }
+      }
+
+      setRfNodes((prev) => {
+        const next = applyNodeChanges(changes, prev)
+        // 位置变化才需要落库；选中、尺寸测量这些是纯前端状态。
+        for (const change of changes) {
+          if (change.type !== 'position' || change.dragging) continue
+          const moved = next.find((node) => node.id === change.id)
+          if (moved) dirtyRef.current.nodes.set(moved.id, toGraphNode(moved))
+        }
+        return next
+      })
+
+      if (
+        changes.some(
+          (change) =>
+            change.type === 'remove' || (change.type === 'position' && !change.dragging),
+        )
+      ) {
+        scheduleSave()
+      }
+      const selectChange = changes.find((change) => change.type === 'select' && change.selected)
+      if (selectChange && 'id' in selectChange) setSelectedKey(selectChange.id)
+    },
+    [scheduleSave],
+  )
+
+  const handleEdgesChange = useCallback(
+    (changes: EdgeChange[]) => {
+      const removed = changes.filter((change) => change.type === 'remove')
+      for (const change of removed) {
+        dirtyRef.current.deletedEdges.add(change.id)
+        dirtyRef.current.edges.delete(change.id)
+      }
+      setRfEdges((prev) => applyEdgeChanges(changes, prev))
+      if (removed.length > 0) scheduleSave()
+    },
+    [scheduleSave],
+  )
+
+  const handleConnect = useCallback(
+    (connection: Connection) => {
+      if (!connection.source || !connection.target) return
+      if (wouldCreateCycle(edgesRef.current, connection.source, connection.target)) {
+        setNotice('不能连成环：下游又连回了上游')
+        return
+      }
+      if (
+        edgesRef.current.some(
+          (edge) => edge.source === connection.source && edge.target === connection.target,
+        )
+      ) {
+        return
+      }
+
+      const key = newKey('e')
+      setRfEdges((prev) => addEdge({ ...connection, id: key }, prev))
+      edgesRef.current = [
+        ...edgesRef.current,
+        { key, source: connection.source, target: connection.target },
+      ]
+      dirtyRef.current.edges.set(key, { key, source: connection.source, target: connection.target })
+
+      // 接上新上游，下游当前产出就不再对应，直接标脏。
+      const target = nodesRef.current.find((node) => node.key === connection.target)
+      if (target?.data.action && (target.data.url || target.data.text)) {
+        patchNode(target.key, { isStale: true })
+      }
+      scheduleSave()
+      setNotice(null)
+    },
+    [patchNode, scheduleSave],
+  )
+
+  /** 一个节点产出更新后，把它的全部下游标脏。 */
+  const propagateStale = useCallback(
+    (changedKey: string) => {
+      const stale = staleKeysFrom(nodesRef.current, edgesRef.current, changedKey)
+      if (stale.size === 0) return
+
+      const next = rfNodesRef.current.map((node) => {
+        if (!stale.has(node.id) || node.data.isStale) return node
+        const updated = { ...node, data: { ...node.data, isStale: true } }
+        dirtyRef.current.nodes.set(node.id, toGraphNode(updated))
+        return updated
+      })
+      rfNodesRef.current = next
+      setRfNodes(next)
+      scheduleSave()
+    },
+    [scheduleSave],
+  )
+
+  // 批量轮询：一次拿回所有在跑节点的状态，而不是每个节点一个定时器。
+  const pendingRunIds = useMemo(
+    () =>
+      nodes
+        .filter((node) => isRunning(node.data))
+        .map((node) => node.data.taskInfo?.runId)
+        .filter((id): id is number => typeof id === 'number'),
+    [nodes],
+  )
+
+  useEffect(() => {
+    if (pendingRunIds.length === 0) return
+    const timer = window.setInterval(() => {
       void (async () => {
-        for (const job of [...pending]) {
-          let run: WorkflowRun
-          try {
-            run = await fetchRun(job.runId)
-          } catch {
+        let runs: WorkflowRun[]
+        try {
+          runs = await fetchRunsBatch(pendingRunIds)
+        } catch {
+          return
+        }
+        const byId = new Map(runs.map((run) => [run.id, run]))
+
+        /*
+         * 先在 updater 之外算好结果，再一次性写回。
+         * 曾经把「哪些跑完了」收集在 setState 的 updater 里、调用后立刻读它——
+         * updater 那时还没执行，收集到的永远是空的，于是既没落库也没标脏。
+         */
+        const nextNodes: FlowNode[] = []
+        const finished: { key: string; run: WorkflowRun }[] = []
+        let changed = false
+
+        for (const node of rfNodesRef.current) {
+          const runId = node.data.taskInfo?.runId
+          const run = runId ? byId.get(runId) : undefined
+          if (!run || run.status === node.data.taskInfo?.status) {
+            nextNodes.push(node)
             continue
           }
-          if (!isTerminal(run.status)) continue
 
-          setPending((prev) => prev.filter((entry) => entry.runId !== job.runId))
+          const data: FlowNodeData = {
+            ...node.data,
+            taskInfo: { runId: run.id, status: run.status, error: run.error },
+          }
+          if (isTerminal(run.status)) {
+            if (run.status === 'succeeded') {
+              const output = run.outputs[0]
+              if (output?.url) data.url = output.url
+              if (output?.text) data.text = output.text
+              data.isStale = false
+              data.producedAtMs = Date.now()
+            }
+            finished.push({ key: node.id, run })
+          }
+          const updated = { ...node, data }
+          dirtyRef.current.nodes.set(node.id, toGraphNode(updated))
+          nextNodes.push(updated)
+          changed = true
+        }
+
+        if (!changed) return
+        rfNodesRef.current = nextNodes
+        setRfNodes(nextNodes)
+
+        if (finished.length > 0) {
+          scheduleSave()
           refreshQuota()
-
-          if (run.status !== 'succeeded') {
-            setError(run.error ?? `${job.workflowName}失败`)
-            continue
-          }
-
-          // 产出摆在原图右侧，保持「从这张图改出来的」空间关系；
-          // 该位置已有图时由 placeImage 沿纵向让开。
-          for (const output of run.outputs) {
-            if (!output.url) continue
-            await placeImage(
-              output.url,
-              { x: job.sourceItem.x + job.sourceItem.width + GAP, y: job.sourceItem.y },
-              { label: job.workflowName, sourceRunId: run.id, sourceItemId: job.sourceItem.id },
-            )
+          // 产出变了，下游全部标脏——这是节点式工具的核心承诺。
+          for (const entry of finished) {
+            if (entry.run.status === 'succeeded') propagateStale(entry.key)
           }
         }
       })()
     }, POLL_MS)
+    return () => window.clearInterval(timer)
+  }, [pendingRunIds, propagateStale, refreshQuota, scheduleSave])
 
-    return () => {
-      if (pollTimer.current) window.clearInterval(pollTimer.current)
-      pollTimer.current = null
+  const quotaBlocker = (costCredits: number): string | null => {
+    if (!quota) return null
+    if (quota.remainingCredits < costCredits) {
+      return `今日额度剩余 ${quota.remainingCredits} 点，本次需要 ${costCredits} 点`
     }
-  }, [pending, placeImage, refreshQuota])
-
-  const handleCommitGeometry = async (
-    id: number,
-    patch: { x?: number; y?: number; width?: number; height?: number },
-  ) => {
-    // 先改本地再落库：等接口回来才动，拖完手会看到图弹回去。
-    setItems((prev) => prev.map((item) => (item.id === id ? { ...item, ...patch } : item)))
-    try {
-      await updateCanvasItem(canvasId, id, patch)
-    } catch {
-      // 落库失败就把权威状态拉回来，避免界面与数据长期不一致。
-      void load()
+    if (quota.pendingRuns >= quota.pendingLimit) {
+      return `已有 ${quota.pendingRuns} 个任务在队列中`
     }
+    return null
   }
 
-  const handleDeleteSelected = async () => {
-    if (!selected) return
-    setItems((prev) => prev.filter((item) => item.id !== selected.id))
-    setSelectedId(null)
-    setRegion(null)
-    try {
-      await deleteCanvasItem(canvasId, selected.id)
-    } catch {
-      void load()
-    }
-  }
+  const runNode = async (node: GraphNode) => {
+    const workflow = node.data.action ? workflowBySlug.get(node.data.action) : null
+    if (!workflow) return
 
-  const handleBringToFront = async () => {
-    if (!selected) return
-    const top = Math.max(...items.map((item) => item.z), 0) + 1
-    setItems((prev) => prev.map((item) => (item.id === selected.id ? { ...item, z: top } : item)))
-    try {
-      await updateCanvasItem(canvasId, selected.id, { z: top })
-    } catch {
-      void load()
-    }
-  }
-
-  const handleSubmitOp = async (params: Record<string, ParamValue>) => {
-    if (!activeOp || !selected) return
     setSubmitting(true)
     setServerErrors({})
     setError(null)
     try {
-      const { run } = await submitRun(activeOp.slug, params)
-      setPending((prev) => [...prev, { runId: run.id, sourceItem: selected, workflowName: activeOp.name }])
-      setActiveOp(null)
-      setRegion(null)
-      setTool('select')
+      const { params } = resolveParams(node, nodesRef.current, edgesRef.current)
+      const { run } = await submitRun(workflow.slug, params)
+      patchNode(node.key, {
+        taskInfo: { runId: run.id, status: run.status, error: null },
+      })
+      trackWorkflow('workflow_submit', workflow.slug, '/canvas', workflow.sceneSlug)
       refreshQuota()
     } catch (caught) {
       if (caught instanceof ApiError) {
@@ -291,41 +515,51 @@ function CanvasWorkspace({ canvasId }: { canvasId: number }) {
     }
   }
 
-  /** 视图归位：把所有图框进可视区域，缩放到刚好放得下。 */
-  const fitToItems = () => {
-    if (items.length === 0) {
-      setViewport({ x: 80, y: 60, scale: 1 })
-      return
-    }
-    const minX = Math.min(...items.map((item) => item.x))
-    const minY = Math.min(...items.map((item) => item.y))
-    const maxX = Math.max(...items.map((item) => item.x + item.width))
-    const maxY = Math.max(...items.map((item) => item.y + item.height))
-    const width = maxX - minX
-    const height = maxY - minY
-    const stage = document.getElementById('canvas-stage')?.getBoundingClientRect()
-    if (!stage || width <= 0 || height <= 0) return
-    const scale = Math.min(Math.min((stage.width - 80) / width, (stage.height - 80) / height), 1)
-    setViewport({
-      x: (stage.width - width * scale) / 2 - minX * scale,
-      y: (stage.height - height * scale) / 2 - minY * scale,
-      scale,
+  const deleteNode = (key: string) => {
+    dirtyRef.current.deletedNodes.add(key)
+    dirtyRef.current.nodes.delete(key)
+    setRfNodes((prev) => prev.filter((node) => node.id !== key))
+    setRfEdges((prev) => {
+      for (const edge of prev.filter((entry) => entry.source === key || entry.target === key)) {
+        dirtyRef.current.deletedEdges.add(edge.id)
+      }
+      return prev.filter((edge) => edge.source !== key && edge.target !== key)
     })
+    setSelectedKey(null)
+    scheduleSave()
   }
 
-  const opDisabledReason = (op: WorkflowDefinition): string | null => {
-    if (!selected) return '请先选中一张图'
-    if (NEEDS_REGION.has(op.slug) && (!region || region.itemId !== selected.id || region.w < 2)) {
-      return '请先用「框选」工具在图上框出要修改的区域'
+  /** 自动整理：按拓扑层级从左到右排开，同层纵向排列。 */
+  const autoLayout = () => {
+    const depth = new Map<string, number>()
+    const compute = (key: string, seen: Set<string>): number => {
+      if (depth.has(key)) return depth.get(key) as number
+      if (seen.has(key)) return 0
+      seen.add(key)
+      const parents = edgesRef.current.filter((edge) => edge.target === key)
+      const value = parents.length === 0 ? 0 : Math.max(...parents.map((edge) => compute(edge.source, seen) + 1))
+      depth.set(key, value)
+      return value
     }
-    if (quota && quota.remainingCredits < op.costCredits) {
-      return `今日额度剩余 ${quota.remainingCredits} 点，本次需要 ${op.costCredits} 点`
+    for (const node of nodesRef.current) compute(node.key, new Set())
+
+    const columns = new Map<number, GraphNode[]>()
+    for (const node of nodesRef.current) {
+      const level = depth.get(node.key) ?? 0
+      columns.set(level, [...(columns.get(level) ?? []), node])
     }
-    if (quota && quota.pendingRuns >= quota.pendingLimit) {
-      return `已有 ${quota.pendingRuns} 个任务在队列中`
-    }
-    if (items.length >= maxItems) return `本画布图片已达上限 ${maxItems} 张`
-    return null
+
+    setRfNodes((prev) =>
+      prev.map((node) => {
+        const level = depth.get(node.id) ?? 0
+        const column = columns.get(level) ?? []
+        const index = column.findIndex((entry) => entry.key === node.id)
+        const next = { ...node, position: { x: level * 420, y: index * 280 } }
+        dirtyRef.current.nodes.set(node.id, toGraphNode(next))
+        return next
+      }),
+    )
+    scheduleSave()
   }
 
   if (loading) {
@@ -346,179 +580,138 @@ function CanvasWorkspace({ canvasId }: { canvasId: number }) {
   }
 
   return (
-    <div className="space-y-4">
-      <CanvasHeader
-        meta={meta}
-        onRenamed={(name) => setMeta((prev) => (prev ? { ...prev, name } : prev))}
-      />
+    <div className="space-y-3">
+      <CanvasHeader meta={meta} onRenamed={(name) => setMeta((prev) => (prev ? { ...prev, name } : prev))} />
 
-      {error && (
-        <p className="rounded-lg border border-destructive/25 bg-destructive/10 px-3 py-2 text-sm text-red-300" role="alert">
-          {error}
+      {(error || notice) && (
+        <p
+          className={cnNotice(Boolean(error))}
+          role={error ? 'alert' : 'status'}
+        >
+          {error ?? notice}
         </p>
       )}
 
       <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border bg-card/60 p-2">
-        <div className="flex items-center gap-1 rounded-lg border border-border p-0.5">
-          <ToolButton active={tool === 'select'} onClick={() => setTool('select')} icon={MousePointer2} label="选择" />
-          <ToolButton
-            active={tool === 'region'}
-            onClick={() => setTool('region')}
-            icon={Crop}
-            label="框选"
-          />
+        <div className="relative">
+          <Button variant="outline" size="sm" onClick={() => setAddMenu((open) => !open)}>
+            <Plus className="mr-1.5 h-4 w-4" aria-hidden="true" />
+            添加节点
+          </Button>
+          {addMenu && (
+            <div className="absolute left-0 top-full z-30 mt-1 w-48 rounded-lg border border-border bg-card p-1 shadow-xl">
+              {(
+                [
+                  { type: 'image' as const, label: '图片节点', icon: ImagePlus },
+                  { type: 'text' as const, label: '文本节点', icon: Type },
+                ]
+              ).map((entry) => (
+                <button
+                  key={entry.type}
+                  type="button"
+                  onClick={() => {
+                    setAddMenu(false)
+                    void addNode(entry.type)
+                  }}
+                  className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
+                >
+                  <entry.icon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                  {entry.label}
+                </button>
+              ))}
+              <div className="my-1 border-t border-border" />
+              <button
+                type="button"
+                onClick={() => {
+                  setAddMenu(false)
+                  setPicker(true)
+                }}
+                className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
+              >
+                <ImagePlus className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                从我的任务导入
+              </button>
+            </div>
+          )}
         </div>
 
-        <span className="h-5 w-px bg-border" aria-hidden="true" />
-
-        <Button variant="outline" size="sm" onClick={() => setPicker('runs')}>
-          <ImagePlus className="mr-1.5 h-4 w-4" aria-hidden="true" />
-          加入图片
+        <Button variant="outline" size="sm" onClick={autoLayout} disabled={nodes.length === 0}>
+          <LayoutGrid className="mr-1.5 h-4 w-4" aria-hidden="true" />
+          自动整理
         </Button>
 
-        <span className="h-5 w-px bg-border" aria-hidden="true" />
-
-        {canvasWorkflows.map((op) => {
-          const Icon = OP_ICONS[op.slug] ?? Pencil
-          const reason = opDisabledReason(op)
-          return (
-            <Button
-              key={op.slug}
-              variant={activeOp?.slug === op.slug ? 'default' : 'outline'}
-              size="sm"
-              disabled={Boolean(reason)}
-              title={reason ?? op.summary}
-              onClick={() => {
-                setActiveOp(op)
-                setServerErrors({})
-              }}
-            >
-              <Icon className="mr-1.5 h-4 w-4" aria-hidden="true" />
-              {op.name}
-            </Button>
-          )
-        })}
-
-        <span className="ml-auto flex items-center gap-1">
-          <Button variant="ghost" size="icon-sm" onClick={handleBringToFront} disabled={!selected} aria-label="置于顶层">
-            <BringToFront className="h-4 w-4" aria-hidden="true" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            onClick={() => void handleDeleteSelected()}
-            disabled={!selected}
-            aria-label="删除选中图片"
-          >
-            <Trash2 className="h-4 w-4" aria-hidden="true" />
-          </Button>
-          <span className="h-5 w-px bg-border" aria-hidden="true" />
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            onClick={() => setViewport((v) => ({ ...v, scale: Math.max(v.scale / 1.2, 0.1) }))}
-            aria-label="缩小"
-          >
-            <ZoomOut className="h-4 w-4" aria-hidden="true" />
-          </Button>
-          <span className="w-12 text-center text-xs tabular-nums text-muted-foreground">
-            {Math.round(viewport.scale * 100)}%
-          </span>
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            onClick={() => setViewport((v) => ({ ...v, scale: Math.min(v.scale * 1.2, 3) }))}
-            aria-label="放大"
-          >
-            <ZoomIn className="h-4 w-4" aria-hidden="true" />
-          </Button>
-          <Button variant="ghost" size="icon-sm" onClick={fitToItems} aria-label="适应画布">
-            <Layers className="h-4 w-4" aria-hidden="true" />
-          </Button>
+        <span className="ml-auto text-xs text-muted-foreground">
+          {nodes.length} 个节点 · {edges.length} 条连线
+          {quota && ` · 今日额度已用 ${quota.usedCredits} / ${quota.limitCredits} 点`}
         </span>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <div id="canvas-stage" className="h-[62vh] min-h-[420px]">
-          <CanvasStage
-            items={items}
-            selectedId={selectedId}
-            tool={tool}
-            viewport={viewport}
-            region={region}
-            busyItemIds={pending.map((job) => job.sourceItem.id)}
-            onViewportChange={setViewport}
-            onSelect={setSelectedId}
-            onCommitGeometry={(id, patch) => void handleCommitGeometry(id, patch)}
-            onRegionChange={setRegion}
-          />
+      <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="h-[64vh] min-h-[460px] overflow-hidden rounded-xl border border-border">
+          <ReactFlow
+            nodes={rfNodes}
+            edges={rfEdges}
+            nodeTypes={nodeTypes}
+            onNodesChange={handleNodesChange}
+            onEdgesChange={handleEdgesChange}
+            onConnect={handleConnect}
+            onPaneClick={() => setSelectedKey(null)}
+            colorMode="dark"
+            fitView
+            minZoom={0.15}
+            maxZoom={2}
+            proOptions={{ hideAttribution: false }}
+          >
+            <Background variant={BackgroundVariant.Dots} gap={20} size={1} />
+            <Controls showInteractive={false} />
+            <MiniMap pannable zoomable className="!bg-ink" />
+          </ReactFlow>
         </div>
 
-        <aside className="space-y-4">
-          {activeOp && selected ? (
-            <CanvasOpPanel
-              key={`${activeOp.slug}-${selected.id}`}
-              workflow={activeOp}
-              item={selected}
-              region={region && region.itemId === selected.id ? region : null}
+        <aside className="h-[64vh] min-h-[460px] overflow-hidden rounded-xl border border-border p-4">
+          {selected ? (
+            <NodeInspector
+              key={selected.key}
+              node={selected}
+              nodes={nodes}
+              edges={edges}
+              actions={NODE_ACTIONS}
               submitting={submitting}
-              disabledReason={opDisabledReason(activeOp)}
+              quotaBlocker={
+                selected.data.action
+                  ? quotaBlocker(workflowBySlug.get(selected.data.action)?.costCredits ?? 0)
+                  : null
+              }
               serverErrors={serverErrors}
-              onCancel={() => setActiveOp(null)}
-              onSubmit={(params) => void handleSubmitOp(params)}
+              onPatch={patchNode}
+              onRun={() => void runNode(selected)}
+              onDelete={() => deleteNode(selected.key)}
             />
           ) : (
-            <div className="rounded-xl border border-dashed border-border p-4 text-xs leading-6 text-muted-foreground">
-              <p className="mb-2 font-semibold text-foreground/80">怎么用</p>
+            <div className="space-y-3 text-xs leading-6 text-muted-foreground">
+              <p className="text-sm font-semibold text-foreground/80">怎么用</p>
               <ol className="list-decimal space-y-1 pl-4">
-                <li>「加入图片」把任务产出或图片链接放到画布上</li>
-                <li>拖动摆位，右下角小方块等比缩放</li>
-                <li>选中一张图后可「扩图」或「生成变体」</li>
-                <li>要改局部：切到「框选」，在图上拖出范围，再点「局部重绘」</li>
-                <li>产出会自动摆在原图右侧，可继续在它上面接着改</li>
+                <li>「添加节点」放一个图片或文本节点，或从我的任务导入产出</li>
+                <li>选中节点，在这里给它选一个动作（比如概念气氛图、扩图）</li>
+                <li>从上游节点右侧的圆点拖到下游节点左侧，建立连线</li>
+                <li>连线会变成输入槽位；提示词里写 <code className="rounded bg-muted px-1">{'{{图 1}}'}</code> 就能引用上游</li>
+                <li>点「运行」。上游后来改了，下游会标成「上游已更新」，重跑即可对齐</li>
               </ol>
-              <p className="mt-3 border-t border-border pt-2">
-                滚轮平移，按住 ⌘/Ctrl 滚轮缩放。
+              <p className="border-t border-border pt-2">
+                在画布空白处拖动可平移，滚轮缩放，左下角有缩放控件与小地图。
               </p>
             </div>
           )}
-
-          {pending.length > 0 && (
-            <div className="rounded-xl border border-gold/20 bg-gold/[0.06] p-3 text-xs text-gold-soft">
-              <p className="flex items-center gap-1.5 font-semibold">
-                <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
-                {pending.length} 个任务生成中
-              </p>
-              <p className="mt-1 text-gold-soft/80">完成后会自动摆到原图右侧，可以先做别的。</p>
-            </div>
-          )}
-
-          <div className="rounded-xl border border-border p-3 text-xs text-muted-foreground">
-            <p>
-              {items.length} / {maxItems} 张图
-              {quota && ` · 今日额度已用 ${quota.usedCredits} / ${quota.limitCredits} 点`}
-            </p>
-            {selected?.sourceItemId && (
-              <p className="mt-1">当前选中的图由画布上另一张图改出。</p>
-            )}
-          </div>
         </aside>
       </div>
 
       {picker && (
-        <AddImageDialog
-          mode={picker}
-          onModeChange={setPicker}
-          onClose={() => setPicker(null)}
-          onPick={async (src, label, sourceRunId) => {
-            setPicker(null)
-            try {
-              // 新图放在现有内容右侧，不覆盖已有摆位。
-              const x = items.length ? Math.max(...items.map((item) => item.x + item.width)) + GAP : 0
-              await placeImage(src, { x, y: 0 }, { label, sourceRunId })
-            } catch (caught) {
-              setError(caught instanceof ApiError ? caught.message : '加入图片失败')
-            }
+        <ImportDialog
+          onClose={() => setPicker(false)}
+          onPick={async (url, label, sourceRunId) => {
+            setPicker(false)
+            await addNode('image', { url, label, isStale: false })
+            void sourceRunId
           }}
         />
       )}
@@ -526,31 +719,10 @@ function CanvasWorkspace({ canvasId }: { canvasId: number }) {
   )
 }
 
-function ToolButton({
-  active,
-  onClick,
-  icon: Icon,
-  label,
-}: {
-  active: boolean
-  onClick: () => void
-  icon: typeof MousePointer2
-  label: string
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={cn(
-        'flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors',
-        active ? 'bg-gold/15 text-gold-soft' : 'text-muted-foreground hover:bg-muted',
-      )}
-    >
-      <Icon className="h-4 w-4" aria-hidden="true" />
-      {label}
-    </button>
-  )
+function cnNotice(isError: boolean): string {
+  return isError
+    ? 'rounded-lg border border-destructive/25 bg-destructive/10 px-3 py-2 text-sm text-red-300'
+    : 'rounded-lg border border-amber-400/25 bg-amber-400/10 px-3 py-2 text-sm text-amber-200'
 }
 
 function CanvasHeader({ meta, onRenamed }: { meta: CanvasMeta; onRenamed: (name: string) => void }) {
@@ -614,21 +786,16 @@ function CanvasHeader({ meta, onRenamed }: { meta: CanvasMeta; onRenamed: (name:
   )
 }
 
-/** 加入图片：从我的任务产出里挑，或直接贴一个图片链接。 */
-function AddImageDialog({
-  mode,
-  onModeChange,
+/** 从我的任务产出里导入一张图作为素材节点。 */
+function ImportDialog({
   onClose,
   onPick,
 }: {
-  mode: 'runs' | 'url'
-  onModeChange: (mode: 'runs' | 'url') => void
   onClose: () => void
-  onPick: (src: string, label: string, sourceRunId?: number) => void
+  onPick: (url: string, label: string, sourceRunId: number) => void
 }) {
   const [runs, setRuns] = useState<WorkflowRun[]>([])
   const [loading, setLoading] = useState(true)
-  const [url, setUrl] = useState('')
 
   useEffect(() => {
     fetchRuns(50)
@@ -643,53 +810,17 @@ function AddImageDialog({
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/70 p-4" role="dialog" aria-modal="true">
       <div className="glass-panel max-h-[80vh] w-full max-w-3xl overflow-hidden rounded-2xl border border-border shadow-2xl">
         <div className="flex items-center justify-between border-b border-border px-5 py-3">
-          <h2 className="font-semibold text-paper">加入图片</h2>
+          <h2 className="font-semibold text-paper">从我的任务导入</h2>
           <button type="button" onClick={onClose} className="rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-muted">
             关闭
           </button>
         </div>
-
-        <div className="flex gap-1 border-b border-border px-5 py-2">
-          {(['runs', 'url'] as const).map((value) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => onModeChange(value)}
-              className={cn(
-                'rounded-md px-3 py-1.5 text-sm',
-                mode === value ? 'bg-muted font-medium text-foreground' : 'text-muted-foreground',
-              )}
-            >
-              {value === 'runs' ? '从我的任务' : '从链接'}
-            </button>
-          ))}
-        </div>
-
-        <div className="max-h-[56vh] overflow-y-auto p-5">
-          {mode === 'url' ? (
-            <div className="space-y-3">
-              <Input
-                value={url}
-                onChange={(event) => setUrl(event.target.value)}
-                placeholder="https://…（图片直链）"
-                aria-label="图片链接"
-              />
-              <p className="text-xs text-muted-foreground">
-                只接受公网可访问的图片直链。请勿贴入含未公开项目内容的素材。
-              </p>
-              <Button
-                size="sm"
-                disabled={!url.trim().startsWith('http')}
-                onClick={() => onPick(url.trim(), '外部图片')}
-              >
-                加入画布
-              </Button>
-            </div>
-          ) : loading ? (
+        <div className="max-h-[60vh] overflow-y-auto p-5">
+          {loading ? (
             <p className="py-8 text-center text-sm text-muted-foreground">正在加载任务产出…</p>
           ) : runs.length === 0 ? (
             <p className="py-8 text-center text-sm text-muted-foreground">
-              还没有可用的图片产出。先去「AI 工作流」跑一条出图的流水线。
+              还没有可用的图片产出。先去「AI 工作流」跑一条出图的流水线，或直接在画布上加图片节点填链接。
             </p>
           ) : (
             <div className="space-y-5">
@@ -731,11 +862,13 @@ export default function CanvasEditor() {
   }, [])
 
   return (
-    <div className="mx-auto max-w-[100rem] px-4 py-6 lg:px-6">
+    <div className="mx-auto max-w-[110rem] px-4 py-6 lg:px-6">
       <DemoBanner />
       <ServerAccountGate>
         {Number.isInteger(canvasId) && canvasId > 0 ? (
-          <CanvasWorkspace canvasId={canvasId} />
+          <ReactFlowProvider>
+            <CanvasWorkspace canvasId={canvasId} />
+          </ReactFlowProvider>
         ) : (
           <p className="text-sm text-muted-foreground">画布编号不合法。</p>
         )}

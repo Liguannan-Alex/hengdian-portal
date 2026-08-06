@@ -63,7 +63,7 @@ npm test
 bash scripts/smoke.sh
 ```
 
-当前 60 项全部通过。本机若开启系统代理，`curl` 需要 `--noproxy '*'`，脚本已带。
+当前 64 项全部通过。本机若开启系统代理，`curl` 需要 `--noproxy '*'`，脚本已带。
 
 ## 本地常驻部署（macOS）
 
@@ -175,6 +175,7 @@ bash scripts/local-service.sh start
 | GET | `/api/workflows/quota` | 当前用户今日额度与队列占用 |
 | POST | `/api/workflows/:slug/runs` | 提交任务。参数校验失败返回 `fieldErrors`（逐字段） |
 | GET | `/api/workflows/runs` | 我的任务列表，可带 `status` / `limit` |
+| GET | `/api/workflows/runs/batch` | 批量查任务状态，`?ids=1,2,3`。节点画布上十几个节点同时生成时用它，避免轮询开销乘以节点数 |
 | GET | `/api/workflows/runs/:id` | 单个任务与产出 |
 | POST | `/api/workflows/runs/:id/cancel` | 取消排队或执行中的任务 |
 
@@ -198,12 +199,19 @@ bash scripts/local-service.sh start
 | --- | --- | --- |
 | GET | `/api/canvases` | 我的画布列表，含图片数与预览图 |
 | POST | `/api/canvases` | 新建画布，单人上限 20 块 |
-| GET | `/api/canvases/:id` | 画布与其上全部图片 |
+| GET | `/api/canvases/:id` | 画布与整张节点图 |
 | PATCH | `/api/canvases/:id` | 重命名 |
 | DELETE | `/api/canvases/:id` | 删除画布，其上图片一并级联删除 |
-| POST | `/api/canvases/:id/items` | 加入图片，单画布上限 120 张 |
-| PATCH | `/api/canvases/:id/items/:itemId` | 改几何与标签 |
-| DELETE | `/api/canvases/:id/items/:itemId` | 删除图片 |
+| GET | `/api/canvases/:id/graph` | 只取节点与连线 |
+| POST | `/api/canvases/:id/graph/batch` | 批量增删改节点与连线，回传权威整图 |
+
+节点用前端生成的 `node_key`（如 `i-ab12cd`）标识，连线两端引用它而不是自增 id：
+新建节点在落库前就要能连线，此时自增 id 还不存在。
+业务数据整体存 JSON（action、params、taskInfo、url、isStale），
+这些字段随工作流定义演进，拆成列会让每加一个参数就要改表。
+
+批量写入而不是逐条：画布上一次拖动就可能改动多个节点，逐个发请求既慢又容易写出交错状态。
+删节点时会把挂在它上面的连线一并删掉，否则图里会留下指向不存在节点的边。
 
 画布不执行任何生成。局部重绘、扩图、生成变体都是 `surface=canvas` 的工作流，
 仍走 `/api/workflows/:slug/runs`——队列、配额、provider 适配、埋点与周报因此全部复用。
@@ -255,7 +263,9 @@ bash scripts/local-service.sh start
 9. 产出链接由算力方托管，可能有有效期；门户不转存、不做产出资产库。
 10. 队列是进程内的，多实例部署会重复派单。届时需要把 `claim` 换成跨实例的抢占方式。
 11. 画布没有回收站与版本历史，删除即不可恢复。
-12. 尚无节点式工作流编排画布（拖节点连线跑 DAG），那是下一期。
+12. 节点图没有版本快照与协同编辑：同一画布多端同时打开会互相覆盖，以最后落库的为准。
+13. 连线拓扑到输入槽位的翻译在前端完成（图在前端，谁是谁的上游那里最清楚），
+    服务端仍对翻译结果做权威校验。若将来要让服务端或 Agent 自己跑图，这一层需要下沉。
 
 ## 数据表
 
@@ -269,4 +279,6 @@ bash scripts/local-service.sh start
 | `workflows` | 工作流定义快照，供周报按名称汇总 |
 | `workflow_runs` | 工作流任务：参数、状态、产出、额度消耗、心跳 |
 | `canvases` | 画布 |
-| `canvas_items` | 画布上的图：位置、尺寸、层级，以及来源任务与来源图片 |
+| `canvas_items` | 图板时代的图片条目。已迁移进 canvas_nodes，保留作回溯，不再写入 |
+| `canvas_nodes` | 节点：位置、尺寸、类型，以及 data（动作、参数、任务状态、产出、脏标记） |
+| `canvas_edges` | 连线 |

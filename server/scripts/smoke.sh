@@ -127,29 +127,37 @@ CANVAS_JSON="$(post /api/canvases "$body")"
 check "新建画布" '"name":"冒烟画布"' "$CANVAS_JSON"
 CANVAS_ID="$(printf '%s' "$CANVAS_JSON" | sed -n 's/.*"canvas":{"id":\([0-9]*\).*/\1/p')"
 
-body='{"src":"javascript:alert(1)"}'
-check "非法图片来源被拒" '只支持 http' "$(post "/api/canvases/$CANVAS_ID/items" "$body")"
+body='{"upsertNodes":[{"key":"i-smoke0001","type":"image","x":0,"y":0,"width":320,"height":180,"data":{"url":"javascript:alert(1)"}}]}'
+check "节点非法图片来源被拒" '只支持 http' "$(post "/api/canvases/$CANVAS_ID/graph/batch" "$body")"
 
-body='{"src":"data:text/html,<b>x</b>"}'
-check "非图片内联数据被拒" '只支持图片类型' "$(post "/api/canvases/$CANVAS_ID/items" "$body")"
+body='{"upsertNodes":[{"key":"BAD KEY","type":"image","x":0,"y":0,"width":320,"height":180,"data":{}}]}'
+check "非法节点键被拒" '节点键不合法' "$(post "/api/canvases/$CANVAS_ID/graph/batch" "$body")"
 
-body='{"src":"https://example.com/a.png","x":0,"y":0,"width":360,"height":203}'
-ITEM_JSON="$(post "/api/canvases/$CANVAS_ID/items" "$body")"
-check "加入图片成功" '"src":"https://example.com/a.png"' "$ITEM_JSON"
-ITEM_ID="$(printf '%s' "$ITEM_JSON" | sed -n 's/.*"item":{"id":\([0-9]*\).*/\1/p')"
+body='{"upsertEdges":[{"key":"e-smoke0001","source":"i-smoke0001","target":"i-smoke0001"}]}'
+check "自环被拒" '不能连到自己' "$(post "/api/canvases/$CANVAS_ID/graph/batch" "$body")"
 
-body='{"x":120,"y":60}'
-check "移动图片" '"x":120' "$(c -X PATCH "$BASE/api/canvases/$CANVAS_ID/items/$ITEM_ID" -H "$JSON" -d "$body")"
-check "画布详情含该图" "\"id\":$ITEM_ID" "$(c "$BASE/api/canvases/$CANVAS_ID")"
-check "画布列表含计数" '"itemCount":1' "$(c "$BASE/api/canvases")"
+body='{"upsertNodes":[{"key":"i-smoke0001","type":"image","x":0,"y":0,"width":320,"height":180,"data":{"url":"https://example.com/a.png"}},{"key":"i-smoke0002","type":"image","x":400,"y":0,"width":320,"height":180,"data":{"action":"canvas-outpaint"}}],"upsertEdges":[{"key":"e-smoke0001","source":"i-smoke0001","target":"i-smoke0002"}]}'
+GRAPH_JSON="$(post "/api/canvases/$CANVAS_ID/graph/batch" "$body")"
+check "批量写入节点与连线" '"key":"e-smoke0001"' "$GRAPH_JSON"
+check "写入后回传整图" '"key":"i-smoke0002"' "$GRAPH_JSON"
+
+body='{"upsertNodes":[{"key":"i-smoke0001","type":"image","x":123,"y":0,"width":320,"height":180,"data":{"url":"https://example.com/a.png"}}]}'
+check "重复键是更新而非插入" '"x":123' "$(post "/api/canvases/$CANVAS_ID/graph/batch" "$body")"
+check "画布详情含节点图" '"edges":[{"key":"e-smoke0001"' "$(c "$BASE/api/canvases/$CANVAS_ID")"
+check "画布列表含节点计数" '"nodeCount":2' "$(c "$BASE/api/canvases")"
 
 body='{"params":{"sourceUrl":"https://example.com/a.png","prompt":"把天空换成黄昏","regionX":10,"regionY":10,"regionW":40,"regionH":30}}'
-check "局部重绘可提交" '"workflowSlug":"canvas-inpaint"' "$(post /api/workflows/canvas-inpaint/runs "$body")"
+RUN_JSON="$(post /api/workflows/canvas-inpaint/runs "$body")"
+check "局部重绘可提交" '"workflowSlug":"canvas-inpaint"' "$RUN_JSON"
+RUN_ID="$(printf '%s' "$RUN_JSON" | sed -n 's/.*"run":{"id":\([0-9]*\).*/\1/p')"
+check "批量查任务状态" "\"id\":$RUN_ID" "$(c "$BASE/api/workflows/runs/batch?ids=$RUN_ID")"
 
 body='{"params":{"sourceUrl":"https://example.com/a.png","prompt":"只改一点"}}'
 check "缺选区被逐字段拒绝" 'regionW' "$(post /api/workflows/canvas-inpaint/runs "$body")"
 
-check "删除图片" '"ok":true' "$(c -X DELETE "$BASE/api/canvases/$CANVAS_ID/items/$ITEM_ID")"
+body='{"deleteNodeKeys":["i-smoke0001"]}'
+check "删节点连带删连线" '"edges":[]' "$(post "/api/canvases/$CANVAS_ID/graph/batch" "$body")"
+
 check "删除画布" '"ok":true' "$(c -X DELETE "$BASE/api/canvases/$CANVAS_ID")"
 check "画布删除后不可读" '画布不存在' "$(c "$BASE/api/canvases/$CANVAS_ID")"
 
@@ -162,6 +170,7 @@ check "登出后 me 为空" '"user":null' "$(c "$BASE/api/auth/me")"
 check "登出后收藏需鉴权" '未登录' "$(c "$BASE/api/favorites")"
 check "登出后任务列表需鉴权" '未登录' "$(c "$BASE/api/workflows/runs")"
 check "登出后画布需鉴权" '未登录' "$(c "$BASE/api/canvases")"
+check "登出后批量查任务需鉴权" '未登录' "$(c "$BASE/api/workflows/runs/batch?ids=1")"
 
 echo "== 管理员统计 =="
 ADMIN="${ADMIN_USERNAME:-hdadmin}"

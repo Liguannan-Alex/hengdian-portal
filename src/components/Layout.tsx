@@ -502,7 +502,7 @@ export default function Layout() {
         <div className="border-t border-paper/10">
           <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-2 px-4 py-4 text-xs text-paper/60 lg:px-6">
             <span>数据经编辑整理与核验，访问与使用请以工具官网条款为准。</span>
-            <span>© 2026 横店影视数智服务门户 · v0.4 内部可用版</span>
+            <span>© 2026 横店影视数智服务门户 · v0.5 内部可用版</span>
           </div>
         </div>
       </footer>
